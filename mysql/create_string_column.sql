@@ -1,0 +1,2 @@
+ALTER TABLE rooms
+ADD COLUMN terminal VARCHAR(10) NOT NULL;

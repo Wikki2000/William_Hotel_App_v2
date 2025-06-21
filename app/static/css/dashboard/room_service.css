@@ -1,0 +1,398 @@
+@import url('variable.css'); /* Import file holding css variables */
+
+/*=============================
+Room Section
+==============================*/
+.tab__item {
+  padding: var(--space-xs);
+  cursor: pointer;
+  border-radius: 15px;
+}
+.room__table-column {
+  height: 510px;
+}
+.room__section-btn {
+  display: flex;
+  justify-content: space-between;
+  button {
+    display: none;
+    color: black;
+    padding: 0px 50px;
+    min-width: 80px;
+    height: 35px;
+    border: none;
+    font-size: 16px;
+    font-family: inherit;
+    border-radius: 20px;
+    margin-right: 80px;
+    margin-left: auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+}
+
+.tab__item-2 {
+  padding-left: 0.88rem;
+  padding-right: 0.88rem;
+}
+
+.room-image {
+  height: 100px;
+  width: 200px;
+  margin-top: 10px;
+}
+
+thead, .room-table-body {
+  width: auto;
+  overflow: auto;
+}
+
+.room-table-body > tr {
+  border-bottom: 1px solid var(--orange_a100);
+  padding-left: 1.88rem;
+  td:nth-child(5) {
+    text-align: center;
+  }
+}
+
+.statuses {
+  gap: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.room-status {
+  color: var(--green_500) !important;
+}
+.tab {
+  margin-left: 3.25rem;
+  margin-right: 3.25rem;
+  gap: 1.5rem;
+  display: flex;
+}
+
+.column_rooms {
+  margin-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info {
+  margin-left: 3.63rem;
+  margin-right: 3.63rem;
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-1 {
+  padding-left: 10.63rem;
+  padding-right: 3.5rem;
+  gap: 2rem;
+  display: flex;
+  flex: 1;
+}
+.info-text {
+  align-self: flex-end;
+  font-style: italic;
+}
+
+.tabletype {
+  margin-top: 0.5rem;
+  align-self: stretch;
+}
+
+.table__header-cell {
+  padding-left: 2.13rem;
+  text-align: left;
+}
+
+.table__header-cell-1 {
+  padding-left: 0.75rem;
+  text-align: left;
+}
+
+.table__header-cell-2 {
+  padding-left: 0.25rem;
+  text-align: left;
+}
+
+.table__header-cell-3 {
+  text-align: left;
+}
+
+.room-details {
+  gap: var(--space-xl);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rates {
+  gap: var(--space-2xl);
+}
+
+.room-status-1 {
+  color: var(--blue_a200) !important;
+}
+
+.room-status-3 {
+  color: var(--amber_a200) !important;
+}
+
+.room-status-4 {
+  color: var(--blue_a700) !important;
+}
+
+.featured {
+  padding-left: 1.88rem;
+  padding-right: 1.88rem;
+  flex: 1;
+  display: flex;
+}
+
+.room-info {
+  margin-bottom: 0.63rem;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.room-number-1 {
+  margin-top: -0.63rem;
+  position: relative;
+}
+
+.room-rate {
+  margin-left: 14rem;
+}
+
+.room-rate-1 {
+  margin-top: 2.5rem;
+}
+
+.room-status-6 {
+  color: var(--blue_a700) !important;
+  margin-top: 2.38rem;
+}
+
+.room-number {
+  margin-top: -0.25rem;
+  margin-left: 21.75rem;
+  align-self: flex-start;
+  position: relative;
+}
+
+
+.room_service {
+  height: 100%;
+}
+
+
+/*===========================
+Service Section
+============================*/
+.services-section{
+  margin-top: 20px;
+  display: none;
+  margin-right: 1.5rem;
+  margin: 1rem;
+  background-color: var(--secondary-color);;
+  border-radius: 1rem;
+  flex-grow: 1;
+  height: 75vh;
+  padding: 20px;
+
+  .dropdown, input {
+    border: 2px solid var(--orange_a100);
+    padding: 15px;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+  }
+}
+
+.check-btn{
+  display: flex;
+  gap: 15px;
+  margin-block: 0.8rem;
+
+  .highlight-btn {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  /*
+  button {
+    border: 2px solid orange;
+  }*/
+}
+
+.room__details {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+
+  #room__number-dropdown-btn {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.bottom-marg{
+  margin-bottom: 0.5rem;
+}
+.service-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #F5D077;
+}
+.total-charge{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #F5D077;
+  padding-top: 30px;
+}
+
+.print-proceed-btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 25px;
+}
+.print-proceed-btns .print-btn{
+  background-color: #FDF6E4;
+  border: 1px solid #F5D077;
+  padding: 10px 20px;
+  border-radius: 7px;
+  color: #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0);
+  &:hover {
+    cursor: pointer;
+  }
+}
+.print-proceed-btns .proceed-btn{
+  background-color: #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0);
+  padding: 10px 35px;
+  border-radius: 10px;
+  border: none;
+  color: #ffffff;
+  margin-top: 25px;
+}
+
+.service___list-orders {
+  margin-top: 15px;
+  display: none;
+  overflow-y: scroll;
+  height: 25vh;
+}
+
+.servicelist__filterBtn-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-left: 25px;
+  width: 20%;
+}
+
+.service___list-orders > table {
+  margin-bottom: 0px;
+}
+.service___list-orders .order__history--table-body {
+  td:nth-child(2),
+  td:nth-child(3),
+  td:nth-child(4) {
+    padding-right: 4%;
+  }
+  td:nth-child(1) {
+    padding-left: 2%;
+  }
+  .manage {
+    right: 15%;
+    top: 55px;
+  }
+  td:nth-child(6) {
+    padding-right: 100px;
+  }
+}
+
+/* Extend Stay by numbers of night style */
+#guest__extend-stay--modal {
+  .guest__popup-modal-content {
+    width: 35%;
+    margin-left: 20%;
+    height: auto;
+    padding: 30px;
+
+    h2 {
+      text-align: center;
+    }
+
+    .guest__add-edit--btnContainer {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      .guest__add-edit--btn {
+        margin-left: auto;
+        width: 80px;
+        height: 40px;
+        border-radius: 10px;
+	margin-top: 15px;
+      }
+    }
+    input, .guest__dropdown-btn--container {
+      border-radius: 5px;
+      padding: 10px;
+      border: 1px solid orange;
+      width:100%;
+      height: 40px;
+
+    }
+    .guest__dropdown-btn, 
+    .guest__extendday-payMethod-btn {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+      align-items: center;
+    }
+  }
+}
+
+/* Late Checkout Style */
+#late__checkout-popup--modal > .popup-modal-content,
+#order__update-payment-method > .popup-modal-content {
+  width: 52%;
+  height: auto;
+  padding: 20px;
+
+  h1 {
+    text-align: center;
+  }
+
+  .latecheckout__drop-down--menu {
+    display: flex;
+    justify-content: space-between; 
+  }
+
+  .payMethod-dropdown--btn,
+  .late__checkout-dropdown--btn {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .latecheckout__button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .confirm__late-checkout--btn, .confirm__payment-type {
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+  }
+}

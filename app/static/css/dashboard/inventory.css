@@ -1,0 +1,479 @@
+.inventory__stock-container {
+  height: 80vh;
+}
+.inventory__container {
+  margin-top: 20px;
+  margin-right: 1.5rem;
+  margin: 1rem;
+  padding: 10px;
+  height: 100%;
+  border-radius: 10px;
+  background-color: var(--secondary-color);
+
+  .expenditures__headings {
+    display: flex;
+    justify-content: space-between;
+  }
+  /* four boxes*/
+  .inventory__cart-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    overflow-x: scroll;
+
+    .inventory-cart {
+      width: 23%;
+      height: 100px;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 3px;
+      background-color: #fff;
+      margin-inline: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .flex-display{
+      display: flex;
+      justify-content: space-between;
+
+      p{
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+
+    p{
+      font-size: 1rem;
+      font-weight: 400px;
+    }
+    a{
+      font-size: small;
+      font-weight: 400;
+    }
+
+    .red {
+      color: #D41B1B;
+    }
+
+    .green {
+      color: #34BF49;
+    }
+
+    .yellow {
+      color: #FFC009;
+    }
+
+    .blue {
+      color: #3262F9;
+    }
+  }
+  /*ends*/
+
+  .expenditure{
+    margin-top: 10px;
+    padding-left: 10px;
+  }
+
+  .daily-expenditure{
+    font-size: 1.2rem;
+    font-weight: 900px;
+  }
+
+  .input-row1{
+    display: flex;
+    gap: 12px;
+
+    p{
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    input, .dropdown {
+      border: 1px solid #FFC009;
+      border-radius: 5px;
+      height: 40px;
+      padding: 10px;
+    }
+    .inventory__expenditure-description {
+      width: 35rem;
+    }
+  }
+}
+
+.expenditure__entry-shrink {
+  background: #F5D07747;
+  border-radius: 20px;
+  padding: 5px;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.expenditure #inventory__expenditure-form .save-btn {
+  background-color: black;
+  margin-left: auto;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* Expenditures table styles */
+#expenditures__list {
+  background: none;
+  height: 60%;
+}
+#expenditures__list > table {
+  thead th {
+    padding-bottom: 10px;
+  }
+  margin-top: 0px; 
+}
+#expenditure__list-table--body {
+  overflow-y: auto;
+}
+#expenditure__list-table--body tr {
+  .manage {
+    right: 25%;
+    top: 35px;
+  }
+  td:first-child {
+    padding-left: 3%;
+  }
+  td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+#inventory__expenditure-form .hide__expenditure-entry:hover {
+  cursor: pointer;
+}
+
+/* Expenditure pop up modal */
+.expenditure__popup-modal {
+  width: 60%;
+  margin-left: 20%;
+  height: auto;
+  padding: 30px;
+  h1 {
+    text-align: center;
+  }
+  .expenditure__description {
+    max-width: 70%;
+  }
+}
+
+.inventory__filter-by--date {
+  display: flex;
+  justify-content: end;
+  margin-right: 5px;
+
+  i {
+    margin-top: 10px;
+    margin-left: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .inventory__filter-date--input,
+  .inventory__filter-total--amount {
+    display: flex;
+    background-color: #F5D07747;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  .inventory__filter-total--amount {
+    margin-left: 20px;
+    display: flex;
+    .total__amount-entry {
+      margin-left: 5px;
+    }
+  }
+
+  .deep__background {
+    background-color: #F5D07747;
+  }
+
+  .inventory__filter-start--date,
+  .inventory__filter-end--date {
+    width: 40%;
+    border-radius: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+
+/* Common Style for Inventory Tables (e.g., foods, drinks & games table) */
+.stock__item-heading {
+  width: 100%;
+  button {
+    margin-left: 76%;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 10px;
+  }
+}
+
+/* Drinks Table Styles */
+#drink__stock-list {
+  background: none;
+  height: 80%;
+}
+
+.stock__popup-modal-content {
+  width: 35%;
+  margin-left: 20%;
+  height: auto;
+  padding: 30px;
+
+  h2 {
+    text-align: center;
+  }
+
+  .stock__add-edit--btnContainer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    .stock__add-edit--btn {
+      margin-left: auto;
+      width: 80px;
+      height: 40px;
+      border-radius: 10px;
+    }
+  }
+  input {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid orange;
+    width:80%;
+    height: 40px;
+
+  }
+}
+
+#drink__stock-list > table {
+  margin-top: 40px;
+  td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  td:nth-child(2),
+  td:nth-child(4),
+  td:nth-child(5) {
+    padding-left: 30px;
+  }
+  td:first-child {
+    padding-left: 45px;
+  }
+  .manage {
+    right: 15%;
+  }
+}
+
+/* Food Table Styles */
+#food__stock-table--container {
+  background: none;
+  height: 80%;
+}
+
+
+#food__stock-table--container > table {
+  margin-top: 40px;
+  td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  td:first-child {
+    padding-left: 45px;
+  }
+  td:nth-child(2),
+  td:nth-child(4) {
+    padding-left: 30px;
+  }
+  .manage {
+    right: 20%;
+  }
+}
+
+/* Games Table Styles Begins */
+#games__list-container {
+  background: none;
+  height: 80%;
+}
+
+#games__list-container > table {
+  margin-top: 40px;
+  td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  td:first-child {
+    padding-left: 45px;
+  }
+  td:nth-child(2),
+  td:nth-child(4) {
+    padding-left: 30px;
+  }
+  .manage {
+    right: 20%;
+  }
+}
+
+/* Style for daily sales */
+#sales__profit-list {
+  background: none;
+
+  .inventory__filter {
+    margin-left: auto;
+    margin-top: 25px;
+  }
+}
+
+.sales__popup-modal-content {
+  width: 500px;
+  height: auto;
+}
+.sale__button-date--container {
+  display: flex;
+  justify-content: right;
+  .sale__date-summary {
+    margin-right: 50px;
+  }
+}
+.sale__summary-title {
+  font-size: 20px;
+}
+.sale__summary-flex {
+  display: flex;
+  justify-content: space-between;
+  p, button {
+    margin-top: 20px;
+  }
+  button {
+    border-radius: 5px;
+    width: 130px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    padding-left: 4px;
+    align-items: center;
+  }
+}
+.sale__summary-total {
+  margin-top: 20px;
+  display: flex;
+  background-color: var(--secondary-color);
+  width: 250px;
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: auto;
+  p:first-child {
+    margin-right: 10px;
+    width: 50%;
+  }
+  p:nth-child(2) {
+    background-color: orange;
+    padding-left: 4px;
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
+}
+#sales__profit-list > table {
+  td:first-child, td:nth-child(2),
+  td:nth-child(3), td:nth-child(4) {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  td:first-child {
+    padding-left: 45px;
+  }
+  td:nth-child(2) {
+    padding-left: 35px;
+  }
+  td:nth-child(3) {
+    padding-left: 15px;
+  }
+  td:nth-child(4) { 
+    padding-right: 50%;
+  }
+  .manage {
+    right: 25%;
+    top: 70px;
+  }
+}
+
+/* Popup modal for writting sale comment */
+.sales__comment {
+  border-radius: 10px;
+  border: 1px solid var(--amber_a200);
+  width: 33.5rem;
+  height: 13.5rem;
+  outline: none;
+  padding: 10px;
+}
+
+.write__comment-heading {
+  margin-bottom: 10px;
+}
+.sales__popup-modal-content.comment {
+  height: 20%;
+}
+
+.comment__btn {
+  margin-left: auto;
+  margin-top: 15px;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+
+.sales__comment-list {
+  max-width: 40%;
+  min-width: 30%;
+  max-height: 70%;
+  overflow-y: scroll;
+}
+
+.comment__list-heading {
+  margin-bottom: 10px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.comment__by {
+  #border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  width: auto;
+
+}
+
+.comment__content {
+  margin-bottom: 10px;
+}
+.sale__comment-subContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.comment__begins:hover {
+  transform: translateY(-10px); /* Slight lift effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.sales__comment-actionIcon {
+  visibility: hidden;
+}
+/*
+@media screen and (max-width: 1403px) {
+input.inventory__expenditure-description {
+width: 50% !important;
+background: red;
+}
+}
+ */

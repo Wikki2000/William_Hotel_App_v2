@@ -1,0 +1,23 @@
+Retrieve all users
+---
+tags:
+  - Users
+description: |
+  This endpoints handle retrieval of all user from database
+
+responses:
+  200:
+    description: Succesful Request
+    schema:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "b9f9e5d-f97c-4ac5-963e-9a7cfc35e945"
+        username:
+          type: string
+          example: "John Doe"
+        email:
+          type: string
+          example: "example@gmail.com"
+

@@ -1,0 +1,16 @@
+09:39 PM	2025-06-19	/api/v1/rooms/101/book	Entity namespace for "sales" has no property "hotel_id"
+
+09:42 PM	2025-06-19	/api/v1/rooms/101/book	Entity namespace for "sales" has no property "hotel_id"
+
+09:57 PM	2025-06-19	/api/v1/order-items	update_item_stock() takes 4 positional arguments but 5 were given
+
+09:59 PM	2025-06-19	/api/v1/order-items	update_item_stock() takes 4 positional arguments but 5 were given
+
+10:00 PM	2025-06-19	/api/v1/order-items	name 'termnal' is not defined
+
+10:01 PM	2025-06-19	/api/v1/order-items	name 'termnal' is not defined
+
+10:03 PM	2025-06-19	/api/v1/order-items	name 'termnal' is not defined
+
+06:37 PM	2025-06-20	/api/v1/order-items	'NoneType' object has no attribute 'id'
+

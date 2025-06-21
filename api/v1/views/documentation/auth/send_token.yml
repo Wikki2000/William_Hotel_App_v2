@@ -1,0 +1,56 @@
+Send OTP to mail
+---
+tags:
+  - Authentication
+
+description: |
+  This end point allows user to receive OTP for password reset.
+
+parameters:
+  - in: body
+    description: Email address to receive OTP 
+    name: body
+    required: True
+    schema:
+      type: object
+      required:
+        - email 
+      properties:
+        email:
+          type: string
+          example: example@gmail.com
+  
+
+responses:
+  200:
+    description: OTP sent successfully
+    schema:
+      properties:
+        message:
+          type: string
+          example: Token Sent to Email
+
+  400:
+    description: Invalid or empty request body
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Bad Request
+
+  404:
+    description: User enter invalid credentials
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Not Found
+  500:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Token Delivery Failed

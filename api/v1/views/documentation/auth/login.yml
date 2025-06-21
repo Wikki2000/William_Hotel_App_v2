@@ -1,0 +1,114 @@
+Sign in User
+---
+tags:
+  - Authentication
+
+description: |
+  This end point allows user to sign in with valid credentials.
+
+parameters:
+  - in: body
+    description: Credentials to Sign in
+    name: body
+    required: True
+    schema:
+      type: object
+      required:
+        - email or username
+        - password
+      properties:
+        email:
+          type: string
+          example: exampl@gmail.com
+        password:
+          type: string
+          example: 12345
+
+responses:
+  200:
+    description: User Successfully Login
+    schema:
+      properties:
+        __class__:
+          type: string
+          example: User
+        id:
+          type: string
+          example: er364feruy7t6463t5
+        title: 
+          type: string
+          example: Mr.
+        first_name:
+          type: string
+          example: John
+        middle_name:
+            type: string
+            example: Moses
+        last_name:
+            type: string
+            example: Okon
+        username:
+            type: string
+            example: titi
+        profile_photo:
+            type: blob
+            example: images
+        email:
+            type: string
+            example: example@email.com
+        address:
+            type: string
+            example: 123 king street 
+        gender:
+            type: string
+            example: male
+        dob: 
+            type: string
+            example: 1990-01-15
+        number: 
+            type: string
+            example: 0812345678
+        nok:
+            type: string
+            example: brother
+        nok_number: 
+            type: string
+            example: 0812345678
+        religion: 
+            type: string
+            example: christian
+        state:
+            type: string
+            example: oyo
+        password: 
+            type: string
+            example: abc123 
+        role:
+            type: string
+            example: ceo
+        portfolio:
+            type: string
+            example: manager
+        is_active:
+            type: boolean
+            example: True
+        last_active:
+            type: string
+            example: 2 hours ago
+
+  400:
+    description: Invalid or empty request body
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Bad Request
+  401:
+    description: User enter invalid credentials
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Unauthorized Access

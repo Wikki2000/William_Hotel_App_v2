@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loan Request Notification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 600px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .content {
+      padding: 20px;
+      color: #333333;
+    }
+    .content p {
+      margin: 10px 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin-top: 20px;
+      background-color: #007bff;
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .footer {
+      background-color: #000000;
+      color: #888888;
+      font-size: 12px;
+      text-align: center;
+      padding: 10px;
+    }
+    .footer a {
+      color: #28a745;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="content">
+      <p>Dear <strong>Management</strong>,</p>
+      <p>Staff member <strong>[ staff_name ]</strong> has submitted a <strong>loan request</strong>.</p>
+      <p><strong>Loan Request Details:</strong></p>
+      <ul>
+        <li><strong>Requested Amount:</strong> [ amount ]</li>
+        <li><strong>Repayment Mode:</strong> [ repayment_mode ]</li>
+        <li><strong>Due Month:</strong> [ due_month ]</li>
+      </ul>
+      <p>Please log in to the system to review and take appropriate action.</p>
+      <a href="https://williamscourthotel.com/app/account/login" class="btn">Review Loan Request</a>
+      <p>Best regards,</p>
+      <p><strong>Williams Court Hotels</strong></p>
+    </div>
+    <div class="footer">
+      <p>&copy; 2025 Williams Court Hotels. All rights reserved.</p>
+      <p><a href="https://williamscourthotel.com">Visit our website</a></p>
+    </div>
+  </div>
+</body>
+</html>
+
