@@ -15,7 +15,7 @@ class Food(BaseModel, Base):
     name =  Column(String(60), nullable=False)
     qty_stock = Column(Integer, nullable=False)
     is_available = Column(Boolean, default=True)
-    amount = Column(Float, nullable=False)
+    amount = Column(Float)
     terminal = Column(String(10), nullable=False)
 
     amount_open_bar = Column(Float)

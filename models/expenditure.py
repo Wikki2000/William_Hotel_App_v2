@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Expenditure Module"""
 from models.base_model import Base, BaseModel
-from sqlalchemy import Column, String, Text, Float
+from sqlalchemy import Column, String, Text, Float, UniqueConstraint
 
 
 class Expenditure(BaseModel, Base):
@@ -10,3 +10,4 @@ class Expenditure(BaseModel, Base):
     title =  Column(String(20), nullable=False)
     description = Column(Text)
     amount = Column(Float, nullable=False)
+    terminal = Column(String(10), nullable=False)

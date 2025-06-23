@@ -68,7 +68,7 @@ $(document).ready(function() {
       ($('#sidebar__game').hasClass('highlight-sidebar') ||
         $('#sidebar__restaurant').hasClass('highlight-sidebar') ||
         $('#sidebar__laundry').hasClass('highlight-sidebar') ||
-	$('#sidebar__bar').hasClass('highlight-sidebar') 
+        $('#sidebar__bar').hasClass('highlight-sidebar') 
       ) && $('#service__menu').hasClass('hide')
     ) {
       $('#sidebar__service').addClass('highlight-sidebar');
@@ -121,8 +121,8 @@ $(document).ready(function() {
       case 'sidebar__main': {
         const staffUrl = APP_BASE_URL + '/pages/main_dashboard';
         $('#dynamic__load-dashboard').load(staffUrl, function() {
-	  const terminal_login = currentTerminal(TERMINAL);
-	  $("#current-terminal").text(`(${terminal_login})`);
+          const terminal_login = currentTerminal(TERMINAL);
+          $(".current-terminal").text(`(${terminal_login})`);
           const roomUrl = API_BASE_URL + '/rooms';
           const bookingUrl = API_BASE_URL + '/bookings';
           const performanceStatus = localStorage.getItem('performance');
@@ -226,6 +226,9 @@ $(document).ready(function() {
         const url = APP_BASE_URL + '/pages/room_service';
 
         $('#dynamic__load-dashboard').load(url, function() {
+		          $('input[name="Search Input"]')
+		            .attr('placeholder', 'Search by Room Type');
+		
           $('#rooms').addClass('highlight-btn');
           const roomUrl =  API_BASE_URL + '/rooms'
           fetchData(roomUrl)
@@ -281,9 +284,14 @@ $(document).ready(function() {
       case 'sidebar__bar': {
         const url = APP_BASE_URL + '/pages/restaurant';
         $('#dynamic__load-dashboard').load(url, function() {
+          if (TERMINAL === TERMINAL_ONE) {
+            $(".food-categories").remove();
+          }
 
+          let terminal = TERMINAL === TERMINAL_ONE ? "t1" : "open_bar";
           $('input[name="Search Input"]')
             .attr('placeholder', 'Search for Foods & Drinks');
+
 
           // Search an Item in restaurants
           function searchFoodDrink(is_food) {
@@ -292,24 +300,34 @@ $(document).ready(function() {
               const searchKey = $('input[name="Search Input"]')
                 .val().trim().toLowerCase();
               $('#restaurant__food--drinks').empty();
-              if (searchKey) {
-                const searchItems = restaurants.filter(
-                  item => item.name.toLowerCase().includes(searchKey)
-                );
-                if (is_food) {
-                  displayFoodDrink(searchItems, null);
-                } else {
-                  displayFoodDrink(null, searchItems);
-                }
-              } else {
-                if (is_food) {
-                  displayFoodDrink(restaurants, null);
-                } else {
-                  displayFoodDrink(null, restaurants);
-                }
+
+              if ($("#open-bar").hasClass("highlight-btn")) {
+                terminal = "open_bar";
+              } else if ($("#club__house").hasClass("highlight-btn")) {
+                terminal = "club_house";
+              } else if ($("#game__house").hasClass("highlight-btn")) {
+                terminal = "game_house";
+              } else if ($("#private__lounge").hasClass("highlight-btn")) {
+                terminal = "private_lounge";
               }
-              highLightOrderBtn(CART); // Highlight btn on chart.
-            });
+                if (searchKey) {
+                  const searchItems = restaurants.filter(
+                    item => item.name.toLowerCase().includes(searchKey)
+                  );
+                  if (is_food) {
+                    displayFoodDrink(terminal, searchItems, null);
+                  } else {
+                    displayFoodDrink(terminal, null, searchItems);
+                  }
+                } else {
+                  if (is_food) {
+                    displayFoodDrink(terminal, restaurants, null);
+                  } else {
+                    displayFoodDrink(terminal, null, restaurants);
+                  }
+                }
+                highLightOrderBtn(CART); // Highlight btn on chart.
+              });
           }
 
           if (clickId === 'sidebar__restaurant') {
@@ -319,7 +337,7 @@ $(document).ready(function() {
             const foodUrl = API_BASE_URL + '/foods';
             fetchData(foodUrl)
               .then((foods) => {
-                displayFoodDrink(foods, null);
+                displayFoodDrink(terminal, foods, null);
                 highLightOrderBtn(CART); // Highlight btn of items in cart
 
                 localStorage.setItem(
@@ -338,7 +356,7 @@ $(document).ready(function() {
             const drinkUrl = API_BASE_URL + '/drinks';
             fetchData(drinkUrl)
               .then((drinks) => {
-                displayFoodDrink(null, drinks);
+                displayFoodDrink(terminal, null, drinks);
                 highLightOrderBtn(CART); // Highlight btn of items in cart
 
                 localStorage.setItem(
@@ -367,13 +385,13 @@ $(document).ready(function() {
             */
 
             });
-        break;
-      }
+            break;
+          }
       case 'sidebar__order': {
         const url = APP_BASE_URL + '/pages/order';
 
-	$('input[name="Search Input"]')                                                                                                                                
-	  .attr('placeholder', 'Search for Guest Pending Orders');
+        $('input[name="Search Input"]')                                                                                                                                
+        .attr('placeholder', 'Search for Guest Pending Orders');
 
         $('#dynamic__load-dashboard').load(url, function() {
 

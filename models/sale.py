@@ -2,7 +2,7 @@
 """This Module accumulate the sum of daily transactions."""
 from models.base_model import Base, BaseModel
 from models.sale_comment import SaleComment
-from sqlalchemy import Column, Float, Date, Boolean, String
+from sqlalchemy import Column, Float, Date, Boolean, String, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 
@@ -17,7 +17,15 @@ class Sale(BaseModel, Base):
     terminal = Column(String(10), nullable=False)
 
     is_approved = Column(Boolean, default=False)
-    entry_date = Column(Date, nullable=False, unique=True)
+    entry_date = Column(Date, nullable=False)
 
     sale_comments = relationship('SaleComment', backref='sale',
                                   cascade='all, delete-orphan')
+
+
+    __table_args__ = (
+        UniqueConstraint(
+            "terminal", "entry_date", name="terminal_per_entry_date"
+        ),
+    )
+

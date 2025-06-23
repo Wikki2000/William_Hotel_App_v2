@@ -37,7 +37,7 @@ $(document).ready(function() {
   }
 
   const terminal_login = currentTerminal(TERMINAL);
-  $("#current-terminal").text(`(${terminal_login})`);
+  $(".current-terminal").text(`(${terminal_login})`);
 
   // Function to fetch rooms data
   async function getRoom() {

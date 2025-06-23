@@ -165,9 +165,29 @@
                 Qty Stock
                 </p>
               </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
+              <th width="380px" class="t1">
+                <p id="t1" class="table__header-cell-1 ui heading size-headings">
                 Price Tag
+                </p>
+              </th>
+	      <th width="380px" class="t2">
+                <p class="table__header-cell-1 ui heading size-headings">
+                  Open Bar
+                </p>
+              </th>
+              <th width="380px" class="t2">
+                <p class="table__header-cell-1 ui heading size-headings">
+                  Game House
+                </p>
+              </th>
+              <th width="380px" class="t2"> 
+                <p class="table__header-cell-1 ui heading size-headings"> 
+                  Club House
+                </p>
+              </th>
+              <th width="380px" class="t2">
+                <p class="table__header-cell-1 ui heading size-headings">
+                  Private Lounge
                 </p>
               </th>
               <th width="380px">
@@ -191,7 +211,31 @@
               <h2>Update Stock Item</h2><br>
               <b>Name:</b> &nbsp;&nbsp;&nbsp;<input class="ensure__sentence-case" name="name" required><br><br>
               <b>Qty:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="qty_stock"  type="number" min="0"></br><br>
-              <b>Amount:</b> <input type="number" min="1" name="amount"></br><br>
+              <div id="inventory__terminal-1">
+                <b>Amount:</b>
+                <input type="number" min="1" name="price_t1"></br><br>
+              </div>
+
+	      <div id="inventory__terminal-2">
+                <b>Open Bar:</b> 
+                <input type="number" min="1" name="price_t2_open_bar"></br><br>
+
+                <b>Game House:</b> 
+                <input style="width: 320px;" type="number" min="1" name="price_t2_game_house"></br><br>
+
+                <b>Club House:</b> 
+                <input style="width: 328px;" type="number" min="1" name="price_t2_club_house"></br><br>
+
+                <b>Private Lounge:</b> 
+                <input style="width: 310px;" type="number" min="1" name="price_t2_private_lounge"></br><br>
+	      <!--<b>Terminal:</b>
+	      <select name="terminal">
+	        <option value="" selected required disabled>
+		</option>
+		<option value="t1">Terminal One</option>
+		<option value="t2">Terminal Two</option>
+              </select>-->
+	      </div>
               <div class="stock__add-edit--btnContainer">
                 <button class="highlight-btn stock__add-edit--btn">Save</button>
               </div>

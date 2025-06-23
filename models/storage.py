@@ -278,7 +278,7 @@ class Storage:
                     item_column.isnot(None),
                     cast(OrderItem.created_at, Date) >= start_date.date(),
                     cast(OrderItem.created_at, Date) <= end_date.date(),
-                    terminal == terminal
+                    OrderItem.terminal == terminal
                 )
             )
             .group_by(item_column)

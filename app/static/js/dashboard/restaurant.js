@@ -4,7 +4,7 @@ import  { displayFoodDrink } from '../global/templates.js';
 $(document).ready(function() {
   const API_BASE_URL = getBaseUrl()['apiBaseUrl'];
 
- $('#dynamic__load-dashboard').on('click', '.order-btn', function() {
+  $('#dynamic__load-dashboard').on('click', '.order-btn', function() {
     const $clickBtn = $(this);
 
     const itemId = $clickBtn.data('id');
@@ -33,57 +33,54 @@ $(document).ready(function() {
     }
   });
 
-  // Display all iems in restaurant
-  $('#dynamic__load-dashboard').on(
-    'click', '#restaurant__food, #restaurant__drink, #restaurant__all',
-    function() {
-      const $clickBtn = $(this);
-      $('#restaurant__food, #restaurant__drink, #restaurant__all')
-        .removeClass('highlight-btn');
-      $('#restaurant__food--drinks').empty();
-      $clickBtn.addClass('highlight-btn');
+  // Switch price of food & drink in different terminal
+  $('#dynamic__load-dashboard').on('click', '.restaurant__bar', function() {
+    const $clickBtn = $(this);
+    $('.restaurant__bar').removeClass('highlight-btn');
+    $clickBtn.addClass('highlight-btn');
 
-      const clickId = $clickBtn.attr('id');
+    const clickId = $clickBtn.attr('id');
+    const pageId = sessionStorage.getItem('pageId');
+    $('#restaurant__food--drinks').empty();
 
-      // Handle filtering of items in restaurant e.g., foods, drinks etc.
-      switch(clickId) {
-        case 'restaurant__all': {
-          const foodDrinkUrl = API_BASE_URL + '/foods/drinks';
-          fetchData(foodDrinkUrl)
-          .then(({ foods, drinks }) => {
-            displayFoodDrink(foods, drinks);
-            highLightOrderBtn(CART);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-          break;
+    // Handle filtering of items in restaurant e.g., foods, drinks etc.
+    switch(clickId) {
+      case 'open-bar': {
+        const restaurantBar = JSON.parse(localStorage.getItem('restaurant'));
+        if (pageId === "sidebar__restaurant") {
+          displayFoodDrink("open_bar", restaurantBar, null);
+        } else {
+          displayFoodDrink("open_bar", null, restaurantBar);
         }
-        case 'restaurant__food': {
-          const foodUrl = API_BASE_URL + '/foods';
-          fetchData(foodUrl)
-          .then((foods) => {
-            displayFoodDrink(foods, null);
-            highLightOrderBtn(CART);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-          break;
+        break;
+      }
+      case 'game__house': {
+        const restaurantBar = JSON.parse(localStorage.getItem('restaurant'));
+        if (pageId === "sidebar__restaurant") {
+          displayFoodDrink("game_house", restaurantBar, null);
+        } else {
+          displayFoodDrink("game_house", null, restaurantBar);
         }
-        case 'restaurant__drink': {
-          const drinkUrl = API_BASE_URL + '/drinks';
-          fetchData(drinkUrl)
-          .then((drinks) => {
-            displayFoodDrink(null, drinks);
-            highLightOrderBtn(CART);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        break;
+      }
+      case 'club__house': {
+        const restaurantBar = JSON.parse(localStorage.getItem('restaurant'));
+        if (pageId === "sidebar__restaurant") {
+          displayFoodDrink("club_house", restaurantBar, null);
+        } else {
+          displayFoodDrink("club_house", null, restaurantBar);
+        }
 
-          break;
+        break;
+      }
+      case 'private__lounge': {
+        const restaurantBar = JSON.parse(localStorage.getItem('restaurant'));
+        if (pageId === "sidebar__restaurant") {
+          displayFoodDrink("private_lounge", restaurantBar, null);
+        } else {
+          displayFoodDrink("private_lounge", null, restaurantBar);
         }
       }
-    });
+    }
+  });
 });

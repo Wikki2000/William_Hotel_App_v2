@@ -146,13 +146,31 @@ export function laundryTableTemplate(data) {
  * @param {object} foodData - The food response data from server.
  * @param {object} drinkData - The drink response data from server.
  */
-export function displayFoodDrink(foodData, drinkData) {
+export function displayFoodDrink(terminal, foodData, drinkData) {
+
+
+  function terminalAmount(terminal, data) {
+    if (terminal === TERMINAL_ONE) {
+      return data.amount;
+    } else if (terminal === "open_bar") {
+      return data.amount_open_bar;
+    } else if (terminal === "game_house") {
+      return data.amount_game_house;
+    } else if (terminal === "club_house") {
+      return data.amount_club_house;
+    } else if (terminal === "private_lounge") {
+      return data.amount_private_lounge;
+    }
+  }
 
   // Display available dishes in the UI
   if (foodData) {
+
     foodData.forEach((data) => {
+      const amount = terminalAmount(terminal, data);
+
       $('#restaurant__food--drinks').append(
-        foodDrinkTemplate(data.id, data.name, "food", data.amount, data.image_path)
+        foodDrinkTemplate(data.id, data.name, "food", amount, data.image_path)
       );
     });
   }
@@ -160,8 +178,9 @@ export function displayFoodDrink(foodData, drinkData) {
   // Display available drinks in the UI
   if (drinkData) {
     drinkData.forEach((data) => {
+      const amount = terminalAmount(terminal, data);
       $('#restaurant__food--drinks').append(
-        foodDrinkTemplate(data.id, data.name, "drink", data.amount, data.image_path)
+        foodDrinkTemplate(data.id, data.name, "drink", amount, data.image_path)
       );
     });
   }

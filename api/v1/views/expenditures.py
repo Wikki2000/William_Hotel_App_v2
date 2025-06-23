@@ -2,7 +2,7 @@
 """Handle API request for expenditure module"""
 from models.expenditure import Expenditure
 from datetime import date, datetime
-from flask import abort, jsonify, request
+from flask import abort, jsonify, request, session
 from api.v1.views import api_views
 from api.v1.views.utils import nigeria_today_date,role_required, bad_request
 from models.daily_expenditure_sum import DailyExpenditureSum
@@ -17,6 +17,7 @@ def add_expenditure(user_role: str, user_id: str):
 
     # Get JSON data from the request
     data = request.get_json()
+    terminal = session.get("terminal")
 
     # Required fields for the VA entry
     required_fields = ["title", "description", "amount"]
@@ -27,19 +28,20 @@ def add_expenditure(user_role: str, user_id: str):
     # Add the expenditure to daily expenditure sum.
     today_date =  nigeria_today_date()
     expense_summation = storage.get_by(
-        DailyExpenditureSum, entry_date=today_date
+        DailyExpenditureSum, entry_date=today_date, terminal=terminal
     )
 
     # Add new daily expenditure if exists else increase sum by existing one
     if not expense_summation:
         expenditure_sum = DailyExpenditureSum(
-            entry_date=today_date, amount=data.get("amount")
+            entry_date=today_date, amount=data.get("amount"), terminal=terminal
         )
         storage.new(expenditure_sum)
     else:
         expense_summation.amount += float(data.get("amount"))
 
     try:
+        data["terminal"] = terminal
         expenditure = Expenditure(**data)
         storage.new(expenditure)
         storage.save()  # Commit all changes.
@@ -58,7 +60,8 @@ def add_expenditure(user_role: str, user_id: str):
 @role_required(["manager", "admin"])
 def get_expenditures(user_role: str, user_id: str):
     """Retrieve all expenditure from databases."""
-    expenditures = storage.all(Expenditure).values()
+    terminal = session.get("terminal")
+    expenditures = storage.all_get_by(Expenditure, terminal=terminal)
 
     if not expenditures:
         return jsonify([]), 200
@@ -95,13 +98,16 @@ def get_expenditure_by_date(
     """Retrieve expenditur at a range of time."""
     start_date_obj = datetime.strptime(start_date, "%Y-%m-%d")
     end_date_obj = datetime.strptime(end_date, "%Y-%m-%d")
+    terminal = session.get("terminal")
 
     # Retrieve expenditure at an interval of time
     expenditures = storage.get_by_date(
-        Expenditure, start_date_obj, end_date_obj, "created_at"
+        Expenditure, start_date_obj, end_date_obj,
+        "created_at", terminal=terminal
     )
     daily_expenditure_sum = storage.get_by_date(
-        DailyExpenditureSum, start_date_obj, end_date_obj, "entry_date"
+        DailyExpenditureSum, start_date_obj, end_date_obj,
+        "entry_date", terminal=terminal
     )
 
     # Handle case were there is no expenditure
@@ -142,7 +148,7 @@ def delete_expenditure(user_role: str, user_id: str, expenditure_id: str):
         expenses_sum_date = expenditure.created_at.strftime("%Y-%m-%d")
         expenses_sum_amount = expenditure.amount
         expense_summation = storage.get_by(
-            DailyExpenditureSum, entry_date=expenses_sum_date  
+            DailyExpenditureSum, entry_date=expenses_sum_date, terminal=terminal
         ) 
         expense_summation.amount -= expenses_sum_amount
 
