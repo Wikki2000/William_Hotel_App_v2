@@ -329,8 +329,20 @@ export function drinkTableTemplate(index, data, date) {
       <td class="">
         <p class="ui text size-textmd qty_stock" style="color: ${qtyColor}">${data.qty_stock}</p>
       </td>
-      <td class="">
+     <td class="t2">
         <p class="ui text size-textmd amount">₦${data.amount.toLocaleString()}</p>
+      </td>
+      <td class="t1">
+        <p class="ui text size-textmd amount">₦${(data.amount_open_bar ?? 0).toLocaleString()}</p>
+      </td>
+      <td class="t1">
+        <p class="ui text size-textmd amount">₦${(data.amount_game_house ?? 0).toLocaleString()}</p>
+      </td>
+      <td class="t1">
+        <p class="ui text size-textmd amount">₦${(data.amount_club_house ?? 0).toLocaleString()}</p>
+      </td>
+      <td class="t1">
+        <p class="ui text size-textmd amount">₦${(data.amount_private_lounge ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideClass}">
         <p><i class="fa fa-ellipsis-v"></i></p>
@@ -418,8 +430,20 @@ export function foodTableTemplate(index, data, date) {
       <td class="">
         <p class="ui text size-textmd qty_stock" style="color: ${qtyColor}">${data.qty_stock}</p>
       </td>
-     <td class="">
+     <td class="t2">
         <p class="ui text size-textmd amount">₦${data.amount.toLocaleString()}</p>
+      </td>
+      <td class="t1">
+        <p class="ui text size-textmd amount">₦${(data.amount_open_bar ?? 0).toLocaleString()}</p>
+      </td>
+      <td class="t1">
+        <p class="ui text size-textmd amount">₦${(data.amount_game_house ?? 0).toLocaleString()}</p>
+      </td>
+      <td class="t1">
+        <p class="ui text size-textmd amount">₦${(data.amount_club_house ?? 0).toLocaleString()}</p>
+      </td>
+      <td class="t1">
+        <p class="ui text size-textmd amount">₦${(data.amount_private_lounge ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideClass}">
         <p><i class="fa fa-ellipsis-v"></i></p>

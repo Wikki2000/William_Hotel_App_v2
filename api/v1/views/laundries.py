@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Handle API request for Laundry class"""
 from models.laundry import Laundry
-from flask import abort, jsonify, request
+from flask import abort, jsonify, request, session
 from api.v1.views import api_views
 from api.v1.views.utils import bad_request, role_required
 from models import storage
@@ -13,7 +13,8 @@ from typing import Dict
 def get_laundries(user_id: str, user_role: str) -> Dict:
     """Retrieve all laundry stored in databases."""
     try:
-        laundries = storage.all(Laundry).values()
+        terminal = session.get("terminal")
+        laundries = storage.all_get_by(Laundry, terminal=terminal)
         if not laundries:
             return jsonify([]), 200
         sorted_laundries = sorted(

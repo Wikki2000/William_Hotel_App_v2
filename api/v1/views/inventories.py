@@ -34,8 +34,8 @@ def get_inventories(user_id: str, user_role: str) -> Dict:
             "today_expenditures": (
                 today_expenditure.amount if today_expenditure else 0
             ),
-            "total_drinks": len(storage.all_get_by(Drink, terminal=terminal)),
-            "total_foods": len(storage.all_get_by(Food, terminal=terminal))
+            "total_drinks": count_by(Drink, terminal=terml),
+            "total_foods": count_by(Food, terminal=terminal)
         }), 200
     except Exception as e:
         print(str(e))

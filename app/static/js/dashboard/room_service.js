@@ -59,10 +59,11 @@ $(document).ready(function () {
           const roomUrl = API_BASE_URL + `/rooms/${roomId}/room-data`;
           fetchData(roomUrl)
             .then(({ id, name, number, amount, image, image_path }) => {
+		    /*
               const imageSrc = (
-                image ? 'data:image/;base64, ' + image : image_path
-              );
-              $('#add__new-room').attr('src', imageSrc);
+                image ? 'data:image/;base64, ' + image : DEFAULT_IMAGE
+              );*/
+              $('#add__new-room').attr('src', DEFAULT_IMAGE);
               $('input[name="name"]').val(name);
               $('input[name="number"]').val(number);
               $('input[name="amount"]').val(amount);
@@ -88,8 +89,7 @@ $(document).ready(function () {
 
           // Reset form for adding new room
           $('#new__room-form').trigger('reset');
-          $('#add__new-room').attr(
-            'src', '/static/images/public/profile_photo_placeholder.png'
+            'src', "/static/images/public/hotel_logo.png"
           );
 
           $('#room__action-edit--add').text('Add Room');
@@ -500,13 +500,10 @@ $(document).ready(function () {
         // Reset the hidden field for instant payment type,
         // Once click on extend stay or late checkout.
         $('#guest__ispaid-menu--selected').val('');
-        $('#late__checkout-ispaid span').text('Selected');
+        $('#late__checkout-ispaid span').text('Select');
         $('#guest__paymentMethod-menu--selected').val(''); 
-	$('#late__checkout-payMethod span').text('Selected');
-        /*
-      $clickItem.addClass('highlight-btn');
-      $clickItem.siblings().removeClass('highlight-btn');
-      */
+	$('#late__checkout-payMethod span').text('Select');
+	$("#selected__payment-type-option").text("Select");
 
         if (clickId  === 'guest__extend-stay') {
           $('#guest__extend-stay--modal').css('display', 'flex');

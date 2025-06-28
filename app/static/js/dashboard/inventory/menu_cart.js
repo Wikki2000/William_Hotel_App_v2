@@ -14,6 +14,7 @@ $(document).ready(function() {
   const API_BASE_URL = getBaseUrl()['apiBaseUrl'];
   const APP_BASE_URL = getBaseUrl()['appBaseUrl'];
   const USER_ROLE = localStorage.getItem('role');
+  const TERMINAL = localStorage.getItem('terminal');
 
   // Show tables of different cart on click
   $('#dynamic__load-dashboard')
@@ -27,10 +28,10 @@ $(document).ready(function() {
       $clickItem.addClass('highlight__inventory-cart');
 
 
-	    // Hide to add new stock from manager.
-	    if (USER_ROLE === 'manager') {     
-		    $('.stock__item-heading').hide();         
-	    } 
+      // Hide to add new stock from manager.
+      if (USER_ROLE === 'manager') {     
+        $('.stock__item-heading').hide();         
+      } 
 
       hideAllInventoryDashboard();
       $('.inventory__filter').empty();
@@ -107,11 +108,13 @@ $(document).ready(function() {
             // To be use by search bar while searching for drink
             const food = JSON.stringify(data);  
             sessionStorage.setItem('cacheInventoryData', food);
+            console.log(data);
             data.forEach((food, index) => {
               const date = britishDateFormat(food.updated_at);
               $('#food__table-body')
                 .append(foodTableTemplate(index, food, date));
             });
+            $(`.${TERMINAL}`).remove();
           })
           .catch((error) => {
             console.log(error);
@@ -139,6 +142,7 @@ $(document).ready(function() {
               $('#drink__stock-table--body')
                 .append(drinkTableTemplate(index, drink, date));
             });
+            $(`.${TERMINAL}`).remove();
           })
           .catch((error) => {
             console.log(error);
