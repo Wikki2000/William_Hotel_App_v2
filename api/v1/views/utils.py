@@ -15,18 +15,22 @@ from redis import Redis
 from models.private_message import PrivateMessage
 from models.receipt import Receipt
 from models.sale import Sale
+from models.order import Order
+from models.booking import Booking
+
 import base64
 from datetime import date, datetime, timedelta
 import pytz
 from calendar import monthrange
 from dateutil.relativedelta import relativedelta
 from api.v1.views import constant
-from sqlalchemy import case, func
+from sqlalchemy import case, func, cast, Date, and_
 
 
 r = Redis(host="localhost", port=6379, db=0)  # Create Redis instance
 load_dotenv()   # Load environ variables
 F = TypeVar("F", bound=Callable[..., any])  # Generic type for callable
+NIGERIA_TZ = pytz.timezone("Africa/Lagos")
 
 
 # =================================================== #
@@ -406,7 +410,7 @@ def check_reservation(obj_list, checkout_date, checkin_date, room_no):
 #                          VAT/CAT Helper Function                        #
 # ===================================================================== #
 
-def update_room_sold(new_amount, old_amount=0, date=None):
+def update_room_sold(terminal, new_amount, old_amount=0, date=None):
     sale_date = date if date else nigeria_today_date()
     #current_hour = datetime.now().hour
     terminal = session.get("terminal")
@@ -429,8 +433,7 @@ def update_room_sold(new_amount, old_amount=0, date=None):
 
 
 def nigeria_today_date():
-    nigeria_tz = pytz.timezone('Africa/Lagos')
-    nigeria_date = datetime.now(nigeria_tz).date()
+    nigeria_date = datetime.now(NIGERIA_TZ).date()
     return nigeria_date
 
 
@@ -441,9 +444,6 @@ def last_month_day():
 
 
 def get_payment_totals(session, date, terminal):
-    from sqlalchemy import case, func, cast, Date
-    from models.order import Order
-    from models.booking import Booking
     
     # Cast the date to remove time for accurate filtering
     date_cast = cast(date, Date)
@@ -461,7 +461,7 @@ def get_payment_totals(session, date, terminal):
             func.sum(Order.amount).label('total')
         )
         .filter(cast(Order.created_at, Date) == date_cast)  # filter based on the date
-        .filter(terminal == terminal)
+        .filter(Order.terminal == terminal)
         .group_by('status')
     ) 
 
@@ -478,6 +478,7 @@ def get_payment_totals(session, date, terminal):
             func.sum(Booking.amount).label('total')
         )
         .filter(cast(Booking.created_at, Date) == date_cast)  # filter based on the date
+        .filter(Booking.terminal == terminal)
         .group_by('status')
     )
 
@@ -522,3 +523,36 @@ def get_url_param(url_query):
     return kwargs
 
 
+def is_duplicate_order(
+    session, name: str, user_id: str, amount: float,
+    payment_type: str, CustomerModel, OrderModel, terminal
+) -> bool:
+    """
+    Checks if a duplicate order has been placed within the last 30 seconds
+    by a customer with the given name, amount, and payment type.
+
+    Args:
+        session (Session): The SQLAlchemy database session.
+        name (str): Customer name.
+        amount (float): Order amount.
+        payment_type (str): Payment method.
+        CustomerModel: SQLAlchemy model for Customer.
+        OrderModel: SQLAlchemy model for Order.
+
+    Returns:
+        bool: True if a duplicate order exists, False otherwise.
+    """
+    time_threshold = datetime.now(NIGERIA_TZ) - timedelta(seconds=60)
+
+    duplicate = session.query(OrderModel).join(CustomerModel).filter(
+        and_(
+            CustomerModel.name == name,
+            OrderModel.amount == amount,
+            OrderModel.payment_type == payment_type,
+            OrderModel.created_at >= time_threshold,
+            OrderModel.terminal == terminal
+            #OrderModel.ordered_by_id == user_id
+        )
+    ).first()
+
+    return duplicate is not None

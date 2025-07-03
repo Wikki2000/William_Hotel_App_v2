@@ -7,3 +7,4 @@ window.SHORT_TIME_DURATION = '2';
 window.HALF_DAY_DURATION = '6';
 window.TERMINAL_TWO = "t2";
 window.TERMINAL_ONE = "t1";
+window.DEFAULT_IMAGE = "/static/images/public/hotel_logo.png";

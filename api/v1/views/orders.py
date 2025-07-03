@@ -13,7 +13,7 @@ from api.v1.views import api_views
 from api.v1.views.utils import (
     bad_request, create_receipt, role_required, nigeria_today_date,
     update_item_stock, rollback_order_on_error, update_sales_data,
-    write_to_file, update_room_sold, get_url_param
+    write_to_file, update_room_sold, get_url_param, is_duplicate_order
 )
 from api.v1.views import constant
 from models import storage
@@ -41,7 +41,7 @@ def get_orders(user_role: str, user_id: str):
 
         if not search_string and not filter_param:
             orders = storage.get_by_date(
-                Order, start_date_obj, end_date_obj, "created_at",
+                Order, start_date_obj, end_date_obj, "created_at", terminal=terminal
             )
         elif filter_param:
             parameters = {}
@@ -59,7 +59,9 @@ def get_orders(user_role: str, user_id: str):
             orders = storage.all_get_by(Order, **parameters)
 
         elif search_string:
-            guests = storage.get_start_with(Customer, "name", search_string)
+            guests = storage.get_start_with(
+                Customer, "name", search_string, terminal
+            )
 
             for guest in guests:
 
@@ -216,17 +218,19 @@ def filter_orders(user_role: str, user_id: str, payment_status):
     CURRENT_TIME = time = datetime.now().strftime("%I:%M %p")
     api_path = request.path
     try:
+        terminal = session.get("terminal")
         # Get all pending payment from databases
         if payment_status == "pending":
-            all_pending_orders = storage.all_get_by(Order, is_paid=False)
+            all_pending_orders = storage.all_get_by(
+                Order, is_paid=False, terminal=terminal
+            )
             if not all_pending_orders:
                 return jsonify([]), 200
             else:
                 sorted_pending_orders = sorted(
                     all_pending_orders,
                     key=lambda order : order.updated_at,
-                    reverse=True
-                                                                                                
+                    reverse=True                                                                
                 )
                 response = [{
                     "order": order.to_dict(),
@@ -238,7 +242,8 @@ def filter_orders(user_role: str, user_id: str, payment_status):
             # Get paid orders for today
             start_date_obj = end_date_obj = nigeria_today_date()
             orders = storage.get_by_date(
-                Order, start_date_obj, end_date_obj, "created_at",
+                Order, start_date_obj, end_date_obj,
+                "created_at", terminal=terminal
             )
 
             sorted_orders = sorted(
@@ -277,7 +282,8 @@ def get_order_by_date(
 
     # Retrieve expenditure at an interval of time
     sales = storage.get_by_date(
-        Order, start_date_obj, end_date_obj, "created_at"
+        Order, start_date_obj, end_date_obj,
+        "created_at", terminal=terminal
     )
 
     # Handle case were there is no expenditure
@@ -333,6 +339,20 @@ def order_items(user_role: str, user_id: str):
     item_sold = None
 
     try:
+        # Check for possible duplicate order.
+        sess = storage.session
+        verify_duplicate = data.get("isDuplicateOrder")
+        if not verify_duplicate:
+            is_duplicate = is_duplicate_order(
+                sess, customer_data.get("name"),
+                user_id, order_data.get("amount"),
+                order_data.get("payment_type"),
+                Customer, Order, terminal
+            )
+            if is_duplicate:
+                return jsonify({"error": "Duplicate Order"}), 409
+        sess.close()
+
         user = storage.get_by(User, id=user_id)
         customer = storage.get_by(Customer, id=data.get("customer_id"))
 
@@ -401,14 +421,33 @@ def order_items(user_role: str, user_id: str):
 @role_required(["admin"])
 def delete_order(user_id: str, user_role: str, order_id: str):
     """Delete customer order."""
-    order = storage.get_by(Order, id=order_id)
+    terminal = session.get("terminal")
+    order = storage.get_by(OrderItem, id=order_id, terminal=terminal)
     if not order:
+        print(6)
         abort(404)
 
     sale_date = order.created_at.strftime("%Y-%m-%d")
-    old_amount=order.amount
-    today_sale = storage.get_by(Sale, entry_date=sale_date)
-    #today_sale
+    order_amount = order.amount
+
+    today_sale = storage.get_by(Sale, entry_date=sale_date, terminal=terminal)
+
+    if order.drink_id:
+        today_sale.drink_sold -= order_amount
+    if order.food_id:
+        today_sale.food_sold -= order_amount
+    if order.game_id:
+        today_sale.game_sold -= order_amount
+    if order.laundry_id:
+        today_sale.laundry_sold -= order_amount
+
+    # Subtract from grand total order
+    total_order = order.order
+    total_order.amount -= order_amount
+
+    # Delete order if no order items attach to it.
+    if total_order.amount == 0:
+        storage.delete(total_order)
 
     storage.delete(order)
     storage.save()

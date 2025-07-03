@@ -9,7 +9,7 @@ from random import choice
 json_file_path = 'seed_data/foods/foods.json';
 food_data = read_json_file(json_file_path)
 price_list = [1000, 2000, 3000, 500, 900, 800]
-terminals = ["t1", "t2"]
+terminals = ["t1",]
 
 for terminal in terminals:
     for food in food_data:

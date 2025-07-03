@@ -1,13 +1,9 @@
 #!/usr/bin/python3
 """Define function needed accross different files."""
-from flask import request
+from uuid import uuid4
 
 
-def get_auth_headers():
-    """
-    Helper function to retrieve access token from cookie and set header
-    """
-    token = request.cookies.get('access_token_cookie')
-    if not token:
-        return None
-    return {'Authorization': f'Bearer {token}'}
+def cache_burst_versioning(version_id="v1"):
+    """Version ID for static files cache bursting."""
+    return version_id if version_id else str(uuid4())
+

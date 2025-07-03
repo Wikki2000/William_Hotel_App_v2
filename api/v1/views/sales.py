@@ -44,13 +44,13 @@ def get_sales(user_role: str, user_id: str):
 def get_sale(user_role: str, user_id: str, sale_id: str):
     """Get sales by it ID's"""
     terminal = session.get("terminal")
-    sale = storage.get_by(Sale, terminal=terminal)
+    sess = storage.session
+    sale = sess.query(Sale).filter_by(id=sale_id).first()
     if not sale:
         abort(404)
 
-    sess = storage.session
     paymet_totals = get_payment_totals(sess, sale.entry_date, terminal)
-    storage.close()
+    sess.close()
     return jsonify({**sale.to_dict(), **paymet_totals})
 
 
@@ -146,7 +146,7 @@ def get_service_sales(
             "quantity": sale.qty_order,
             "is_paid": sale.order.is_paid,
             "amount": sale.amount,
-            "order_id": sale.order.id
+            "order_id": sale.id
         }
         for sale in sorted_sales
     ]

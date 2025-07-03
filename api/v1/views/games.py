@@ -25,71 +25,68 @@ def get_games(user_id: str, user_role: str) -> Dict:
     finally:
         storage.close()
 
-
 @api_views.route("/games/<game_id>/update", methods=["PUT"])
 @role_required(["manager", "admin"])
-def update_game(user_id: str, user_role: str, food_id: str) -> Dict:
-    """Update food in stock."""
-    """
+def update_game(user_id: str, user_role: str, game_id: str) -> Dict:
+    """Update game in stock."""
+    TODAY_DATE = nigeria_today_date()
     data = request.get_json()
 
-    error_404 = bad_request(data)
-    if error_404:
-        return jsonify(error_404), 400
+    error_400 = bad_request(data)
+    if error_400:
+        return jsonify(error_400), 400
 
-    food = storage.get_by(Food, id=food_id)
-    if not food:
+    game = storage.get_by(Game, id=game_id)
+    if not game:
         abort(404)
 
     for key, val in data.items():
         if key != 'id':
-            setattr(food, key, val)
+            setattr(game, key, val)
+    setattr(game, "updated_at", TODAY_DATE)
     storage.save()
-    food = storage.get_by(Food, id=food_id)
-    return jsonify(food.to_dict()), 201
-    """
+    game = storage.get_by(Game, id=game_id)
+    return jsonify(game.to_dict()), 201
 
 
 @api_views.route("/games/<game_id>/get")
 @role_required(["manager", "admin"])
-def get_game(user_id: str, user_role: str, food_id: str) -> Dict:
-    """Retrieve food using it ID"""
-    """
-    food = storage.get_by(Food, id=food_id)
-    if not food:
+def get_game(user_id: str, user_role: str, game_id: str) -> Dict:
+    """Retrieve game using it ID"""
+    game = storage.get_by(Game, id=game_id)
+    if not game:
         abort(404)
 
-    return jsonify(food.to_dict()), 200
-    """
+    return jsonify(game.to_dict()), 200
 
 
 @api_views.route("/games", methods=["POST"])
 @role_required(["manager", "admin"])
 def add_game(user_id: str, user_role: str) -> Dict:
-    """Add new food in stock."""
+    """Add new game in stock."""
     data = request.get_json()
     terminal = session.get("terminal")
 
-    required_fields = ["name", "amount", "qty_stock"]
-    error_404 = bad_request(data, required_fields)
-    if error_404:
-        return jsonify(error_404), 404
+    required_fields = ["name", "amount",]
+    error_400 = bad_request(data, required_fields)
+    if error_400:
+        return jsonify(error_404), 400
     data["terminal"] = terminal
-    food = Food(**data)
-    storage.new(food)
+    game = Game(**data)
+    storage.new(game)
     storage.save()
-    food = storage.get_by(Food, id=food.id)
-    return jsonify(food.to_dict())
+    game = storage.get_by(Game, id=game.id)
+    return jsonify(game.to_dict())
 
 
 @api_views.route("/games/<string:game_id>/delete", methods=["DELETE"])
 @role_required(["manager", "admin"])
-def remove_game(user_id: str, user_role: str, food_id: str) -> Dict:
-    """Remove drink from stock."""
-    food = storage.get_by(Food, id=food_id)
+def remove_game(user_id: str, user_role: str, game_id: str) -> Dict:
+    """Remove game from stock."""
+    game = storage.get_by(Game, id=game_id)
 
-    if not food:
+    if not game:
         abort(404)
-    storage.delete(food)
+    storage.delete(game)
     storage.save()
-    return jsonify({"message": "Food successfully remove from stock"}), 200
+    return jsonify({"message": "Game successfully remove from stock"}), 200

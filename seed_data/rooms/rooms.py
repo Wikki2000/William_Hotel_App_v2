@@ -11,6 +11,7 @@ studio_room_price = 20000
 classic_room_price = 30000
 FILE_PATH_PREFIX = "/static/images/room_images"
 rooms_attr = [
+    """
     {
         "name": "standard", "number": "101", "amount": standard_room_price,
         #"image": read_image_file('seed_data/rooms/images/101.jpg')
@@ -71,7 +72,7 @@ rooms_attr = [
         #"image": read_image_file('seed_data/rooms/images/207.jpg')
         "image_path": f'{FILE_PATH_PREFIX}/207.jpg', "terminal": "t1",
     },
-
+    """
 
     {
         "name": "studio", "number": "301", "amount": studio_room_price,

@@ -2,6 +2,8 @@
 """Handle API request for Food & Drink class"""
 from models.food import Food
 from models.drink import Drink
+from models.game import Game
+from models.laundry import Laundry
 from models.daily_expenditure_sum import DailyExpenditureSum
 from models.sale import Sale
 from flask import abort, jsonify, request, session
@@ -34,8 +36,10 @@ def get_inventories(user_id: str, user_role: str) -> Dict:
             "today_expenditures": (
                 today_expenditure.amount if today_expenditure else 0
             ),
-            "total_drinks": count_by(Drink, terminal=terml),
-            "total_foods": count_by(Food, terminal=terminal)
+            "total_drinks": storage.count_by(Drink, terminal=terminal),
+            "total_foods": storage.count_by(Food, terminal=terminal),
+            "total_games": storage.count_by(Game, terminal=terminal),
+            "total_laundries": storage.count_by(Laundry),
         }), 200
     except Exception as e:
         print(str(e))

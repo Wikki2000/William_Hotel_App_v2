@@ -6,15 +6,15 @@ import {
 } from '../../global/utils.js';
 
 import {
-  expenditureTableTemplate, inventoryFilterTemplate, gameTableTemplate,
-  drinkTableTemplate, salesTableTemplate, foodTableTemplate
+  expenditureTableTemplate, inventoryFilterTemplate,
+  gameLaundryTableTemplate, drinkTableTemplate, 
+  salesTableTemplate, foodTableTemplate
 } from '../../global/templates1.js';
 
 $(document).ready(function() {
   const API_BASE_URL = getBaseUrl()['apiBaseUrl'];
   const APP_BASE_URL = getBaseUrl()['appBaseUrl'];
   const USER_ROLE = localStorage.getItem('role');
-  const TERMINAL = localStorage.getItem('terminal');
 
   // Show tables of different cart on click
   $('#dynamic__load-dashboard')
@@ -99,6 +99,7 @@ $(document).ready(function() {
           $('input[name="Search Input"]')
           .attr('placeholder', 'Search for Food Name');
 
+          $("#current__stock-cart").val("food");
           sessionStorage.setItem('pageId', 'inventoryFoodList');
 
           const foodUrl = API_BASE_URL + '/foods';
@@ -108,13 +109,11 @@ $(document).ready(function() {
             // To be use by search bar while searching for drink
             const food = JSON.stringify(data);  
             sessionStorage.setItem('cacheInventoryData', food);
-            console.log(data);
             data.forEach((food, index) => {
               const date = britishDateFormat(food.updated_at);
               $('#food__table-body')
                 .append(foodTableTemplate(index, food, date));
             });
-            $(`.${TERMINAL}`).remove();
           })
           .catch((error) => {
             console.log(error);
@@ -128,6 +127,7 @@ $(document).ready(function() {
 
           // To be used by search bar to search for item depending on the page
           sessionStorage.setItem('pageId', 'inventoryDrinkList');
+          $("#current__stock-cart").val("drink");
           $('input[name="Search Input"]')
           .attr('placeholder', 'Search for Drink Name');
 
@@ -142,7 +142,6 @@ $(document).ready(function() {
               $('#drink__stock-table--body')
                 .append(drinkTableTemplate(index, drink, date));
             });
-            $(`.${TERMINAL}`).remove();
           })
           .catch((error) => {
             console.log(error);
@@ -151,18 +150,47 @@ $(document).ready(function() {
         }
         case 'inventory__game-cart': {
           $('#games__list-container').show();
+          $("#current__stock-cart").val("game");
           const gameUrl = API_BASE_URL + '/games';
+	  $("#title__game-laundry").text("All Games");
+          $("#add__game-laundry").text("Add Game");
           fetchData(gameUrl)
           .then((data) => {
+            $('#games__table--body').empty();
+            $("#only__food-drink-field").hide();
             data.forEach((game, index) => {
               const date = britishDateFormat(game.updated_at);
               $('#games__table--body')
-                .append(gameTableTemplate(index, game, date));
+                .append(gameLaundryTableTemplate(index, game, date));
             });
           })
           .catch((error) => {
             console.log(error);
           });
+          break;
+        }
+        case 'inventory__laundry-cart': {
+          $('#games__list-container').show();
+          $("#current__stock-cart").val("laundry");
+          const url = API_BASE_URL + '/laundries';
+
+	  $("#title__game-laundry").text("All laundries");
+	  $("#add__game-laundry").text("Add Laundry");
+
+          fetchData(url)
+          .then((data) => {
+            $('#games__table--body').empty();
+            $("#only__food-drink-field").hide();
+            data.forEach((laundry, index) => {
+              const date = britishDateFormat(laundry.updated_at);
+              $('#games__table--body')
+                .append(gameLaundryTableTemplate(index, laundry, date));
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+          break;
         }
       }
     });

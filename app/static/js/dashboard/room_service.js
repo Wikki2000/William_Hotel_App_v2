@@ -89,8 +89,10 @@ $(document).ready(function () {
 
           // Reset form for adding new room
           $('#new__room-form').trigger('reset');
+		/*
             'src', "/static/images/public/hotel_logo.png"
           );
+	  */
 
           $('#room__action-edit--add').text('Add Room');
         }

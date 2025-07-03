@@ -14,3 +14,83 @@
 
 06:37 PM	2025-06-20	/api/v1/order-items	'NoneType' object has no attribute 'id'
 
+08:14 PM	2025-06-30	/api/v1/order-items	name 'is_duplicate_order' is not defined
+
+09:00 PM	2025-06-30	/api/v1/order-items	name 'hotel_id' is not defined
+
+09:02 PM	2025-06-30	/api/v1/order-items	name 'NIGERIA_TZ' is not defined
+
+09:04 PM	2025-06-30	/api/v1/order-items	name 'and_' is not defined
+
+09:04 PM	2025-06-30	/api/v1/order-items	type object 'Order' has no attribute 'hotel_id'
+
+11:05 PM	2025-06-30	/api/v1/book	name 'hotel_id' is not defined
+
+11:05 PM	2025-06-30	/api/v1/book	name 'hotel_id' is not defined
+
+11:07 PM	2025-06-30	/api/v1/book	name 'hotel_id' is not defined
+
+11:07 PM	2025-06-30	/api/v1/book	name 'hotel_id' is not defined
+
+11:07 PM	2025-06-30	/api/v1/bookings/["ce2bab45-d2fd-4e23-b644-6056daf060d8","97dc488f-21f5-4724-872c-3fc220df1507"]/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:09 PM	2025-06-30	/api/v1/bookings/["ce2bab45-d2fd-4e23-b644-6056daf060d8","97dc488f-21f5-4724-872c-3fc220df1507"]/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:10 PM	2025-06-30	/api/v1/bookings/["ce2bab45-d2fd-4e23-b644-6056daf060d8","97dc488f-21f5-4724-872c-3fc220df1507"]/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:13 PM	2025-06-30	/api/v1/book	name 'hotel_id' is not defined
+
+11:13 PM	2025-06-30	/api/v1/book	name 'hotel_id' is not defined
+
+11:13 PM	2025-06-30	/api/v1/bookings/["e4f93668-f85c-4202-8a20-a0d6c41da80f","c91c6bca-7d91-464a-b44a-8c8e865186dc"]/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:15 PM	2025-06-30	/api/v1/book	create_receipt() takes 2 positional arguments but 3 were given
+
+11:15 PM	2025-06-30	/api/v1/book	create_receipt() takes 2 positional arguments but 3 were given
+
+11:15 PM	2025-06-30	/api/v1/bookings/["860d1e27-f1df-49b6-95e4-7a242c7e77ed","0f412016-50ff-4563-8212-132ddd36c393"]/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:17 PM	2025-06-30	/api/v1/book	unsupported operand type(s) for -: 'str' and 'int'
+
+11:17 PM	2025-06-30	/api/v1/book	unsupported operand type(s) for -: 'str' and 'int'
+
+11:17 PM	2025-06-30	/api/v1/bookings/["7805abdc-fbc1-4d12-95a3-dbfc1691164f","2ebd6725-8204-4d0a-99fe-5186d499c20e"]/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+08:58 AM	2025-07-01	/api/v1/book	unsupported operand type(s) for -: 'str' and 'int'
+
+08:58 AM	2025-07-01	/api/v1/bookings/["46c2c6da-e7da-4488-a693-2feb7158dc54"]/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+09:05 AM	2025-07-01	/api/v1/bookings/["46c2c6da-e7da-4488-a693-2feb7158dc54"]/multiple-bookings-details	Entity namespace for "bookings" has no property "hotel_id"
+
+09:05 AM	2025-07-01	/api/v1/bookings/["46c2c6da-e7da-4488-a693-2feb7158dc54"]/multiple-bookings-details	Entity namespace for "bookings" has no property "hotel_id"
+
+09:06 AM	2025-07-01	/api/v1/bookings/["46c2c6da-e7da-4488-a693-2feb7158dc54"]/multiple-bookings-details	Entity namespace for "bookings" has no property "hotel_id"
+
+09:06 AM	2025-07-01	/api/v1/bookings/["46c2c6da-e7da-4488-a693-2feb7158dc54"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:07 AM	2025-07-01	/api/v1/bookings/["46c2c6da-e7da-4488-a693-2feb7158dc54"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:07 AM	2025-07-01	/api/v1/bookings/["46c2c6da-e7da-4488-a693-2feb7158dc54"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:08 AM	2025-07-01	/api/v1/book	unsupported operand type(s) for -: 'str' and 'int'
+
+09:08 AM	2025-07-01	/api/v1/bookings/["8855b997-de6d-4d86-bfbe-9d5c82ef0a1f"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:10 AM	2025-07-01	/api/v1/bookings/undefined/multiple-bookings-details	Expecting value: line 1 column 1 (char 0)
+
+09:13 AM	2025-07-01	/api/v1/book	unsupported operand type(s) for -: 'str' and 'int'
+
+09:13 AM	2025-07-01	/api/v1/bookings/["71474f9b-9cc2-4354-8814-d648edef0746"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:16 AM	2025-07-01	/api/v1/bookings/["71474f9b-9cc2-4354-8814-d648edef0746"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:16 AM	2025-07-01	/api/v1/bookings/80923cf3-06e9-4c91-b5ec-e9a12fa56816/booking-details	'NoneType' object has no attribute 'receipt_no'
+
+09:17 AM	2025-07-01	/api/v1/bookings/80923cf3-06e9-4c91-b5ec-e9a12fa56816/booking-details	'NoneType' object has no attribute 'receipt_no'
+
+09:17 AM	2025-07-01	/api/v1/bookings/80923cf3-06e9-4c91-b5ec-e9a12fa56816/booking-details	'NoneType' object has no attribute 'receipt_no'
+
+09:54 AM	2025-07-01	/api/v1/bookings/["7ffbb03d-328d-45fa-b957-f6c93626bc5f","843c935d-0f44-4d98-aa81-9c3396606d8e","9de44424-8b93-4b2f-8b68-ed67cad9b02b"]/multiple-bookings-details	'NoneType' object has no attribute 'receipt_no'
+
+01:54 AM	2025-07-03	/api/v1/guests/f2ce92fc-6387-474e-845b-455ed1902e82/rooms/42fce051-67f5-4c36-8686-5572940f5d2b/extend-stay	update_room_sold() missing 1 required positional argument: 'new_amount'
+

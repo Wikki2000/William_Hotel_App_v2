@@ -263,7 +263,7 @@ export function inventoryFilterTemplate() {
  *
  * @return {string} - The row of table.
  */
-export function gameTableTemplate(index, data, date) {
+export function gameLaundryTableTemplate(index, data, date) {
   const qtyColor = data.qty_stock < 10 ? 'red': '';
   const row = `<tr data-id="${data.id}">
       <td class="">
@@ -289,7 +289,7 @@ export function gameTableTemplate(index, data, date) {
       <td class="manage">
         <nav class="manage__nav">
           <ul class="manage__list">
-            <li data-id="${data.id}" class="manage__item inventory__update-stock">
+            <li data-id="${data.id}" class="manage__item add__update-stock update-stock">
               <i class="fa fa-wine-bottle"></i>Update Stock
             </li>
             <li data-id="${data.id}" class="manage__item inventory__delete-stock">
@@ -316,6 +316,15 @@ export function drinkTableTemplate(index, data, date) {
   const USER_ROLE = localStorage.getItem('role');                                                                                                                       
   const hideClass = USER_ROLE !== 'admin' ? 'hide' : ''; 
 
+  const TERMINAL = localStorage.getItem('terminal');
+
+  let hideTerminal2, hideTerminal1;
+  if (TERMINAL === TERMINAL_ONE) {
+    hideTerminal2 = "hide";
+  } else if (TERMINAL === TERMINAL_TWO) {
+    hideTerminal1 = "hide";
+  }
+
   const row = `<tr data-id="${data.id}">
       <td class="">
         <p class="ui text size-textmd">${index + 1}</p>
@@ -329,19 +338,19 @@ export function drinkTableTemplate(index, data, date) {
       <td class="">
         <p class="ui text size-textmd qty_stock" style="color: ${qtyColor}">${data.qty_stock}</p>
       </td>
-     <td class="t2">
-        <p class="ui text size-textmd amount">₦${data.amount.toLocaleString()}</p>
+     <td class="${hideTerminal1}">
+        <p class="ui text size-textmd amount">₦${(data.amount ?? 0).toLocaleString()}</p>
       </td>
-      <td class="t1">
+      <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount">₦${(data.amount_open_bar ?? 0).toLocaleString()}</p>
       </td>
-      <td class="t1">
+      <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount">₦${(data.amount_game_house ?? 0).toLocaleString()}</p>
       </td>
-      <td class="t1">
+      <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount">₦${(data.amount_club_house ?? 0).toLocaleString()}</p>
       </td>
-      <td class="t1">
+      <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount">₦${(data.amount_private_lounge ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideClass}">
@@ -352,7 +361,7 @@ export function drinkTableTemplate(index, data, date) {
       <td class="manage">
         <nav class="manage__nav">
           <ul class="manage__list">
-            <li data-id="${data.id}" class="manage__item inventory__update-stock">
+            <li data-id="${data.id}" class="manage__item add__update-stock update-stock">
               <i class="fa fa-wine-bottle"></i>Update Stock
             </li>
             <li data-id="${data.id}" class="manage__item inventory__delete-stock">
@@ -414,7 +423,14 @@ export function salesTableTemplate(index, id, saleStatus, amount, date, userRole
 export function foodTableTemplate(index, data, date) {
   const qtyColor = data.qty_stock < 10 ? 'red': '';
   const USER_ROLE = localStorage.getItem('role');
+  const TERMINAL = localStorage.getItem('terminal');
 
+  let hideTerminal2, hideTerminal1;
+  if (TERMINAL === TERMINAL_ONE) {
+    hideTerminal2 = "hide";
+  } else if (TERMINAL === TERMINAL_TWO) {
+    hideTerminal1 = "hide";
+  }
   const hideClass = USER_ROLE !== 'admin' ? 'hide' : '';
 
   const row = `<tr data-id="${data.id}">
@@ -430,19 +446,19 @@ export function foodTableTemplate(index, data, date) {
       <td class="">
         <p class="ui text size-textmd qty_stock" style="color: ${qtyColor}">${data.qty_stock}</p>
       </td>
-     <td class="t2">
-        <p class="ui text size-textmd amount">₦${data.amount.toLocaleString()}</p>
+     <td class="${hideTerminal1}">
+        <p class="ui text size-textmd amount">₦${(data.amount ?? 0).toLocaleString()}</p>
       </td>
-      <td class="t1">
+      <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount">₦${(data.amount_open_bar ?? 0).toLocaleString()}</p>
       </td>
-      <td class="t1">
+      <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount">₦${(data.amount_game_house ?? 0).toLocaleString()}</p>
       </td>
-      <td class="t1">
+      <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount">₦${(data.amount_club_house ?? 0).toLocaleString()}</p>
       </td>
-      <td class="t1">
+      <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount">₦${(data.amount_private_lounge ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideClass}">
@@ -453,7 +469,7 @@ export function foodTableTemplate(index, data, date) {
       <td class="manage">
         <nav class="manage__nav">
           <ul class="manage__list">
-            <li data-id="${data.id}" class="manage__item food__update-stock">
+            <li data-id="${data.id}" class="manage__item add__update-stock update-stock">
               <i class="fa fa-utensils"></i>Update Stock
             </li>
             <li data-id="${data.id}" class="manage__item food__delete-stock">
@@ -509,9 +525,9 @@ export function orderHistoryTableTemplate(order, date, customer = null) {
           <li data-id="${order.id}" data-payment-type="${order.payment_type}" class="manage__item order__update-payment--method order__manageItem">
             <i class="fa fa-sync-alt"></i>Payment Method
           </li>
-          <li data-id="${order.id}" data-name="${customerName}" class="manage__item  order__delete order__manageItem ${showToAdminOnly}">
+          <!--<li data-id="${order.id}" data-name="${customerName}" class="manage__item  order__delete order__manageItem ${showToAdminOnly}">
             <i class="fa fa-trash"></i>Delete Order
-          </li>
+          </li>-->
           <li data-id="${order.id}" class="manage__item order__manageItem order__showConfirmModal">
              <i class="fa fa-shopping-cart"></i>Order Details
            </li>
@@ -689,23 +705,7 @@ export function dailyServiceSaleTableTemplate(
     <td>
     <p class="ui text size-textmd" style="text-align: left; margin-left: 10px;">₦${amount.toLocaleString()}</p>
     </td>
-
-    <td style="visibility: hidden;" class="order__table-menu">
-    <p><i class="fa fa-ellipsis-v"></i></p>
-    <p><i style="display: none;" class="fa fa-times"></i></p>
-    </td>
-    <!--<td class="manage">
-    <nav class="manage__nav">
-    <ul class="manage__list">
-    <li data-id="${id}" class="manage__item order__manageItem order__showConfirmModal">
-    <i class="fa fa-shopping-cart"></i>Order Details
-    </li>
-    <li data-id="${id}" class="manage__item order__print order__manageItem">
-    <i class="fa fa-print"></i>Print Receipt
-    </li>
-    </ul>
-    </nav>
-    </td>-->
+    <td style="visibility: hidden;"><i data-id="${id}" class="fa fa-trash daily__sale-delete"></i></td>
     </tr>;`
   return row;
 }

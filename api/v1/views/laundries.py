@@ -13,8 +13,7 @@ from typing import Dict
 def get_laundries(user_id: str, user_role: str) -> Dict:
     """Retrieve all laundry stored in databases."""
     try:
-        terminal = session.get("terminal")
-        laundries = storage.all_get_by(Laundry, terminal=terminal)
+        laundries = storage.all_get_by(Laundry)
         if not laundries:
             return jsonify([]), 200
         sorted_laundries = sorted(
@@ -26,3 +25,43 @@ def get_laundries(user_id: str, user_role: str) -> Dict:
         return jsonify({"error": "Internal Error Occured"}), 500
     finally:
         storage.close()
+
+@api_views.route("/laundries", methods=["POST"])
+@role_required(["manager", "admin"])
+def add_laundry(user_id: str, user_role: str) -> Dict:
+    """Add new laundry in stock."""
+    data = request.get_json()
+
+    required_fields = ["name", "amount",]
+    error_400 = bad_request(data, required_fields)
+    if error_400:
+        return jsonify(error_404), 400
+    laundry = Laundry(**data)
+    storage.new(laundry)
+    storage.save()
+    laundry = storage.get_by(Laundry, id=laundry.id)
+    return jsonify(laundry.to_dict())
+
+
+@api_views.route("/laundries/<laundry_id>/get")
+@role_required(["manager", "admin"])
+def get_laundry(user_id: str, user_role: str, laundry_id: str) -> Dict:
+    """Retrieve laundry using it ID"""
+    laundry = storage.get_by(Laundry, id=laundry_id)
+    if not laundry:
+        abort(404)
+
+    return jsonify(laundry.to_dict()), 200
+
+
+@api_views.route("/laundries/<string:laundry_id>/delete", methods=["DELETE"])
+@role_required(["manager", "admin"])
+def remove_laundry(user_id: str, user_role: str, laundry_id: str) -> Dict:
+    """Remove game from stock."""
+    laundry = storage.get_by(Laundry, id=laundry_id)
+
+    if not laundry:
+        abort(404)
+    storage.delete(laundry)
+    storage.save()
+    return jsonify({"message": "Laundry successfully remove from stock"}), 200

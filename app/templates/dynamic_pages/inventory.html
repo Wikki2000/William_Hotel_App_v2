@@ -1,474 +1,459 @@
 <div class="inventory__stock-container">
-  <!--<div class="inventory__section-btn">
-    <button class="inventory-btn filter highlight-btn">
-    Inventory</button>
-    <button class="stock-btn filter">
-    Stock Item</button>
-    </div>-->
-
-    <div class="inventory__container">
-      <div class="inventory__cart-container">
-        <div id="inventory__expenditure-cart" class="inventory-cart highlight__inventory-cart">
-          <div class="flex-display">
-            <p>₦<span id="daily__expenditures">0</span></p>
-            <img src="/static/images/dashboard/inventory/expenses_cart.png" />
-          </div>
-
-          <p>Total expenditures</p>
-          <a href="#" class="red">daily expenditures</a>
+  <div class="inventory__container">
+    <div class="inventory__cart-container">
+      <div id="inventory__expenditure-cart" class="inventory-cart highlight__inventory-cart">
+        <div class="flex-display">
+          <p>₦<span id="daily__expenditures">0</span></p>
+          <img src="/static/images/dashboard/inventory/expenses_cart.png" />
         </div>
 
-        <div id="inventory__profit-cart" class="inventory-cart">
-          <div class="flex-display">
-            <p>₦<span id="daily__sales">0</span></p>
-            <img src="/static/images/dashboard/inventory/profit_cart.png" />
-          </div>
-
-          <p>Total Sales</p>
-          <a href="#" class="green">daily Sales</a>
-        </div>
-
-        <div id="inventory__food-cart" class="inventory-cart">
-          <div class="flex-display">
-            <p id="stock__count-food">0</p>
-            <img src="/static/images/dashboard/inventory/checkin_cart.png" />
-          </div>
-
-          <p>Foods in Stock</p>
-          <a href="#" class="yellow">foods in stock</a>
-        </div>
-
-        <div id="inventory__drink-cart" class="inventory-cart">
-          <div class="flex-display">
-            <p id="stock__count-drink">0</p>
-            <img src="/static/images/dashboard/inventory/transaction_cart_icon.png" />
-          </div>
-          <p>Drinks in Stock</p>
-          <a href="#" class="blue">drinks in stock</a>
-        </div>
-
-        <!--<div id="inventory__game-cart" class="inventory-cart">
-          <div class="flex-display">
-          <p id="count-games">0</p>
-          <img src="/static/images/dashboard/inventory/transaction_cart_icon.png" />
-          </div>
-          <p>Available Games</p>
-          <a href="#" style="color: purple">all games</a>
-          </div>-->
+        <p>Total expenditures</p>
+        <a href="#" class="red">daily expenditures</a>
       </div>
 
-      <!-- Form to create daily expendirures -->
-      <div  style="display: none;" class="expenditure expenditure__section">
-        <form id="inventory__expenditure-form">
-          <div id="expenditures__headings" class="expenditures__headings expenditure__entry-shrink">
-            <h3 class="daily-expenditure">Daily Expenditure</h3>
-            <img id="hide__expenditure-entry" src="/static/images/public/img_arrow_down_black_900_01.svg" class="hide__expenditure-entry">
-          </div>
-          <div id="expenditure__entry" style="display: none;">
-            <div class="input-row1">
-              <div class="title">
-                <p>Title</p>
-                <input maxlength="18" placeholder="e.g., Repairs" id="inventory__expenditure-title" required />
-              </div>
-              <div class="amount">
-                <p>Amount</p>
-                <input type="number" min="1" id="inventory__expenditure-amount" placeholder="e.g., 50000" required />
-              </div>
-              <div>
-                <p>Description</p>
-                <input id="inventory__expenditure-description" class="inventory__expenditure-description"placeholder="e.g., The sum of 50000 was use for generator repairs" required />
-              </div>
+      <div id="inventory__profit-cart" class="inventory-cart">
+        <div class="flex-display">
+          <p>₦<span id="daily__sales">0</span></p>
+          <img src="/static/images/dashboard/inventory/profit_cart.png" />
+        </div>
+
+        <p>Total Sales</p>
+        <a href="#" class="green">daily Sales</a>
+      </div>
+
+      <div id="inventory__food-cart" class="inventory-cart">
+        <div class="flex-display">
+          <p id="stock__count-food">0</p>
+          <img src="/static/images/dashboard/inventory/checkin_cart.png" />
+        </div>
+
+        <p>Foods in Stock</p>
+        <a href="#" class="yellow">foods in stock</a>
+      </div>
+
+      <div id="inventory__drink-cart" class="inventory-cart">
+        <div class="flex-display">
+          <p id="stock__count-drink">0</p>
+          <img src="/static/images/dashboard/inventory/transaction_cart_icon.png" />
+        </div>
+        <p>Drinks in Stock</p>
+        <a href="#" class="blue">drinks in stock</a>
+      </div>
+      <div id="inventory__game-cart" class="inventory-cart">
+        <div class="flex-display">
+          <p id="stock__count-game">0</p>
+          <img src="/static/images/dashboard/inventory/transaction_cart_icon.png" />
+        </div>
+        <p>Available Games</p>
+        <a href="#" style="color: purple">all games</a>
+      </div>
+
+      <div id="inventory__laundry-cart" class="inventory-cart">
+        <div class="flex-display">
+          <p id="stock__count-laundry">0</p>
+          <img src="/static/images/dashboard/inventory/transaction_cart_icon.png" />
+        </div>
+        <p>Laundries</p>
+        <a href="#" style="color: purple">all laundries</a>
+      </div>
+
+    </div>
+
+    <!-- Form to create daily expendirures -->
+    <div  style="display: none;" class="expenditure expenditure__section">
+      <form id="inventory__expenditure-form">
+        <div id="expenditures__headings" class="expenditures__headings expenditure__entry-shrink">
+          <h3 class="daily-expenditure">Daily Expenditure</h3>
+          <img id="hide__expenditure-entry" src="/static/images/public/img_arrow_down_black_900_01.svg" class="hide__expenditure-entry">
+        </div>
+        <div id="expenditure__entry" style="display: none;">
+          <div class="input-row1">
+            <div class="title">
+              <p>Title</p>
+              <input maxlength="18" placeholder="e.g., Repairs" id="inventory__expenditure-title" required />
             </div>
-            <button class="save-btn highlight-btn table__header-cell ui heading size-headings">Save</button>
+            <div class="amount">
+              <p>Amount</p>
+              <input type="number" min="1" id="inventory__expenditure-amount" placeholder="e.g., 50000" required />
+            </div>
+            <div>
+              <p>Description</p>
+              <input id="inventory__expenditure-description" class="inventory__expenditure-description"placeholder="e.g., The sum of 50000 was use for generator repairs" required />
+            </div>
+          </div>
+          <button class="save-btn highlight-btn table__header-cell ui heading size-headings">Save</button>
+        </div>
+      </form>
+      <div class="inventory__filter">
+        <!-- Date filter section dynamicaly loaded here -->
+      </div>
+    </div>
+
+    <!-- Table showing list of expenditures -->
+    <div style="display: none" id="expenditures__list" class="common-table-column expenditure__section">
+      <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+        <thead>
+          <tr>
+            <th width="380px">
+              <p class="table__header-cell ui heading size-headings">
+              Date
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Title
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Amount
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              <!-- Placeholder for table Edit icon -->
+              </p>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="expenditure__list-table--body" class="common-table-body">
+          <!-- Rows will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Popup modal to show expenditure details -->
+    <div id="expenditure__details" class="popup-modal">
+      <div class="popup-modal-content expenditure__popup-modal">
+        <button class="close-btn closePopupModal">×</button>
+        <h1>Expenditure Details</h1>
+        <!-- Expenditure details dynamically loaded -->
+        <p><b>Date</b> - <span id="expenditure__date"></span></p>
+        <p><b>Title</b> - <span id="expenditure__title"></span></p>
+        <p><b>Amount</b> - <span id="expenditure__amount"></span></p><br>
+        <h4>Description</h4>
+        <p id="expenditure__description" class="expenditure__description"></p>
+      </div>
+    </div>
+
+    <!-- Games List Table -->
+    <div style="display: none;" id="games__list-container" class="common-table-column">
+      <h3 class="stock__item-heading">
+        <span id="title__game-laundry">
+          <!-- Title Dynamically Loaded -->
+        </span>
+        <button id="add__game-laundry" class="highlight-btn tab__item ui heading size-headingxs add__update-stock">
+          <!-- Button Text Dynamically Loaded -->
+        </button>
+      </h3>
+
+      <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+        <thead>
+          <tr>
+            <th width="380px">
+              <p class="table__header-cell ui heading size-headings">
+              S/N
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell ui heading size-headings">
+              Date Added
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Game Name
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Price Tag
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              <!-- Placeholder for table Edit icon -->
+              </p>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="games__table--body" class="common-table-body">
+          <!-- Rows will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Food stock table -->
+    <div style="display: none;" id="food__stock-table--container" class="common-table-column">
+      <h3 class="stock__item-heading">Foods in Stock
+        <button id="" class="highlight-btn tab__item ui heading size-headingxs add__update-stock">
+          Add Food
+        </button>
+      </h3>
+
+      <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+        <thead>
+          <tr>
+            <th width="380px">
+              <p class="table__header-cell ui heading size-headings">
+              S/N
+              </p>
+            </th>
+            <th width="380px" class="">
+              <p class="table__header-cell ui heading size-headings">
+              Date Stock
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Food Name
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Qty Stock
+              </p>
+            </th>
+            <th width="380px" class="t2">
+              <p id="t2" class="table__header-cell-1 ui heading size-headings">
+              Price Tag
+              </p>
+            </th>
+            <th width="380px" class="t1">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Open Bar
+              </p>
+            </th>
+            <th width="380px" class="t1">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Game House
+              </p>
+            </th>
+            <th width="380px" class="t1"> 
+              <p class="table__header-cell-1 ui heading size-headings"> 
+              Club House
+              </p>
+            </th>
+            <th width="380px" class="t1">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Private Lounge
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              <!-- Placeholder for table Edit icon -->
+              </p>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="food__table-body" class="common-table-body">
+          <!-- Rows will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Drinks stock table -->
+    <div style="display: none;" id="drink__stock-list" class="common-table-column">
+      <h3 class="stock__item-heading">
+        Drinks in Stock
+        <button class="highlight-btn tab__item ui heading size-headingxs add__update-stock">
+          Add Drink
+        </button>
+      </h3>
+
+      <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+        <thead>
+          <tr>
+            <th width="380px">
+              <p class="table__header-cell ui heading size-headings">
+              S/N
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell ui heading size-headings">
+              Date Stock
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Drink Name
+              </p>
+            </th>
+            <th width="380px" class="t2">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Qty Stock
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Price Tag
+              </p>
+            </th>
+            <th width="380px" class="t1">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Open Bar
+              </p>
+            </th>
+            <th width="380px" class="t1">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Game House
+              </p>
+            </th>
+            <th width="380px" class="t1">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Club House
+              </p>
+            </th>
+            <th width="380px" class="t1">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Private Lounge
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              <!-- Placeholder for table Edit icon -->
+              </p>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="drink__stock-table--body" class="common-table-body">
+          <!-- Rows will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Popup Modal to update stock -->
+    <div id="update__stock-modal" class="popup-modal">
+      <div class="popup-modal-content stock__popup-modal-content">
+        <!-- Close Button -->
+        <button class="close-btn closePopupModal">×</button>
+        <form id="update__stock-modal-form">
+          <h2>Update Stock Item</h2><br>
+
+          <div class="field-grup">
+            <b>Stock Name:</b>
+            <input class="ensure__sentence-case" name="name" required><br>
+          </div>
+
+          <div id="only__food-drink-field">
+            <div class="field-grup">
+              <b>Stock Quantity:</b>
+              <input name="qty_stock"  type="number" min="0"></br>
+            </div>
+          </div>
+
+          <div id="inventory__terminal-t2">
+            <b>Amount:</b>
+            <input type="number" min="1" name="amount"></br>
+          </div>
+
+          <div id="inventory__terminal-t1">
+            <div class="field-grup">
+              <b>Open Bar Amount:</b>
+              <input type="number" min="1" name="amount_open_bar"></br>
+            </div>
+
+            <div class="field-grup">
+              <b>Game House Amount:</b>
+              <input type="number" min="1" name="amount_game_house"></br>
+            </div>
+
+            <div class="field-grup">
+              <b>Club House Amount:</b>
+              <input type="number" min="1" name="amount_club_house"></br>
+            </div>
+
+            <div class="field-grup">
+              <b>Private Lounge Amount:</b>
+              <input type="number" min="1" name="amount_private_lounge"></br>
+            </div>
+          </div>
+          <div class="stock__add-edit--btnContainer">
+            <button class="highlight-btn stock__add-edit--btn">Save</button>
           </div>
         </form>
-        <div class="inventory__filter">
-          <!-- Date filter section dynamicaly loaded here -->
-        </div>
+      </div>
+    </div>
+
+
+    <!-- Sales and Profit table -->
+    <div style="display: none;" id="sales__profit-list" class="common-table-column">
+      <h3 id="Daily__sales-title">Daily Sales</h3><br>
+      <div class="inventory__filter">
+        <!-- Date filter section dynamicaly loaded here -->
       </div>
 
-      <!-- Table showing list of expenditures -->
-      <div style="display: none" id="expenditures__list" class="common-table-column expenditure__section">
-        <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
-          <thead>
-            <tr>
-              <th width="380px">
-                <p class="table__header-cell ui heading size-headings">
-                Date
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Title
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Amount
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                <!-- Placeholder for table Edit icon -->
-                </p>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="expenditure__list-table--body" class="common-table-body">
-            <!-- Rows will be dynamically added here -->
-          </tbody>
-        </table>
-      </div>
+      <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+        <thead>
+          <tr>
+            <th width="380px">
+              <p class="table__header-cell ui heading size-headings">
+              S/N
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell ui heading size-headings">
+              Sales Date
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Status
+              </p>
+            </th>
+            <th width="380px">
+              <p class="table__header-cell-1 ui heading size-headings">
+              Amount
+              </p>
+            </th>
+            <th width="380px">
+              <!-- Table menu Icon Reservation -->
+            </th>
+          </tr>
+        </thead>
+        <tbody id="sales__profit-table--body" class="common-table-body">
+          <!-- Rows will be dynamically added here -->
+        </tbody>
+      </table>
 
-      <!-- Popup modal to show expenditure details -->
-      <div id="expenditure__details" class="popup-modal">
-        <div class="popup-modal-content expenditure__popup-modal">
+      <!-- Popup Modal to write sales comment -->
+      <div id="write__sales-comment" class="popup-modal">
+        <div class="popup-modal-content sales__popup-modal-comment">
           <button class="close-btn closePopupModal">×</button>
-          <h1>Expenditure Details</h1>
-          <!-- Expenditure details dynamically loaded -->
-          <p><b>Date</b> - <span id="expenditure__date"></span></p>
-          <p><b>Title</b> - <span id="expenditure__title"></span></p>
-          <p><b>Amount</b> - <span id="expenditure__amount"></span></p><br>
-          <h4>Description</h4>
-          <p id="expenditure__description" class="expenditure__description"></p>
+          <!-- Close Button -->
+          <form id="sale__comment-form">
+            <h4 class="write__comment-heading">Write Your Comment</h4>
+            <textarea class="sales__comment" id="sales__comment-input" placeholder="Please write your comment here" required >
+            </textarea><br />
+            <input id="sale__id" type="hidden" />
+            <input id="sale__method" type="hidden" />
+            <button class="highlight-btn ui heading size-headingxs comment__btn">Comment</button>  
+          </form>
         </div>
       </div>
 
-      <!-- Food stock table -->
-      <div style="display: none;" id="food__stock-table--container" class="common-table-column">
-        <h3 class="stock__item-heading">Foods in Stock
-          <button id="stock__new-food" class="highlight-btn tab__item ui heading size-headingxs">
-            Add Food
-          </button>
-        </h3>
 
-        <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
-          <thead>
-            <tr>
-              <th width="380px">
-                <p class="table__header-cell ui heading size-headings">
-                S/N
-                </p>
-              </th>
-              <th width="380px" class="">
-                <p class="table__header-cell ui heading size-headings">
-                Date Stock
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Food Name
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Qty Stock
-                </p>
-              </th>
-              <th width="380px" class="t2">
-                <p id="t2" class="table__header-cell-1 ui heading size-headings">
-                Price Tag
-                </p>
-              </th>
-	      <th width="380px" class="t1">
-                <p class="table__header-cell-1 ui heading size-headings">
-                  Open Bar
-                </p>
-              </th>
-              <th width="380px" class="t1">
-                <p class="table__header-cell-1 ui heading size-headings">
-                  Game House
-                </p>
-              </th>
-              <th width="380px" class="t1"> 
-                <p class="table__header-cell-1 ui heading size-headings"> 
-                  Club House
-                </p>
-              </th>
-              <th width="380px" class="t1">
-                <p class="table__header-cell-1 ui heading size-headings">
-                  Private Lounge
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                <!-- Placeholder for table Edit icon -->
-                </p>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="food__table-body" class="common-table-body">
-            <!-- Rows will be dynamically added here -->
-          </tbody>
-        </table>
-
-        <!-- Popup Modal to update stock -->
-        <div id="food__update-modal" class="popup-modal">
-          <div class="popup-modal-content stock__popup-modal-content">
-            <!-- Close Button -->
-            <button class="close-btn closePopupModal">×</button>
-            <form id="food__update-form">
-              <h2>Update Stock Item</h2><br>
-              <b>Name:</b> &nbsp;&nbsp;&nbsp;<input class="ensure__sentence-case" name="name" required><br><br>
-              <b>Qty:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="qty_stock"  type="number" min="0"></br><br>
-              <div id="inventory__terminal-1">
-                <b>Amount:</b>
-                <input type="number" min="1" name="price_t1"></br><br>
-              </div>
-
-	      <div id="inventory__terminal-2">
-                <b>Open Bar:</b> 
-                <input type="number" min="1" name="price_t2_open_bar"></br><br>
-
-                <b>Game House:</b> 
-                <input style="width: 320px;" type="number" min="1" name="price_t2_game_house"></br><br>
-
-                <b>Club House:</b> 
-                <input style="width: 328px;" type="number" min="1" name="price_t2_club_house"></br><br>
-
-                <b>Private Lounge:</b> 
-                <input style="width: 310px;" type="number" min="1" name="price_t2_private_lounge"></br><br>
-	      <!--<b>Terminal:</b>
-	      <select name="terminal">
-	        <option value="" selected required disabled>
-		</option>
-		<option value="t1">Terminal One</option>
-		<option value="t2">Terminal Two</option>
-              </select>-->
-	      </div>
-              <div class="stock__add-edit--btnContainer">
-                <button class="highlight-btn stock__add-edit--btn">Save</button>
-              </div>
-            </form>
+      <!-- Popup modal to view sales comment -->
+      <div id="view__sales-comment" class="popup-modal">
+        <div class="popup-modal-content sales__comment-list">
+          <button class="close-btn closePopupModal">×</button> 
+          <h3 id="comment__list-heading" class="comment__list-heading">
+          </h3>
+          <div id="sale__comment-container">
           </div>
         </div>
       </div>
 
-      <!-- Drinks stock table -->
-      <div style="display: none;" id="drink__stock-list" class="common-table-column">
-        <h3 class="stock__item-heading">
-          Drinks in Stock
-          <button id="stock__new-drink" class="highlight-btn tab__item ui heading size-headingxs">
-            Add Drink
-          </button>
-        </h3>
-
-        <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
-          <thead>
-            <tr>
-              <th width="380px">
-                <p class="table__header-cell ui heading size-headings">
-                S/N
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell ui heading size-headings">
-                Date Stock
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Drink Name
-                </p>
-              </th>
-              <th width="380px" class="t2">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Qty Stock
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Price Tag
-                </p>
-              </th>
-              <th width="380px" class="t1">
-                <p class="table__header-cell-1 ui heading size-headings">
-                  Open Bar
-                </p>
-              </th>
-              <th width="380px" class="t1">
-                <p class="table__header-cell-1 ui heading size-headings">
-                  Game House
-                </p>
-              </th>
-              <th width="380px" class="t1">
-                <p class="table__header-cell-1 ui heading size-headings">
-                  Club House
-                </p>
-              </th>
-              <th width="380px" class="t1">
-                <p class="table__header-cell-1 ui heading size-headings">
-                  Private Lounge
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                <!-- Placeholder for table Edit icon -->
-                </p>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="drink__stock-table--body" class="common-table-body">
-            <!-- Rows will be dynamically added here -->
-          </tbody>
-        </table>
-        <!-- Popup Modal to update stock -->
-        <div id="stock__update-modal" class="popup-modal">
-          <div class="popup-modal-content stock__popup-modal-content">
-            <!-- Close Button -->
+      <!-- Popup Modal to for sales details -->
+      <div id="sales__breakdown" class="popup-modal">
+        <div class="popup-modal-content sales__popup-modal-content">
+          <!-- Close Button -->
+          <div class="sale__button-date--container">
+            <p id="sales__date" class="sale__date-summary"></p>
             <button class="close-btn closePopupModal">×</button>
-            <form id="stock__update-form">
-              <h2>Update Stock Item</h2><br>
-              <b>Name:</b> &nbsp;&nbsp;&nbsp;<input class="ensure__sentence-case" name="name" required><br><br>
-              <b>Qty:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="qty_stock"  type="number" min="0"></br><br>
-              <b>Amount:</b> <input type="number" min="1" name="amount"></br><br>
-              <div class="stock__add-edit--btnContainer">
-                <button class="highlight-btn stock__add-edit--btn">Save</button>
-              </div>
-            </form>
           </div>
-        </div>
-      </div>
 
-      <!-- Games List table -->
-      <div style="display: none;" id="games__list-container" class="common-table-column">
-        <h3 class="stock__item-heading">
-          All Games
-          <button id="add__new-game" class="highlight-btn tab__item ui heading size-headingxs">
-            Add Game
-          </button>
-        </h3>
-
-        <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
-          <thead>
-            <tr>
-              <th width="380px">
-                <p class="table__header-cell ui heading size-headings">
-                S/N
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell ui heading size-headings">
-                Date Added
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Game Name
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Price Tag
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                <!-- Placeholder for table Edit icon -->
-                </p>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="games__table--body" class="common-table-body">
-            <!-- Rows will be dynamically added here -->
-          </tbody>
-        </table>
-        <!-- Popup Modal to update stock -->
-        <div id="stock__update-modal" class="popup-modal">
-          <div class="popup-modal-content stock__popup-modal-content">
-            <!-- Close Button -->
-            <button class="close-btn closePopupModal">×</button>
-            <form id="stock__update-form">
-              <h2>Update Stock Item</h2><br>
-              <b>Name:</b> &nbsp;&nbsp;&nbsp;<input name="name" required><br><br>
-              <b>Qty:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="qty_stock"  type="number" min="0"></br><br>
-              <b>Amount:</b> <input type="number" min="1" name="amount"></br><br>
-              <div class="stock__add-edit--btnContainer">
-                <button class="highlight-btn stock__add-edit--btn">Save</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sales and Profit table -->
-      <div style="display: none;" id="sales__profit-list" class="common-table-column">
-        <h3 id="Daily__sales-title">Daily Sales</h3><br>
-        <div class="inventory__filter">
-          <!-- Date filter section dynamicaly loaded here -->
-        </div>
-
-        <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
-          <thead>
-            <tr>
-              <th width="380px">
-                <p class="table__header-cell ui heading size-headings">
-                S/N
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell ui heading size-headings">
-                Sales Date
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Status
-                </p>
-              </th>
-              <th width="380px">
-                <p class="table__header-cell-1 ui heading size-headings">
-                Amount
-                </p>
-              </th>
-              <th width="380px">
-                <!-- Table menu Icon Reservation -->
-              </th>
-            </tr>
-          </thead>
-          <tbody id="sales__profit-table--body" class="common-table-body">
-            <!-- Rows will be dynamically added here -->
-          </tbody>
-        </table>
-
-        <!-- Popup Modal to write sales comment -->
-        <div id="write__sales-comment" class="popup-modal">
-          <div class="popup-modal-content sales__popup-modal-comment">
-            <button class="close-btn closePopupModal">×</button>
-            <!-- Close Button -->
-            <form id="sale__comment-form">
-              <h4 class="write__comment-heading">Write Your Comment</h4>
-              <textarea class="sales__comment" id="sales__comment-input" placeholder="Please write your comment here" required >
-              </textarea><br />
-              <input id="sale__id" type="hidden" />
-              <input id="sale__method" type="hidden" />
-              <button class="highlight-btn ui heading size-headingxs comment__btn">Comment</button>  
-            </form>
-          </div>
-        </div>
-
-
-        <!-- Popup modal to view sales comment -->
-        <div id="view__sales-comment" class="popup-modal">
-          <div class="popup-modal-content sales__comment-list">
-            <button class="close-btn closePopupModal">×</button> 
-            <h3 id="comment__list-heading" class="comment__list-heading">
-            </h3>
-            <div id="sale__comment-container">
-            </div>
-          </div>
-        </div>
-
-        <!-- Popup Modal to for sales details -->
-        <div id="sales__breakdown" class="popup-modal">
-          <div class="popup-modal-content sales__popup-modal-content">
-            <!-- Close Button -->
-            <div class="sale__button-date--container">
-              <p id="sales__date" class="sale__date-summary"></p>
-              <button class="close-btn closePopupModal">×</button>
-            </div>
-
-	    <div id="summary__item-sold">
+          <div id="summary__item-sold">
             <h5 class="sale__summary-title">
               Daily Sales Breakdown By Item Sold
             </h5>
@@ -500,9 +485,9 @@
                 <p id="total__laundry-sale"></p>
                 <button id="total__laundry-sale--btn" class="item__sold highlight-btn table__header-cell ui heading size-headings item__sold">View Details</p>
               </div>
-	    </div>
+            </div>
 
-	    <div id="summary__payment-type">
+            <div id="summary__payment-type">
               <h5 class="sale__summary-title">         
                 <br>Daily Sales Breakdown By Payment Method & Pending Payment 
               </h5>            
@@ -523,27 +508,31 @@
                   <p>Total Cash from Transfer</p>         
                   <p id="total__transfer-sale"></p>
                 </div> 
-		<div class="sale__summary-flex">
-		  <p>Total Pending Cash</p>
-		  <p id="total__pending-sale"></p>
-		</div>
-	      </div>
-
-                <div class="sale__summary-total">
-                  <p class="table__header-cell ui heading size-headings">Total Amount</p>
-                  <p class="item__sold" id="total__sale"></p>
+                <div class="sale__summary-flex">
+                  <p>Total Pending Cash</p>
+                  <p id="total__pending-sale"></p>
                 </div>
-                <input id="sales__summary-date" type="hidden" />
               </div>
 
+              <div class="sale__summary-total">
+                <p class="table__header-cell ui heading size-headings">Total Amount</p>
+                <p class="item__sold" id="total__sale"></p>
+              </div>
+              <input id="sales__summary-date" type="hidden" />
             </div>
+
           </div>
         </div>
-
       </div>
 
-      <!-- Confirmation Modal for Booking -->
-      <div id="order__confirmation-modal">
-      </div>
     </div>
+
+    <!-- Confirmation Modal for Booking -->
+    <div id="order__confirmation-modal">
+    </div>
+  </div>
 </div>             
+
+
+<input id="update__stock-method" type="hidden" />
+<input id="current__stock-cart" type="hidden" />

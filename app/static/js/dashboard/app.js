@@ -485,6 +485,9 @@ $(document).ready(function() {
             API_BASE_URL + `/expenditures/${today_date}/${today_date}/get`
           );
 
+	$(`#inventory__terminal-${TERMINAL}`).remove();
+		$(`.${TERMINAL}`).remove();
+
           $('#expenditure__list-table--body').empty();
 
           fetchData(expendituresUrl)
@@ -509,6 +512,8 @@ $(document).ready(function() {
               $('#daily__sales').text(data.today_sales.toLocaleString());
               $('#stock__count-drink').text(data.total_drinks);
               $('#stock__count-food').text(data.total_foods);
+	      $("#stock__count-game").text(data.total_games);
+	      $("#stock__count-laundry").text(data.total_laundries);
             })
             .catch((error) => {
               console.log(error);

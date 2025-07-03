@@ -68,10 +68,10 @@ def add_food(user_id: str, user_role: str) -> Dict:
     data = request.get_json()
     terminal = session.get("terminal")
 
-    required_fields = ["name", "amount", "qty_stock"]
+    required_fields = ["name", "qty_stock"]
     error_404 = bad_request(data, required_fields)
     if error_404:
-        return jsonify(error_404), 404
+        return jsonify(error_404), 400
     data["terminal"] = terminal
     food = Food(**data)
     storage.new(food)

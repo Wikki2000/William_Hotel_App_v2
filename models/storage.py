@@ -133,7 +133,7 @@ class Storage:
         obj = self.__session.query(cls).filter_by(**kwargs).all()
         return obj
 
-    def get_start_with(self, cls, field, prefix):
+    def get_start_with(self, cls, field, prefix, terminal):
         mapper = inspect(cls)
         
         if field not in mapper.columns:
@@ -142,9 +142,11 @@ class Storage:
             )
             raise ValueError(msg)
         column = getattr(cls, field)
-        obj_list = self.__session.query(cls).filter(
-            column.ilike(f"%{prefix}%")
-        ).all()
+        obj_list = (
+            self.__session.query(cls)
+            .filter(cls.terminal == terminal)
+            .filter(column.ilike(f"%{prefix}%"))
+        ).first()
         return obj_list
 
     def count_by(self, cls, **kwargs):

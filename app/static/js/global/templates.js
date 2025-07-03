@@ -94,7 +94,7 @@ export function displayRoomData(data, isStaff) {
  * @param {string} - The HTML templates of food/drink item.
  */
 export function foodDrinkTemplate(id, name, type, amount, image_path) { 
-  const image_src = image_path ? image_path : '/static/images/public/hotel_logo.png';
+  const image_src = image_path ? image_path : DEFAULT_IMAGE;
   const row = `<div class="food-item">
     <img src="${image_src}" alt="Food or Drink Image" class="food-img" />
     <h3 class="food-title">${name}</h3>
@@ -109,8 +109,11 @@ export function foodDrinkTemplate(id, name, type, amount, image_path) {
 }
 
 export function gameTemplate(data) {
+  const image_src = (
+    data.image ? `data:image/;base64, ${data.image}` : DEFAULT_IMAGE
+  );
   const row = `<div class="food-item">
-    <img src="data:image/;base64, ${data.image}" alt="Food Image" class="food-img" />
+    <img src="${image_src}" alt="Game Image" class="food-img" />
     <h3 class="food-title">${data.name}</h3>
     <p>Price: ₦${data.amount.toLocaleString()}</p>
     <button
@@ -124,9 +127,11 @@ export function gameTemplate(data) {
 }
 
 export function laundryTableTemplate(data) {
-
+  const image_src = (
+    data.image ? data.image : DEFAULT_IMAGE
+  );
   const row = `<div class="food-item">
-    <img src="${data.image}" alt="Clothe Image" class="food-img" />
+    <img src="${image_src}" alt="Clothe Image" class="food-img" />
     <h3 class="food-title">${data.name}</h3>
     <p>Price: ₦${data.amount.toLocaleString()}</p>
     <button
@@ -348,6 +353,7 @@ export function guestListTableTemplate(guest, booking, room, date) {
     <td class="">
       <p class="ui text size-textmd">₦${booking.amount.toLocaleString()}</p>
     </td>
+    <td><input type="checkbox" class="guest__checkbox" value=${booking.id}>
     <td>
       <p><i class="fa fa-ellipsis-v"></i></p>
       <p><i style="display: none;" class="fa fa-times"></i></p>

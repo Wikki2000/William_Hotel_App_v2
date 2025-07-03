@@ -11,7 +11,7 @@ from api.v1.views.users import *
 from api.v1.views.rooms import * 
 from api.v1.views.customers import *
 from api.v1.views.bookings import *
-from api.v1.views.foods_drinks import *
+#from api.v1.views.foods_drinks import *
 from api.v1.views.foods import *
 from api.v1.views.drinks import *
 from api.v1.views.orders import *
@@ -29,3 +29,4 @@ from api.v1.views.inventories import *
 from api.v1.views.games import *
 from api.v1.views.laundries import *
 from api.v1.views.sale_comments import *
+from api.v1.views.multiple_booking_receipt import *

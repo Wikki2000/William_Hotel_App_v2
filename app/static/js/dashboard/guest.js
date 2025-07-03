@@ -14,6 +14,41 @@ $(document).ready(() => {
 
   const $modal = $("#guestModal");
 
+  let firstSelected = "";
+  // Display icon for join receipt printing.
+  $('#dynamic__load-dashboard').on('change', ".guest__checkbox", function() {
+    const total = $(".guest__checkbox:checked").length;
+    const $currentCheckbox = $(this);
+    const currentCheckName = $currentCheckbox.closest("tr").find(".featured p").text();
+
+    if (!firstSelected) {
+      firstSelected = currentCheckName
+    }
+
+    if (total > 0) {
+      $("#print__joint-receipt").removeClass("hide");
+      if (firstSelected !== currentCheckName) {
+        alert("You can only print joint receipt for same guest.");
+        $currentCheckbox.prop("checked", false);
+      }
+    } else {
+      $("#print__joint-receipt").addClass("hide");
+      firstSelected = "";
+    }
+  });
+
+  // Handle printing of guest join receipts.
+  $('#dynamic__load-dashboard').on('click', '#print__joint-receipt', function() {
+    const booking_ids = $(".guest__checkbox:checked").map(function() {
+      return $(this).val();
+    }).get();
+
+    const receiptUrl = (
+      APP_BASE_URL + `/bookings/print-receipt?booking_id=${JSON.stringify(booking_ids)}&booking_count=multiple`
+    );
+    window.open(receiptUrl, '_blank');
+  });
+
   $('#dynamic__load-dashboard').on('click', '.guest__listMenu', function() {
     const $clickItem = $(this);
     const clickItemId = $clickItem.data('id');
@@ -42,7 +77,7 @@ $(document).ready(() => {
             const hideCheckOutBy = (
               booking.is_use || booking.is_reserve ? 'none' : ''
             );
-	    const checkInReserveByText = (
+            const checkInReserveByText = (
               booking.is_reserve ? "Reserve By" : "Checkin By"
             );
 
@@ -67,18 +102,22 @@ $(document).ready(() => {
               booking.is_paid === 'yes' ? { status: 'Paid', color: 'green' } :
               {status: 'Pending', color: 'red' }
             );
-            const checkout_staff = (
-              checkout_by ? {
-                first_name: checkout_by.first_name, 
-                last_name: checkout_by.last_name,
-                portfolio: checkout_by.portfolio
-              } :
+
+            const checkinFirstName = checkin_by ? checkin_by.first_name : "Former Staff";
+            const checkinLastName = checkin_by ? checkin_by.last_name : "";
+            const checkinRole = checkin_by ? checkin_by.portfolio : "";
+
+            const checkin = { firstName: checkinFirstName, lastName: checkinLastName, role: checkinRole };
+            const checkout = (
+              checkout_by ?
               {
-                first_name: checkin_by.first_name,
-                last_name: checkin_by.last_name,
-                portfolio: checkin_by.portfolio
-              }
+                firstName: checkout_by.first_name,
+                lastName: checkout_by.last_name,
+                role: checkout_by.portfolio
+              } : checkin
             );
+	    const roomNumber = room ? room.number : "Deleted Room";
+	    const roomAmount = room ? room.amount : "xxx";
 
             $('#guest__info').append(
               `<h3></h3>
@@ -96,10 +135,10 @@ $(document).ready(() => {
              <p><b>Check out Date</b> ${britishDateFormat(booking.checkout)}</p>
              <p><b>Date Book</b> ${britishDateFormat(booking.created_at)}</p>
              <p><b>Payment Status</b> <span style="color: ${paymentStatus.color};">${paymentStatus.status}</span></p>
-             <p style="display: ${hide};"><b>Room(${room.number}) Rate</b> ₦${room.amount.toLocaleString()}</p>
+             <p style="display: ${hide};"><b>${roomNumber} Rate</b> ₦${roomAmount}</p>
              <p><b>Booking Amount</b> ₦${booking.amount.toLocaleString()}</p>
-              <p><b>${checkInReserveByText}</b> ${checkin_by.first_name} ${checkin_by.last_name} (${checkin_by.portfolio})</p>
-              <p style="display: ${hideCheckOutBy}"><b>Checkout  By</b> ${checkout_staff.first_name} ${checkout_staff.last_name} (${checkout_staff.portfolio})</p>`
+              <p><b>${checkInReserveByText}</b> ${checkin.firstName} ${checkin.lastName} (${checkin.role})</p>
+             <p style="display: ${hideCheckOutBy}"><b>Checkout  By</b> ${checkout.firstName} ${checkout.lastName} (${checkout.role})</p>`
             );
             $('#room__totalAmount')
               .text('₦' + booking.amount.toLocaleString());
@@ -631,7 +670,7 @@ $(document).ready(() => {
       function() {
         const bookingId = $(this).data('id');
         const receiptUrl = (
-          APP_BASE_URL + `/bookings/print-receipt?booking_id=${bookingId}`
+          APP_BASE_URL + `/bookings/print-receipt?booking_id=${bookingId}&booking_count=single`
         );
         window.open(receiptUrl, '_blank');
       });

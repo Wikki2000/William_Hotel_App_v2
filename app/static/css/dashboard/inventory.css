@@ -225,10 +225,15 @@
 }
 
 .stock__popup-modal-content {
-  width: 35%;
-  margin-left: 20%;
+  width: 700px;
   height: auto;
   padding: 30px;
+  overflow-y: scroll;
+
+  .field-grup {
+    display: flex;
+    flex-direction: column;
+  }
 
   h2 {
     text-align: center;
@@ -238,6 +243,7 @@
     width: 100%;
     display: flex;
     justify-content: end;
+    margin-top: 20px;
     .stock__add-edit--btn {
       margin-left: auto;
       width: 80px;
@@ -249,7 +255,7 @@
     border-radius: 5px;
     padding: 10px;
     border: 1px solid orange;
-    width:80%;
+    width:100%;
     height: 40px;
 
   }

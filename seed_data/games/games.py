@@ -14,6 +14,7 @@ game_data = [
         "image": read_image_file("seed_data/games/images/snooker.webp"),
         "terminal": "t1",
     },
+    """
     {
         "name": "Snooker",
         "amount": 2000,
@@ -43,6 +44,7 @@ game_data = [
         "amount": 1000, 
         "terminal": "t2",
     },
+    """
 ]
 
 #game_data = read_json_file(json_file_path)

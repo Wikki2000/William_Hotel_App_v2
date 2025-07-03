@@ -211,7 +211,6 @@ $(document).ready(function() {
       const saleId = $clickItem.data('id');
 
       togleTableMenuIcon();
-
       if ($clickItem.hasClass('sales__details')) {
         const url = API_BASE_URL + `/sales/${saleId}/get`;
         fetchData(url)
