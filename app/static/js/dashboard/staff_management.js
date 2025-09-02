@@ -21,6 +21,7 @@ function removeBtnHighlight() {
   $('#staff__list-btn').removeClass('highlight-btn');
   $('.staff__management-loan--history').removeClass('highlight-btn');
   $('.staff__management-leave-history').removeClass('highlight-btn');
+  $('.staff__management-former-staff').removeClass('highlight-btn');
 }
 
 $(document).ready(function() {
@@ -196,6 +197,27 @@ $(document).ready(function() {
             break;
           }
           case 'staff__list-btn': {
+            $('#staff__list-table--body').empty();
+            const userUrl = API_BASE_URL + '/users?is_delete=false';
+            fetchData(userUrl)
+            .then((response) => {
+              response.forEach((data) => {
+                if (USER_ROLE === 'manager') {
+                  if (data.role !== 'manager') {
+                    $('#staff__list-table--body').append(staffListTemplate(data));
+                  }
+                } else {
+                  $('#staff__list-table--body').append(staffListTemplate(data));
+                }
+              });
+
+              if (USER_ROLE === 'manager') {
+                $('#add__staff-btn').remove();
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
             $('#staff__list').show();
             break;
           }
@@ -280,10 +302,10 @@ $(document).ready(function() {
             console.log(error);
           });
       } else if ($clickItem.hasClass('staff__management-remove--user')) {
-        alert("You can't delete a staff at this moment. Thie section under maintainence!");
-        return;
+        //alert("You can't delete a staff at this moment. Thie section under maintainence!");
+        //return;
         const headingText = 'Confirm Removal of Staff';
-        const descriptionText = 'This action cannot be undone !'
+        const descriptionText = 'You are about to remove a staff.';
         const confirmBtCls = 'staff__management-delete--confirmBtn';
 
         confirmationModal(headingText, descriptionText, confirmBtCls);
@@ -326,6 +348,31 @@ $(document).ready(function() {
           .catch((error) => {
             console.log(error);
           });
+      } else if ($clickItem.hasClass('staff__management-former-staff')) {
+        $('#staff__list-table--body').empty();
+        $('#staff__list').show();
+        $('.staff__management-former-staff').addClass('highlight-btn');
+        const userUrl = API_BASE_URL + '/users?is_delete=true';
+        fetchData(userUrl)
+          .then((response) => {
+            response.forEach((data) => {
+              if (USER_ROLE === 'manager') {
+                if (data.role !== 'manager') {
+                  $('#staff__list-table--body').append(staffListTemplate(data));
+                }
+              } else {
+                $('#staff__list-table--body').append(staffListTemplate(data));
+              }
+            });
+
+            if (USER_ROLE === 'manager') {
+              $('#add__staff-btn').remove();
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
       }
 
       // Handle removal of staff
@@ -333,13 +380,13 @@ $(document).ready(function() {
         .off('click', '.staff__management-delete--confirmBtn')
         .on('click', '.staff__management-delete--confirmBtn', function() {
 
-          const staffDeleteUrl = API_BASE_URL + `/members/${userId}/delete`;
-          ajaxRequest(staffDeleteUrl, 'DELETE', null,
+          const staffDeleteUrl = API_BASE_URL + `/members/${userId}/update`;
+          ajaxRequest(staffDeleteUrl, 'PUT', JSON.stringify({ is_delete: true }),
             (response) => {
               $('#order__confirmation-modal').empty();
               $(`#staff__list-table--body tr[data-id="${userId}"]`).remove();
               $('#staff__list').show();
-              showNotification('Staff Remove successfully !');
+              showNotification('Staff Deativated successfully !');
             },
             (error) => {
               $('#order__confirmation-modal').empty();
@@ -348,7 +395,6 @@ $(document).ready(function() {
           );
         });
     });
-
 
   // Display roster for a staff.
   $('#dynamic__load-dashboard').on('click', '.staff__management-roster', function() {
@@ -389,7 +435,6 @@ $(document).ready(function() {
           const wendesdayOption = data.roster.wednesday ? data.roster.wednesday : 'Select';
           $('.wednesday').text(wendesdayOption);
           $('input[name="wednesday"]').val(wendesdayOption);
-
 
           const thursdayOption = data.roster.thursday ? data.roster.thursday : 'Select';
           $('.thursday').text(thursdayOption);
@@ -456,4 +501,39 @@ $(document).ready(function() {
     );
   });
 
+  $('#dynamic__load-dashboard').on('submit', '#invite__new-staff', function(e) {
+    e.preventDefault();
+    const $formElement = $(this);
+    const data = getFormDataAsDict($formElement);
+
+    const staffInvite = API_BASE_URL + "/users/staff-invites";
+    $('#settings-modal-overlay').fadeOut(200);
+    ajaxRequest(staffInvite, 'POST', JSON.stringify(sanitizeInput(data)),
+      (response) => {
+        showNotification('Staff invitation link sent successfully.');
+      },
+      (error) => {
+        showNotification('Oops! An Error Ocured, Try Again !', true);
+      }
+    );
+  });
+
+  $('body').on('submit', '#staff__reg-form', function(e) {
+    e.preventDefault();
+    const $formElement = $(this);
+    const data = getFormDataAsDict($formElement);
+    const addStaffUrl = API_BASE_URL + "/staff/register";
+    ajaxRequest(addStaffUrl, 'POST', JSON.stringify(sanitizeInput(data)),
+      (response) => {
+        alert("Registration successful! Please proceed to log in.");
+      },
+      (error) => {
+        if (error.status === 409) {
+          alert("User already exists. Please try a different email.");
+        } else {
+        showNotification('Oops! An Error Ocured, Try Again !', true);
+        }
+      }
+    );
+  });
 });

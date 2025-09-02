@@ -3,7 +3,9 @@
 from models.food import Food
 from flask import abort, jsonify, request, session
 from api.v1.views import api_views
-from api.v1.views.utils import bad_request, role_required
+from api.v1.views.utils import (
+    bad_request, role_required, record_additional_stock
+)
 from models import storage
 from typing import Dict
 
@@ -40,13 +42,19 @@ def update_food(user_id: str, user_role: str, food_id: str) -> Dict:
     if not food:
         abort(404)
 
+    stock_type = "food"
+    stock_new_qty = data.get("qty_stock")
+    stock_old_qty = food.qty_stock
+    record_additional_stock(
+        stock_type, food_id, stock_new_qty, stock_old_qty
+    )
     for key, val in data.items():
         if key != 'id':
             setattr(food, key, val)
     storage.save()
-    food = storage.get_by(Food, id=food_id)
+    updated = storage.get_by(Food, id=food_id)
     storage.close()
-    return jsonify(food.to_dict()), 201
+    return jsonify(updated.to_dict()), 201
 
 
 @api_views.route("/foods/<food_id>/get")

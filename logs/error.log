@@ -94,3 +94,33 @@
 
 01:54 AM	2025-07-03	/api/v1/guests/f2ce92fc-6387-474e-845b-455ed1902e82/rooms/42fce051-67f5-4c36-8686-5572940f5d2b/extend-stay	update_room_sold() missing 1 required positional argument: 'new_amount'
 
+05:48 PM	2025-08-06	/api/v1/bookings	get_start_with() missing 1 required positional argument: 'terminal'
+
+05:48 PM	2025-08-06	/api/v1/bookings	get_start_with() missing 1 required positional argument: 'terminal'
+
+05:51 PM	2025-08-06	/api/v1/bookings	No inspection system is available for object of type <class 'str'>
+
+05:51 PM	2025-08-06	/api/v1/bookings	No inspection system is available for object of type <class 'str'>
+
+05:52 PM	2025-08-06	/api/v1/bookings	'Customer' object is not iterable
+
+06:22 PM	2025-08-06	/api/v1/bookings/[]/multiple-bookings-details	list index out of range
+
+06:32 PM	2025-08-06	/api/v1/account/login	name 'HotelSetting' is not defined
+
+07:51 PM	2025-08-30	/api/v1/account/login	'NoneType' object has no attribute 'to_dict'
+
+07:51 PM	2025-08-30	/api/v1/account/login	'NoneType' object has no attribute 'to_dict'
+
+07:51 PM	2025-08-30	/api/v1/account/login	'NoneType' object has no attribute 'to_dict'
+
+07:51 PM	2025-08-30	/api/v1/account/login	'NoneType' object has no attribute 'to_dict'
+
+07:59 PM	2025-08-30	/api/v1/account/login	'NoneType' object has no attribute 'to_dict'
+
+07:59 PM	2025-08-30	/api/v1/account/login	'NoneType' object has no attribute 'to_dict'
+
+03:11 PM	2025-08-31	/api/v1/account/login	name 'console' is not defined
+
+03:11 PM	2025-08-31	/api/v1/account/login	name 'console' is not defined
+

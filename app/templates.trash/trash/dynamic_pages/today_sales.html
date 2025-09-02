@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Daily Sales Record</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore our room services and manage reservations efficiently. From deluxe to standard rooms, ensure a pleasant stay with complementary breakfast and top-notch amenities."
+      />
+
+    <!-- Link Hotel Icon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/public/hotel_logo.png" />
+
+    <!-- Link Font-Is-Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Link Public CSS Files-->
+    <link rel="stylesheet" type="text/css" href="/static/css/public/index.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/public/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/public/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/public/components.css" />
+
+    <!-- Link Staff_dashboard CSS Files-->
+    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/sales_details.css?{{ cache_id }}" />
+
+    <!-- Link Staff_dashboard JS Files-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script type="module" defer src="/static/js/dashboard/common.js"></script>
+    <script type="module" defer src="/static/js/dashboard/constant.js"></script>
+
+    <script type="module" defer src="/static/js/dashboard/inventory/today_sales.js?{{ cache_id }}"></script>
+  </head>
+  <body>
+    <div class="sales-container">
+
+      <div class="sales-table-column">
+	<!-- This section dynamically loaded -->
+	<h1 id="sales__record-title"></h1>
+	<p id="sales__record-date"></p>
+
+	<div>
+	  <table cellpadding="0" cellspacing="0" class="ui table size-xs">
+	    <thead>
+	      <tr>
+		<th>
+		  <p class="table__header-cell ui heading size-headings">S/N</p>
+		</th>
+		<th width="348px">
+		  <p class="table__header-cell ui heading size-headings">Customer Names</p>
+		</th>
+		<th width="348p">
+		  <p class="table__header-cell-1 ui heading size-headings">Purchase Items</p>
+		</th>
+		<th width="348p">
+		  <p class="table__header-cell-1 ui heading size-headings">Quantity</p>
+		</th>
+		<th width="200px">
+		  <p class="table__header-cell-2 ui heading size-headings">Status</p>
+		</th>
+		<th width="200">
+		  <p class="table__header-cell-3 ui heading size-headings">Amount</p>
+		</th>
+		<th width="200px">
+		  <p class="table__header-cell ui heading size-headings"></p>
+		</th>
+	      </tr>
+	    </thead>
+	    <tbody class="sales-table-body">
+	      <!-- Rows will be dynamically added here -->
+	    </tbody>
+	  </table>
+	</div>
+      </div>
+
+      <!-- Modal for Guest Details -->
+      <div class="modal" id="guestModal">
+	<div class="modal-content">
+	  <span class="modal-close" id="modalClose">&times;</span>
+	  <h2>Guest Details</h2>
+	  <div id="modalDetails">
+	  </div>
+	</div>
+      </div>
+    </div>
+
+
+    <!-- Popup Modal For Guest details -->
+    <div id="guest__popupModal" class="popup-modal">
+      <div class="popup-modal-content guest__popup-modal">
+	<!-- Close Button -->
+	<button class="close-btn closePopupModal">&times;</button>
+
+	<h1>Booking Details</h1>
+	<div id="guest__info" class="guest__info">
+	  <!-- Order info will be dynamically loaded here -->
+	</div>
+
+	<div class="room__summary">
+	  <div class="room__total-cost">
+	    <p>Amount</p>
+	    <p id="room__totalAmount"></p>
+	  </div>
+	  <button id="booking__print-receipt" class="highlight-btn">Print Receipt</button>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>

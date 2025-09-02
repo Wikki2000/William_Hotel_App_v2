@@ -3,7 +3,9 @@
 from models.drink import Drink
 from flask import abort, jsonify, request, session
 from api.v1.views import api_views
-from api.v1.views.utils import bad_request, role_required
+from api.v1.views.utils import (
+    bad_request, role_required, record_additional_stock
+)
 from models import storage
 from typing import Dict
 
@@ -30,13 +32,13 @@ def get_drinks(user_id: str, user_role: str) -> Dict:
 @role_required(["manager", "admin"])
 def add_drink(user_id: str, user_role: str) -> Dict:
     """Add new drink in stock."""
-    data = request.get_json()
     terminal = session.get("terminal")
+    data = request.get_json()
 
-    required_fields = ["name", "qty_stock"]
+    required_fields = ["name", "qty_stock", "amount"]
     error_404 = bad_request(data, required_fields)
     if error_404:
-        return jsonify(error_404), 400
+        return jsonify(error_404), 404
     data["terminal"] = terminal
     drink = Drink(**data)
     storage.new(drink)
@@ -44,20 +46,6 @@ def add_drink(user_id: str, user_role: str) -> Dict:
     drink = storage.get_by(Drink, id=drink.id)
     storage.close()
     return jsonify(drink.to_dict())
-
-
-@api_views.route("/drinks/<string:drink_id>/delete", methods=["DELETE"])
-@role_required(["manager", "admin"])
-def remove_drink(user_id: str, user_role: str, drink_id: str) -> Dict:
-    """Remove drink from stock."""
-    drink = storage.get_by(Drink, id=drink_id)
-
-    if not drink: 
-        abort(404)
-    storage.delete(drink)
-    storage.save()
-    storage.close()
-    return jsonify({"message": "Drink successfully remove from stock"}), 200
 
 
 @api_views.route("/drinks/<drink_id>/update", methods=["PUT"])
@@ -74,13 +62,33 @@ def update_drink(user_id: str, user_role: str, drink_id: str) -> Dict:
     if not drink:
         abort(404)
 
+    stock_type = "drink"
+    stock_new_qty = data.get("qty_stock")
+    stock_old_qty = drink.qty_stock
+    record_additional_stock(
+        stock_type, drink_id, stock_new_qty, stock_old_qty
+    )
     for key, val in data.items():
         if key != 'id':
             setattr(drink, key, val)
     storage.save()
-    drink = storage.get_by(Drink, id=drink_id)
+    updated = storage.get_by(Drink, id=drink_id)
     storage.close()
-    return jsonify(drink.to_dict()), 201
+    return jsonify(updated.to_dict()), 201
+
+
+@api_views.route("/drinks/<string:drink_id>/delete", methods=["DELETE"])
+@role_required(["manager", "admin"])
+def remove_drink(user_id: str, user_role: str, drink_id: str) -> Dict:
+    """Remove drink from stock."""
+    drink = storage.get_by(Drink, id=drink_id)
+
+    if not drink: 
+        abort(404)
+    storage.delete(drink)
+    storage.save()
+    storage.close()
+    return jsonify({"message": "Drink successfully remove from stock"}), 200
 
 
 @api_views.route("/drinks/<drink_id>/get")

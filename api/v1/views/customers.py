@@ -71,7 +71,7 @@ def extend_guest_stay(user_role: str, user_id: str, room_id, customer_id):
         # Create booking object
         book = Booking(**data)
         storage.new(book)
-        storage.save()
+        storage.flush()
 
         nigeria_time = datetime.now(pytz.timezone('Africa/Lagos'))
         current_hour = nigeria_time.hour                                                                                                                                

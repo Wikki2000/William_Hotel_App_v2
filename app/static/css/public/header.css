@@ -7,7 +7,12 @@ html, body {
   background-color: var(--white_a700);
   scrollbar-width: none;
   width: 100%;
-
+  /*
+  transform: scale(0.9);
+  transform-origin: ;
+  width: 111.11%;
+  */
+  #zoom: 90%;
   margin: 0 auto;
   box-sizing: border-box;
 }

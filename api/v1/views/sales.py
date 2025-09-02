@@ -7,6 +7,8 @@ from api.v1.views import api_views
 from api.v1.views.utils import role_required, bad_request, get_payment_totals
 from models.sale import Sale
 from models.order_item import OrderItem
+from models.daily_drink_stock import DailyDrinkStock
+from models.daily_food_stock import DailyFoodStock
 from models.drink import Drink
 from models.food import Food
 from models.game import Game
@@ -172,6 +174,10 @@ def get_sales_summary(
         "room": Room
     }
 
+    stock_record_modal = {
+        "drink": DailyDrinkStock,
+        "food": DailyFoodStock
+    }
     if not service in services:
         raise ValueError("Invalid Service Type")
 
@@ -183,16 +189,58 @@ def get_sales_summary(
         return jsonify([]), 200
     
     sales_list = []
-    for item_id, total_amount, total_qty in sales:
+    for item_id, total_amount, sold_qty in sales:
         cls = services[service]
         service_obj = storage.get_by(cls, id=item_id)
+        previous_stock = getattr(service_obj, 'qty_stock', 0) if service_obj else 0
+
+        stock_value = {
+            "opening": 0,
+            "spoilage": 0,
+            "total_in": 0,
+            "remaining": 0,
+            "additional": 0,
+        }
+
+        if service in stock_record_modal:
+            stock_record_param = {
+                f"{service}_id": item_id,
+                "date": start_date_obj
+            }
+            stock_obj = storage.get_by(
+                stock_record_modal[service], **stock_record_param
+            )
+
+            if stock_obj:
+                stock_value["opening"] = stock_obj.opening
+                stock_value["total_in"] = (
+                    stock_obj.additional +
+                    stock_obj.opening - stock_obj.spoilage
+                )
+                stock_value["remaining"] = stock_value["total_in"] - sold_qty
+                stock_value["additional"] = stock_obj.additional
+                stock_value["spoilage"] = stock_obj.spoilage
+            else:
+                stock_value["opening"] = None
+                #stock_value["remaining"] = stock_value["total_in"] - sold_qty
+                stock_value["remaining"] = None
+                stock_value["total_in"] = None
+                stock_value["spoilage"] = None
+                stock_value["additional"] = None
+
         sales_list.append({
             "id": item_id,
             "name": service_obj.name,
-            "quantity": total_qty,
-            "amount": total_amount
+            "unit_price": service_obj.amount,
+            "opening_stock": stock_value["opening"],
+            "additional_stock": stock_value["additional"],
+            "remaining_stock": stock_value["remaining"],
+            "spoil_stock": stock_value["spoilage"],
+            "sold_stock": sold_qty,
+            "amount": total_amount,
+            "total_in": stock_value["total_in"],
         })
-        
+
     storage.close()
     return jsonify(sales_list), 200
 

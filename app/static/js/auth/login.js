@@ -22,22 +22,33 @@ $(document).ready(function () {
     );
     const url = API_BASE_URL + '/account/login';
     ajaxRequest(url, "POST", data,
-      (response) => {
+      ({ hotel, user }) => {
         // Set user ID and name in session for quick recovery.
-	localStorage.setItem('userName', response.username);
-        localStorage.setItem('userId', response.id);
-        localStorage.setItem('role', response.role);
-	localStorage.setItem('performance', response.performance);
-	localStorage.setItem("terminal", terminal);
+        localStorage.setItem('userName', user.username);
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('role', user.role);
+        localStorage.setItem('performance', user.performance);
+        localStorage.setItem("terminal", terminal);
 
-	$('input, select').addClass('correct-password');
+        localStorage.setItem("shortRestAmount", hotel.short_time_amount);
+        localStorage.setItem("earlyCheckinAmount", hotel.early_checkin_amount);
+        localStorage.setItem("lateCheckoutAmount", hotel.late_checkout_amount);
+        localStorage.setItem("lateCheckoutDuration", hotel.late_checkout_time);
+        localStorage.setItem("shortTimeDuration", hotel.short_time_hours);
+        localStorage.setItem("halfDayDuration", hotel.half_day_duration);
+
+        $('input, select').addClass('correct-password');
         setTimeout(() => {
           window.location.href = APP_BASE_URL + '/dashboard';
         }, 2000);
       },
       (error) => {
-	$('#error-box').show();
-	$('input').addClass('error-password');
+        if (error.status === 401) {
+        $('#error-box').show();
+        $('input').addClass('error-password');
+        } else {
+          alert("Request timed out. Please check your internet connection");
+        }
         // Hide loader and display button to user on error
         $('.loader').hide();
         $('#signin-btn').show();

@@ -38,7 +38,9 @@ $(document).ready(function() {
 
       switch (clickItemId) {
         case 'inventory__expenditure-cart': {
-          const today_date = canadianDateFormat(new Date());
+          const today_date = canadianDateFormat(
+            new Date().toLocaleString('en-GB', { timeZone: 'Africa/Lagos' })
+          );
           const url = (
             API_BASE_URL + `/expenditures/${today_date}/${today_date}/get`
           );
@@ -154,6 +156,7 @@ $(document).ready(function() {
           const gameUrl = API_BASE_URL + '/games';
 	  $("#title__game-laundry").text("All Games");
           $("#add__game-laundry").text("Add Game");
+	  sessionStorage.setItem('pageId', 'inventoryGameList');
           fetchData(gameUrl)
           .then((data) => {
             $('#games__table--body').empty();
@@ -176,6 +179,7 @@ $(document).ready(function() {
 
 	  $("#title__game-laundry").text("All laundries");
 	  $("#add__game-laundry").text("Add Laundry");
+	  sessionStorage.setItem('pageId', 'inventoryLaundryList');
 
           fetchData(url)
           .then((data) => {

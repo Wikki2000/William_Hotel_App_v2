@@ -1,0 +1,164 @@
+.filter-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out; /* Fade-in animation for the modal */
+}
+
+.filter-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 500px;
+  position: relative;
+  height: auto;
+  opacity: 0;
+  animation: slideIn 0.4s ease-out forwards; /* Slide-in animation for the content */
+}
+
+.filter-content h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  color: orange;
+  font-size: 20px;
+}
+
+.filter-content label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.filter-content select {
+  width: 100%;
+  padding: 6px 12px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.filter-content select:focus {
+  border-color: #ff7a00; /* Highlight the border in orange when focused */
+  animation: pulseBorder 0.5s ease-in-out; /* Border pulsing animation */
+}
+
+.filter-content select option {
+  padding: 8px;
+}
+
+.filter-content small {
+  color: #888;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-actions button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.apply-btn {
+  background-color: #ff7a00; /* WIS Grader orange */
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+  background-color: #e96a00;
+}
+
+.reset-btn {
+  background-color: #ccc;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.reset-btn:hover {
+  background-color: #bbb;
+}
+
+.close-filter {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+.close-filter:hover {
+  color: #ff7a00; /* Change to WIS Orange when hovered */
+}
+
+
+.filter__by-headingContainer {           
+  display: flex;     
+  width: 600px;      
+  margin-top: 10px;    
+  align-items: center;
+  gap: 10px;
+  .filter__by-heading {           
+    border-radius: 5px;     
+    padding: 5px;      
+
+    border: 1px solid grey;      
+    font-size: 13px;    
+  }      
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBorder {
+  0% {
+    border-color: #ff7a00;
+  }
+  50% {
+    border-color: #ffad66;
+  }
+  100% {
+    border-color: #ff7a00;
+  }
+}
+

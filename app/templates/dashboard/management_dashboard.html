@@ -9,43 +9,51 @@
       content="Explore our room services and manage reservations efficiently. From deluxe to standard rooms, ensure a pleasant stay with complementary breakfast and top-notch amenities."
       />
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Link Hotel Icon -->
     <link rel="icon" type="image/x-icon" href="/static/images/public/hotel_logo.png" />
 
     <!-- Link Font-Is-Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Link Public CSS Files-->
-    <link rel="stylesheet" type="text/css" href="/static/css/public/index.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/fonts.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/styles.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/components.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/side_nav.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/header.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/table.css?v={{ cache_id }}" />
 
-    <!-- Link Staff_dashboard CSS Files-->
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/main_dashboard.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/room_service.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/restaurant.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/order.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/empty_cart.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/guests/guest_list.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/guests/guest_input.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/profile.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/loan_request.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/leave_request.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/add_edit_room.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/staff_management.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/maintenance.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/report.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/vendor.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/vat.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/cat.css?v={{ cache_id }}" />
-    <link rel="stylesheet" type="text/css" href="/static/css/dashboard/inventory.css?v={{ cache_id }}" />
+    <!-- Link Public CSS Files-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/public/index.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/public/fonts.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/public/styles.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/public/components.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/public/side_nav.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/public/header.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/public/table.css') }}?v={{ cache_id }}">
+
+
+    <!-- Link Staff Dashboard CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/main_dashboard.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/room_service.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/restaurant.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/order.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/empty_cart.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/guests/guest_list.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/guests/guest_input.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/profile.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/loan_request.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/leave_request.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/add_edit_room.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/staff_management.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/maintenance.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/report.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/vendor.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/vat.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/cat.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/inventory.css') }}?v={{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard/help_support.css') }}?v={{ cache_id }}">
+
 
     <!-- Link Staff_dashboard JS Files-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
     <script type="module" defer src="/static/js/dashboard/common.js?v={{ cache_id }}"></script>
     <script type="module" defer src="/static/js/dashboard/constant.js?v={{ cache_id }}"></script>
@@ -53,7 +61,7 @@
     <script type="module" defer src="/static/js/dashboard/main_dashboard.js?v={{ cache_id }}"></script>
     <script type="module" defer src="/static/js/dashboard/restaurant.js?v={{ cache_id }}"></script>
     <script type="module" defer src="/static/js/dashboard/room_service.js?v={{ cache_id }}"></script>
-    <script type="module" defer src="/static/js/dashboard/app.js??v={{ cache_id }}"></script>
+    <script type="module" defer src="/static/js/dashboard/app.js?v={{ cache_id }}"></script>
     <script type="module" defer src="/static/js/dashboard/order.js?v={{ cache_id }}"></script>
     <script type="module" defer src="/static/js/dashboard/guest.js?v={{ cache_id }}"></script>
     <script type="module" defer src="/static/js/dashboard/profile.js?v={{ cache_id }}"></script>
@@ -69,8 +77,28 @@
     <script type="module" defer src="/static/js/dashboard/update_payment_type.js?v={{ cache_id }}"></script>
     <script type="module" defer src="/static/js/dashboard/search_engine.js?v={{ cache_id }}"></script>
     <script type="module" defer src="/static/js/dashboard/inventory/sale_comments.js?v={{ cache_id }}"></script>
+    <script type="module" defer src="/static/js/global/init_cache.js?v={{ cache_id }}"></script>
+    <script type="module" defer src="/static/js/dashboard/setting/modal.js?v={{ cache_id }}"></script>
+    <script type="module" defer src="/static/js/dashboard/setting/account_setting.js?v={{ cache_id }}"></script>
+    <script type="module" defer src="/static/js/dashboard/setting/business_setting.js?v={{ cache_id }}"></script>
+    <script type="module" defer src="/static/js/ping.js?v={{ cache_id }}"></script>
+    <script type="module" defer src="/static/js/dashboard/booking_preference.js?v={{ cache_id }}"></script>
   </head>
   <body>
+    <div class="zoom-alert" id="zoom-alert">
+      📢 For the best viewing experience, press Ctrl + Plus (+) to zoom in or Ctrl + Minus (–) to zoom out and adjust the screen to fit your preference.
+      <span class="close-btn" onclick="document.getElementById('zoom-alert').style.display='none'">×</span>
+    </div>
+
+    <script>
+      window.onload = function () {
+        setTimeout(function () {
+          const alertBox = document.getElementById('zoom-alert');
+          if (alertBox) alertBox.style.display = 'none';
+        }, 8000); // hide after 8 seconds
+      };
+    </script>
+
     <!-- main content section -->
     <div class="container">
       <div class="row">
@@ -79,13 +107,13 @@
         <div class="side__nav-container">
           <aside class="sidebar">
             <div class="sidebar__logo-row">
-              <img src="/static/images/public/hotel_logo.png" alt="Hotel Logo" class="sidebar__logo" />
+              <img src="/static/images/public/hotel_logo.png" alt="Wiventory Logo" class="sidebar__logo" />
             </div>
             <ul class="sidebar__menu admin__sidebar-menu">
               <li id="sidebar__main" class="highlight-sidebar sidebar__nav-icon">
                 <a>
                   <img src="/static/images/public/dashboard_icon.png" alt="Dashboard Icon" class="sidebar__icon--dashboard" />
-                  <p>Dashboard <b class="current-terminal"></b></p>
+		  <p>Dashboard <b class="current-terminal"></b></p>
                 </a>
               </li>
               <li id="sidebar__service" class="">
@@ -128,16 +156,23 @@
                   <span> Inventory</span>
                 </a>
               </li>
-              <li id="sidebar__maintenance" class="sidebar__nav-icon">
-                <a>
-                  <img src="/static/images/dashboard/maintainence_icon.png" alt="Maintainence Icon" class="sidebar__icon--services" />
-                  <span> Maintenances</span>
-                </a>
-              </li>
               <li id="sidebar__staff-management" class="sidebar__nav-icon">
                 <a>
                   <img src="/static/images/dashboard/staff_management_icon.png" alt="Staff Management Icon" />
                   <span> Staff Management </span>
+                </a>
+              </li>
+              <!--<li id="sidebar__help" class="sidebar__nav-icon">
+                <a>
+                  <i class="fas fa-headset"></i>
+                  <span> Help & Support </span>
+                </a>
+	      </li>-->
+
+              <li id="sidebar__setting" class="sidebar__nav-icon">
+                <a>
+                  <i class="fas fa-gears"></i>
+                  <span> Setting </span>
                 </a>
               </li>
               <li id="sidebar__logout" class="sidebar__nav-icon">
@@ -189,7 +224,7 @@
           <!-- search and tabs section -->
           <div class="columnsearch">
             <!-- search header section -->
-            <header class="header">
+            <header class="header" style="display: none;">
               <div class="header__search-row">
                 <label class="header__search-input">
                   <img id="search__bar" src="/static/images/public/serarch_icon.png" alt="Rewind" class="rewind drop-down" />
@@ -201,431 +236,42 @@
                     <i class="fa-solid fa-user-friends"></i>
                     </span>
                     </a>-->
-                    <a href="{{ url_for('app_views.chat') }}">
+                    <!--<a href="{{ url_for('app_views.chat') }}">
                       <span class="header__menu-icon">
-                        <img src="/static/images/public/message_icon.svg" />
-                        <!--<span id="unread__message-count">
-                          </span>-->
+                      <img src="/static/images/public/message_icon.svg" />
+                      <span id="unread__message-count">
                       </span>
-                    </a>
-                    <a href="#">
-                      <button class="header__menu-icon">
-                        <img src="/static/images/public/notification.png" />
-                        <span>3</span>
-                      </button>
-                    </a>
-                    <a href="#">
-                      <button class="header__menu-icon">
-                        <img src="/static/images/public/img_arrow_down_black_900_01.svg" />
-                      </button>
-                    </a>
-                    <a href="#">
-                      <button class="header__upload-icon">
-                        <img src="/static/images/public/tab_icon.png"
-                             alt="hide-sidebar" />
-                      </button>
-                    </a>
+                      </span>
+                      </a>-->
+                      <a href="#">
+                        <button class="header__menu-icon">
+                          <img src="/static/images/public/notification.png" />
+                          <!--<span>3</span>-->
+                        </button>
+                      </a>
+                      <a href="#">
+                        <button class="header__menu-icon">
+                          <img src="/static/images/public/img_arrow_down_black_900_01.svg" />
+                        </button>
+                      </a>
+                      <a href="#">
+                        <button class="header__upload-icon">
+                          <img src="/static/images/public/tab_icon.png"
+                               alt="hide-sidebar" />
+                        </button>
+                      </a>
                 </div>
               </div>
             </header>
 
             <section class="dynamic__load-dashboard" id="dynamic__load-dashboard">
 
-              <!-- Main dashboard section goes here -->
-              <div class="main__container">
-                <!--<div id="spinner" class="spinner"></div>-->
-                <div class="card">
-                  <div>
-                    <p>Dashboard <b class="current-terminal"></b></p>
-                    <div class="main__welcom-user">
-                      <div>
-                        <h1>Hello <span id="main__username"><!-- User name will be loaded here --></span></h1>
-                        <span>Welcome back!</span>
-                      </div>
-                      <br>
-                      <span class="emoji"><img src="/static/images/public/waving_hello_smile_icon.png" /></span>
-                      <div class="date"> {{ today }}
-                        <span class="calendar-icon">📅</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="controls">
-                    <div class="toggle">
-                      <label class="switch">
-                        <input type="checkbox" id="toggle-switch">
-                        <span class="slider"></span>
-                      </label>
-                      <p>State: <span id="toggle-state">0</span></p>
-                    </div>
-
-                    <div class="performance">
-                      <p>Performance
-                      <span class="percent">
-                        <em id="staff_performance-indexing"><!-- Staff performance dynamically loaded here --></em>
-                      </span>
-                      </p>
-                      <button class="track-btn ui heading size-headings" style="color: white;">View Roster</button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="scroll-wrapper">
-                  <div class="main__room-status">
-                    <div class="main__room-status3">
-                      <div>
-                        <div class="main__row-1 blue">
-                          <i class="fas fa-cash-register"></i>
-                        </div>
-                        <p>Today Sale's </p>
-                      </div>
-                      <div class="main__row-2">
-                        <button id="main__today-sales--view" class="highlight-btn">View Sale's </button>
-                        <h1><em></em></h1>
-                      </div>
-                    </div>
-                    <div class="main__room-status3">
-                      <div>
-                        <div class="main__row-1 blue">
-                          <i class="fas fa-home"></i>
-                        </div>
-                        <p>Rooms Available </p>
-                      </div>
-                      <div class="main__row-2">
-                        <button id="main__room-available--view" class="highlight-btn">View Rooms </button>
-                        <h1><em id="main__room-available">0</em></h1>
-                      </div>
-                    </div>
-                    <div class="main__room-status1">
-                      <div>
-                        <div class="main__row-1 green">
-                          <i class="fas fa-calculator"></i>
-                        </div>
-                        <p>Monthly VAT </p>
-                      </div>
-                      <div class="main__row-2">
-                        <button id="main__vat-view--btn" class="highlight-btn">View Details </button>
-                        <h1 style="visibility: hidden;"><em>0</em></h1>
-                      </div>
-                    </div>
-                    <div class="main__room-status4">
-                      <div>
-                        <div class="main__row-1 orange">
-                          <i class="fas fa-calculator"></i>
-                        </div>
-                        <p>Monthly CAT </p>
-                      </div>
-                      <div class="main__row-2">
-                        <button id="main__cat-view--btn" class="highlight-btn">View Details </button>
-                        <h1 style="visibility: hidden;"><em id="main__room-reserved">0</em></h1>
-                      </div>
-                    </div>
-                    <div class="main__room-status2">
-                      <div>
-                        <div class="main__row-1 red">
-                          <i class="fas fa-users"></i>
-                        </div>
-                        <p>Vendor's List </p>
-                      </div>
-                      <div class="main__row-2">
-                        <button id="vendor__list-btn" class="highlight-btn">View Vendors </button>
-                        <h1 id="count__vendors"><em></em></h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <form class="main__book-form" id="main__book-form">
-
-                  <div class="flex-column">
-                    <h3>Add New Booking</h3>
-                    <div class="flex-row">
-
-                      <div>
-                        <p>Instant Payment?<span class="important">*</span></p>
-                        <div class="dropdown">
-                          <div id="main__guest-payment--status"  class="main__dropdown-btn drop-down">
-                            <span>Select </span>
-                            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-                          </div>
-                          <div class="dropdown-menu">
-                            <ul class="main__dropdown--menu-list">
-                              <!-- ally load menu list -->
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <p>Booking Type <span class="important">*</span></p>
-                        <div class="dropdown">
-                          <div id="main__booking-type" class="main__dropdown-btn drop-down">
-                            <span>Select </span>
-                            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-                          </div>
-                          <div class="dropdown-menu">
-                            <ul class="main__dropdown--menu-list">
-                              <!-- Dynamically load menu list -->
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div id="main__payMethod-container">
-                        <p>Payment Method <span class="important">*</span></p>
-                        <div class="dropdown">
-                          <div id="main__payMethod" class="main__dropdown-btn drop-down">
-                            <span>Select </span>
-                            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-                          </div>
-                          <div class="dropdown-menu">
-                            <ul class="main__dropdown--menu-list">
-                              <!-- Dynamically load menu list -->
-                            </ul>
-                          </div>
-                        </div>
-
-                      </div>                   
-                    </div>
-
-                    <div class="flex-row">
-                      <div id="main__checkin-container" class="hide">
-                        <p>Check In <span class="important">*</span></p>
-                        <input id="main__check-in" type="date" required>
-                      </div>
-                      <div id="main__checkout-container" class="hide">
-                        <p>Check Out <span class="important">*</span></p>
-                        <input id="main__checkout-date" type="date" required>
-                      </div>
-
-                      <div id="main__earlyin-container" class="hide">
-                        <p>Early CheckIn? <span class="important">*</span></p>
-                        <div class="dropdown">
-                          <div id="main__early-checkin" class="main__dropdown-btn drop-down">
-                            <span>Select </span>
-                            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-                          </div>
-                          <div class="dropdown-menu">
-                            <ul class="main__dropdown--menu-list">
-                              <!-- Dynamically load menu list -->
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <h3>Room Details</h3>
-                    <div class="flex-row">
-                      <div>
-                        <p>Room Number <span class="important">*</span></p>
-                        <div class="dropdown">
-                          <div id="main__dropdown--room-no" class="main__dropdown-btn drop-down">
-                            <span>Select </span>
-                            <img
-                              src="/static/images/public/img_arrow_down_black_900_01.svg"
-                              width="15px"  alt="dropdown"
-                                            />
-                          </div>
-                          <div class="dropdown-menu">
-                            <ul class="main__dropdown--menu-list">
-                              <!-- Dynamically load  menu list -->
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <p>Booking Rate <span class="important">*</span></p>
-                        <input id="main__room-rate" value="Auto-filled based on room no." readonly required />
-                      </div>
-                      <div>
-                        <p>Room Type <span class="important">*</span></p>
-                        <input id="main__room-type" value="Auto-filled based on room no." readonly required />
-                      </div>
-                    </div>
-                    <div class="flex-row">
-                      <div>
-                        <p>Duration <span class="important">*</span></p>
-                        <input id="main__night-count" readonly placeholder="Auto-filled based on room no." />
-                      </div>
-                    </div>
-
-                    <h3>Guest Details</h3>
-                    <div class="flex-row">
-                      <div class="">
-                        <p>Name <span class="important">*</span></p>
-                        <input id="main__guest-name" placeholder="e.g., James John" required />
-                      </div>
-                      <div>
-                        <p>Phone No. <span class="important">*</span></p>
-                        <input type="text" maxlength="11" pattern="\d{11}" id="main__guest-phone" title="Enter exactly 11 digit" placeholder="e.g., 08187643578" required />
-                      </div>
-                      <div>
-                        <p>Address <span class="important">*</span></p>
-                        <input id="main__guest-address" placeholder="e.g., No. AdO Rd. Ikere-Ekiti">
-                      </div>
-                    </div>
-
-                    <div class="flex-row">
-                      <div>
-                        <p>Gender <span class="important">*</span></p>
-                        <div class="dropdown">
-                          <div id="main__guest-gender" class="main__dropdown-btn drop-down">
-                            <span>Select </span>
-                            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-                          </div>
-                          <div class="dropdown-menu">
-                            <ul class="main__dropdown--menu-list">
-                              <!-- Dynamically load menu list -->
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <p>Guest No. <span class="important">*</span></p>
-                        <input id="main__guest-no" placeholder="e.g., 1 male, 1 female" required>
-                      </div>
-
-                      <div>
-                        <p>ID Type</p>
-                        <div class="dropdown">
-                          <div id="main__guest-id--type" class="main__dropdown-btn drop-down">
-                            <span>Select </span>
-                            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-                          </div>
-                          <div class="dropdown-menu">
-                            <ul class="main__dropdown--menu-list">
-                              <!-- Dynamically load menu list -->
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div class="flex-row">
-                      <div>
-                        <p>ID Number</p>
-                        <input id="main__id--no-val" placeholder="e.g., 1234-4u765-8767tfer-hg64w">
-                      </div>
-
-                      <div>
-                        <p>Email</p>
-                        <input id="main__guest-email" type="email" placeholder="e.g., john@gmail.com" >
-                      </div>
-
-                        <div style="visibility: hidden">
-                          <!-- Hidden input field to maintain 3 fields per row -->
-                          <input>
-                        </div>
-                    </div>
-
-                    <div class="main__btn">
-                      <button class="highlight-btn">Proceed</button>
-                    </div>
-
-                    <!-- Holds value of options selected in menu -->
-                    <!-- This aid in submitting this data with form -->
-                    <input id="main__is--paid-val" required type="hidden" /> <!-- Selected Payment Status Option -->
-                    <input id="main__room--no-val" required type="hidden" /> <!-- Selected Room No. Option -->
-                    <input id="main__guest--gender-val" required type="hidden" /> <!-- Selected Gender. Option -->
-                    <input id="main__id--type-val"  type="hidden" /> <!-- Selected Room No. Option -->
-                    <input id="main__id--checkin-val" type="hidden" /> <!-- Selected booking type option -->
-                    <input id="main__id--bookingtype-val" type="hidden" /> <!-- Selected if early checkin options -->
-                    <input id="main__id--paymmentType-val" type="hidden" required /> 
-
-                  </div>
-                </form>
-              </div>
-
-              <!-- Confirmation Modal for Booking -->
-              <div id="main__popup-modal" class="modal">
-                <div class="modal-content">
-                  <!--<button id="closeModal" class="close-btn">×</button>-->
-                  <h2>Confirm Booking!</h2>
-                  <div class="modal-buttons">
-                    <button id="main__cancel-btn" class="highlight-btn cancel-btn">Cancel</button>
-                    <button id="main__confirm-btn" class="highlight-btn confirm-btn">Confirm</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Popup modal for VAT/CAT -->
-              <div id="main__vat-year--inputPopup" class="popup-modal">
-                <div class="popup-modal-content vat__cat-popup--modal">
-                  <!-- Close Button -->
-                  <button class="close-btn closePopupModal">×</button>
-                  <form id="main__enter-vat--yearForm">
-                    <p><br />Start Date: </p>
-                    <input class="main__vatCat-year--input" name="start_date" type="date" required />
-
-                    <p><br /><i>End Date: </i></p>
-                    <input class="main__vatCat-year--input" name="end_date" type="date" required />
-
-                    <div class="main__vatCatAmt-container">
-                      <p><strong>Sales:</strong> <span id="sales__amount"></span></p>
-                      <p id="main__vatCatAmount" class="main__vatCatAmount">
-                      <!-- The VAT/CAT is dynamically loaded here -->
-                      </p>
-                    </div>
-
-                    <div class="main__vatCat-container">
-                      <button id="main__vatCat-btn" class="table__header-cell-1 ui heading size-headings highlight-btn">
-                        <!-- Button content dynamically loaded -->
-                      </button>
-                    </div>
-                  </form>
-                  <input id="task__type" type="hidden" />
-                </div>
-              </div>
-
-              <!-- Popup Modal to for sales details -->
-              <div id="main__sales-breakdown" class="popup-modal">
-                <div class="popup-modal-content sales__popup-modal-content">
-                </div>
-              </div>
-
-              <!-- Popup Container -->
-              <div id="book__multiple-room" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; z-index: 9999;">
-
-                <!-- Modal Content -->
-                <div style="max-height: 300px; overflow-y: scroll;background: white; padding: 20px; border-radius: 8px; width: 300px; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-
-                  <!-- Close Button -->
-                  <button onclick="document.getElementById('book__multiple-room').style.display='none'"
-                          style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer;">
-                    ×
-                  </button>
-
-                  <!-- Dropdown Area -->
-                  <div style="margin-top: 30px;">
-                    <!-- Trigger Button -->
-                    <button onclick="toggleDropdown()"
-                            style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; background: #f5f5f5; cursor: pointer; text-align: left;">
-                      Select Options
-                    </button>
-
-                    <!-- Dropdown Content -->
-                    <div id="dropdown-content" style="display: none; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; background: #fff;">
-                      <!-- This section will be dynamically loaded -->
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- JavaScript -->
-              <script>
-                function toggleDropdown() {
-                  const dropdown = document.getElementById("dropdown-content");
-                  dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
-                }
-              </script>
-
+             </script>
             </section>
           </div>
         </div>
       </div>
     </div>
+
   </body>
 </html>

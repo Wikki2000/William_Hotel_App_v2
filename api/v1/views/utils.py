@@ -17,6 +17,8 @@ from models.receipt import Receipt
 from models.sale import Sale
 from models.order import Order
 from models.booking import Booking
+from models.daily_drink_stock import DailyDrinkStock
+from models.daily_food_stock import DailyFoodStock
 
 import base64
 from datetime import date, datetime, timedelta
@@ -25,6 +27,10 @@ from calendar import monthrange
 from dateutil.relativedelta import relativedelta
 from api.v1.views import constant
 from sqlalchemy import case, func, cast, Date, and_
+
+import smtplib
+from email.mime.text import MIMEText
+from email.message import EmailMessage
 
 
 r = Redis(host="localhost", port=6379, db=0)  # Create Redis instance
@@ -77,6 +83,26 @@ def send_mail(
     except Exception:
         return False
 
+
+def zoho_send_email(
+    sender_email, app_password, recipient, subject, body, mail_type="html"
+):
+    # Prepare the email content
+    try:
+        msg = MIMEText(body, mail_type)
+        msg["Subject"] = subject
+        msg["From"] = sender_email
+        msg["To"] = recipient
+
+        # Connect to Zoho SMTP and send the email
+        with smtplib.SMTP_SSL("smtp.zoho.com", 465) as server:
+            server.login(sender_email, app_password)
+            server.send_message(msg)
+        return True
+
+    except Exception as e:
+        print(str(e))
+        return  False
 
 def read_html_file(
         file_path: str, placeholders: Dict[Any, Any] = None
@@ -164,6 +190,7 @@ def is_valid(token: str) -> bool:
         return True
     return False
 
+
 def delete_token(token: str) -> bool:
     """Remove cache token in redis
     """
@@ -240,6 +267,64 @@ from models.food import Food
 from models.drink import Drink
 from models.order_item import OrderItem
 
+def record_additional_stock(stock_type, stock_id, stock_new_qty, stock_old_qty):
+    """Record additional stock or spoilage adjustment for today."""
+    stocks = {
+        "food": DailyFoodStock,
+        "drink": DailyDrinkStock
+    }
+
+    if stock_type not in stocks:
+        return None
+
+    try:
+        stock_new_qty = int(stock_new_qty)
+        stock_old_qty = int(stock_old_qty)
+    except (TypeError, ValueError):
+        print("Invalid stock values")
+        return None
+
+    stock_difference = stock_new_qty - stock_old_qty
+    today = date.today()
+
+    param = {"date": today, f"{stock_type}_id": stock_id}
+    stock = storage.get_by(stocks[stock_type], **param)
+
+    if not stock:
+        param["opening"] = stock_old_qty
+        param["additional"] = max(0, stock_difference)
+        param["spoilage"] = abs(stock_difference) if stock_difference < 0 else 0
+        stock = stocks[stock_type](**param)
+        storage.new(stock)
+    else:
+        if stock_difference >= 0:
+            stock.additional += stock_difference
+        else:
+            stock.spoilage += abs(stock_difference)
+
+
+def record_opening_stock(item_type, item_id, stock_qty):
+    """Record Opening Stock"""
+    today = date.today()
+
+    stocks = {
+        "food": {"model": DailyFoodStock, "id_field": "food_id"},
+        "drink": {"model": DailyDrinkStock, "id_field": "drink_id"}
+    }
+
+    id_field = stocks[item_type]["id_field"]
+    param = {
+        id_field: item_id,
+        "date": today
+    }
+
+    id_field = stocks[item_type]["id_field"]
+    stock_record_obj = storage.get_by(stocks[item_type]["model"], **param)
+    if not stock_record_obj:
+        attr = {id_field: item_id, "opening": stock_qty}
+        new_stock_record = stocks[item_type]["model"](**attr)
+        storage.new(new_stock_record)
+
 
 def update_item_stock(item, customer, new_order, item_sold, terminal):
     """Update stock levels and sales records based on item type."""
@@ -269,7 +354,9 @@ def update_item_stock(item, customer, new_order, item_sold, terminal):
             raise ValueError(
                 f"{stock_item.name} low in stock ({stock_item.qty_stock} available)"
             )
+
         original_stock_qty = stock_item.qty_stock
+        record_opening_stock(item_type, item_id, original_stock_qty)
 
     original_sales = {}
     if sales_field:
@@ -295,10 +382,6 @@ def update_item_stock(item, customer, new_order, item_sold, terminal):
             **{f"{item_type}_id": item_id}
         )
         storage.new(order_item)
-        print(order_item)
-
-    # Commit changes
-    #storage.save()
 
 
 def rollback_order_on_error(new_order, item_sold, prev_sales, stock_model=None, item_id=None, original_stock_qty=None):
@@ -556,3 +639,12 @@ def is_duplicate_order(
     ).first()
 
     return duplicate is not None
+
+
+def add_substract_from_date(date_obj, num_of_days, is_add=True):
+    new_date = None
+    if is_add:
+        new_date = date_obj + timedelta(days=num_of_days)
+    else:
+        new_date = date_obj - timedelta(days=num_of_days)
+    return new_date

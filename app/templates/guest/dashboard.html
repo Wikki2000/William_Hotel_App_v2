@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/static/images/public/hotel_logo.png" />
+  <link rel="stylesheet" type="text/css" href="/static/css/guest_dashboard/main.css" />
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--<script type="module" defer src="/static/js/guest/main.js?v={{ cache_id }}"></script>
+  <script type="module" defer src="/static/js/dashboard/constant.js?v={{ cache_id }}"></script>-->
+
+  <title>Guest Portal</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo">
+      <img id="hotelLogo" src="/static/images/public/hotel_logo.png" alt="Hotel Logo" />
+      <i class="fas fa-hotel"></i>
+    </div>
+
+    <div class="title">
+      Welcome to <span id="hotelName" class="hotel-name">Williams Court Hotel & Suites</span>
+    </div>
+
+    <div class="menu">
+      <a class="menu-item" href="/guest/foods">
+        <span><i class="fas fa-utensils"></i> Food</span>
+        <i class="fas fa-chevron-right arrow"></i>
+      </a>
+
+      <a class="menu-item" href="/guest/drinks">
+        <span><i class="fas fa-wine-glass-alt"></i> Drinks</span>
+        <i class="fas fa-chevron-right arrow"></i>
+      </a>
+
+      <a class="menu-item" href="/guest/rooms">
+        <span><i class="fas fa-bed"></i> Rooms</span>
+        <i class="fas fa-chevron-right arrow"></i>
+      </a>
+
+      <a class="menu-item" href="/guest/games">
+        <span><i class="fas fa-gamepad"></i> Games</span>
+        <i class="fas fa-chevron-right arrow"></i>
+      </a>
+
+      <a class="menu-item" href="/guest/laundry">
+        <span><i class="fas fa-soap"></i> Laundry</span>
+        <i class="fas fa-chevron-right arrow"></i>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
+

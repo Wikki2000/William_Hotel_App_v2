@@ -5,9 +5,13 @@ from flask_jwt_extended import JWTManager
 from flasgger import Swagger
 from api.v1.views import api_views
 from app.routes import app_views
+from app.routes import app_guests
 from app.config import Config
 from models.storage import Storage
 from api.v1.views.chat_socket import socketio
+from schedulers import init_schedulers
+from werkzeug.exceptions import Unauthorized, Forbidden, NotFound, Conflict
+from app.routes.utils import log_exception
 
 
 # Initialize storage
@@ -26,7 +30,9 @@ Swagger(app)
 # Register blueprint
 app.register_blueprint(api_views, url_prefix="/api/v1")
 app.register_blueprint(app_views, url_prefix="/app")
+app.register_blueprint(app_guests, url_prefix="/guest")
 
+init_schedulers()
 
 @app.errorhandler(404)
 def not_found_error(error):
@@ -55,6 +61,17 @@ def internal_error(error):
 def expired_token_callback(jwt_header, jwt_payload):
     """Redirect to login page on token expiry."""
     return redirect(url_for('app_views.login'))
+
+
+@app.errorhandler(Exception)
+def handle_all_exceptions(e):
+    # Skip known HTTP errors
+    if isinstance(e, (Unauthorized, Forbidden, NotFound)):
+        return e  # Let Flask route them to their specific handlers
+
+    # For all other unhandled exceptions
+    log_exception(e)
+    return "Something went wrong on the server.", 500
 
 
 if __name__ == "__main__":

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login | Wiventory - Smart Business Platform</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="module" src="/static/js/auth/dev_login.js"></script>
+    <link rel="icon" type="image/x-icon" href="/static/images/public/hotel_logo.png" />
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+    body {
+      #background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+    background-color: #fffdfb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    }
+
+    .login-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .login-container p {
+      text-align: center;
+      color: #777;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #444;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0077ff;
+      box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.1);
+    }
+    .loader {
+       border: 6px solid #f3f3f3;
+       border-top: 6px solid #3498db;
+       border-radius: 50%;
+       width: 40px;
+       height: 40px;
+       animation: spin 1s linear infinite;
+       display: none;
+       margin: 20px auto;
+    }
+    img {
+       width: 100px;
+       height: 100px;
+       border-radius: 5px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+	 transform: rotate(360deg);
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.7rem;
+      background-color: orange;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .footer {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+    </style>
+  </head>
+  <body>
+
+    <div class="login-container">
+      <div style="display: flex; justify-content: center;"class="logo">
+        <img src="/static/images/public/hotel_logo.png" alt="Wiventory Logo">
+     </div>
+      <p>Admin Sign In</p>
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="email">Email or Password</label>
+          <input type="text" id="email_or_username" required />
+          <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required />
+          <div class="error" id="passwordError"></div>
+        </div>
+
+        <button type="submit">Sign In</button>
+	<div class="loader"></div>
+      </form>
+
+      <div class="footer">
+        &copy; <span id="year"></span> Williams Court Hotel & Suites. All rights reserved.
+      </div>
+    </div>
+ </body>
+</html>
+

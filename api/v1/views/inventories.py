@@ -4,11 +4,14 @@ from models.food import Food
 from models.drink import Drink
 from models.game import Game
 from models.laundry import Laundry
-from models.daily_expenditure_sum import DailyExpenditureSum
+#from models.daily_expenditure_sum import DailyExpenditureSum
+from models.expenditure import Expenditure
 from models.sale import Sale
 from flask import abort, jsonify, request, session
 from api.v1.views import api_views
-from api.v1.views.utils import bad_request, role_required, nigeria_today_date
+from api.v1.views.utils import (
+    bad_request, role_required, nigeria_today_date
+)
 from models import storage
 from datetime import date
 from typing import Dict
@@ -21,9 +24,8 @@ def get_inventories(user_id: str, user_role: str) -> Dict:
     try:
         terminal = session.get("terminal")
         today_date = nigeria_today_date()
-        today_expenditure = storage.get_by(
-            DailyExpenditureSum, entry_date=today_date,
-            terminal=terminal
+        expenditures = storage.get_by_date(
+                Expenditure, today_date, today_date, "created_at", terminal=terminal
         )
         today_sale = storage.get_by(Sale, entry_date=today_date, terminal=terminal)
 
@@ -33,9 +35,7 @@ def get_inventories(user_id: str, user_role: str) -> Dict:
                 today_sale.drink_sold + today_sale.laundry_sold + 
                 today_sale.room_sold if today_sale else 0
             ),
-            "today_expenditures": (
-                today_expenditure.amount if today_expenditure else 0
-            ),
+            "today_expenditures": sum(expense.amount for expense in expenditures),
             "total_drinks": storage.count_by(Drink, terminal=terminal),
             "total_foods": storage.count_by(Food, terminal=terminal),
             "total_games": storage.count_by(Game, terminal=terminal),

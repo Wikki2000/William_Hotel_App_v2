@@ -203,11 +203,15 @@ export function compareDate(serverDate) {
  * @param {function} onSuccess - Callback function to execute if the request succeeds.
  * @param {function} onError - Callback function to execute if the request fails.
  */
-export function ajaxRequest(url, method, data = {}, onSuccess, onError) { $.ajax({
+export function ajaxRequest(
+  url, method, data = {}, onSuccess, onError, timeout = 5000
+) {
+  $.ajax({
   url: url,
   method: method,
   contentType: 'application/json',
   data: method == 'POST' || method == 'PUT' ? data : null,
+  timeout: timeout,
   success: onSuccess,
   error: onError,
 });
@@ -510,4 +514,39 @@ export function currentTerminal(terminal) {
     t2: "Lounge - Terminal Two"
   };
   return terminals[terminal];
+}
+
+export function formatedTime(isoString) {
+  const now = new Date(isoString);
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  hours = hours % 12 || 12; // Convert to 12-hour format and handle midnight (0 -> 12)
+  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes; // Add leading zero if needed
+
+  const formattedTime = hours + ':' + formattedMinutes + ' ' + ampm;
+  return formattedTime;
+}
+
+export function getHtmlTemplate(
+  $selector = $('#dynamic__load-dashboard')
+) {
+  const loadedHtml = $selector.html();
+  return loadedHtml;
+}
+
+export function restoreOnline() {
+  $(".status").css("color", "green");
+  $("#toggle-state").text("Online");
+  $("#toggle-switch").prop("checked", true);
+  $("#offline__banner").hide();
+}
+
+export function restoreOffline() {
+  $("#toggle-state").text("Offline");
+  $(".status").css("color", "#6c757d");
+  $("#toggle-switch").prop("checked", false);
+  $(".close__btn").hide();
+  $("#offline__banner").show();
 }

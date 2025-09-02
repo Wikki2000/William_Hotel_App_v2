@@ -38,7 +38,7 @@
     width: 400px;
     height: 200px;
     border-radius: 15px;
-    border: 2px solid orange;
+    #border: 2px solid orange;
   }
 }
 
@@ -65,7 +65,7 @@
   }
 }
 
-label {
+.add_room label {
   font-size: 1rem;
   font-weight: 400;
   color: #000;

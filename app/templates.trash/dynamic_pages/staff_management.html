@@ -1,0 +1,491 @@
+<div class="staff__management-container">
+  <div class="staff__management-section--btn">
+    <div>
+      <button id="staff__list-btn" class="ui text size-textmd highlight-btn filter">
+        <b>Staff List</b>
+      </button>
+      <button class="staff__management-table--menu staff__management-leave-history ui text size-textmd filter">
+        <b>Leaves</b>
+      </button>
+      <button class="staff__management-table--menu staff__management-loan--history ui text size-textmd filter">
+        <b>Loans</b>
+      </button>
+    </div>
+    <button id="add__staff-btn" class="add_new-staff ui text size-textmd filter">
+      <b>+ Add Staff</b>
+    </button>
+  </div>
+
+  <!-- Staff list -->
+  <div id="staff__list" style="display: one"class="common-table-column">
+    <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+      <thead>
+        <tr>
+          <th width="380px">
+            <p class="table__header-cell ui heading size-headings">
+            Name
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            Performance
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            Salary
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            Contact
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            Portfolio
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings"> 
+            <!-- Placeholder for table Edit icon -->
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            <!-- Placeholder for table Delete icon -->
+            </p>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="staff__list-table--body" class="common-table-body">
+        <!-- Rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Staff Leave List -->
+  <div id="staff__leave-list" style="display: none" class="common-table-column">
+    <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">  
+      <thead>
+        <tr>
+          <th width="380px">
+            <p class="table__header-cell ui heading size-headings">
+            Name
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            From
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            To
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            Status
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            <!-- Placeholder for table menu icon -->
+            </p>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="staff__leave-table--body" class="common-table-body">
+        <!-- Rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Loan History Leave -->
+  <div style="display: none" id="staff__loan-list" class="common-table-column">
+    <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+      <thead>
+        <tr>
+          <th width="380px"><p class="table__header-cell ui heading size-headings">
+            Name
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell ui heading size-headings">
+            Amount
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            Term
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            Payment Mode
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            Approval Status
+            </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+            <!-- Placeholder for table menu icon -->
+            </p>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="staff__loan-table--body" class="common-table-body">
+        <!-- Rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="display: none;" id="staff__profile" class="staff__profile-section">
+  <div class="staff-profile-heading">
+    <h1><!-- Dynamically Loaded for PUT & POST Request --></h1>
+  </div>
+
+  <div class="profile-content">
+    <div class="profile-details">
+      <div class="profile-pic">
+        <p>Staff Image</p>
+        <div class="img-div">
+          <img id="profile__photo" class="profile-photo" src="/static/images/public/profile_photo_placeholder.png" alt="profile_pic">
+        </div>
+      </div>
+
+      <div id="profile-edit-section">
+        <form id="staff__management-form">
+
+          <div class="combo-flex">
+            <div class="input-label-combo">
+              <label for="edit-fname">First Name <span>*</span></label>
+              <input name="first_name" required />
+            </div>
+
+            <div class="input-label-combo">
+              <label for="edit-mname">Middle Name</label>
+              <input name="middle_name" />
+            </div>
+            <div class="input-label-combo">
+              <label for="edit-postion">
+                Last Name <span>*</span>
+              </label>
+              <input name="last_name"required />
+            </div>
+            <div class="input-label-combo">
+              <label for="edit-salary">Salary
+              </label>
+              <input type="number" name="salary" />
+            </div>
+          </div>
+
+          <div class="combo-flex">
+            <div class="input-label-combo">
+              <label for="edit-user-role">User Role <span>*</span>
+              </label>
+              <div id="profile__role-menu" class="dropdown">
+                <div class="profile__dropdown-btn drop-down">
+                  <p class="table__header-cell-1 ui heading size-headings">Select </p>
+                  <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
+                </div>
+                <div id="profile__role-dropdown" class="dropdown-menu">
+                  <ul class="order__dropdown--menu-list">
+		    <li class="table__header-cell-1 ui heading size-headings profile__dropdown-selector dropdown-item">Admin</li>
+                    <li class="table__header-cell-1 ui heading size-headings profile__dropdown-selector dropdown-item">Manager</li>
+                    <li class="table__header-cell-1 ui heading size-headings profile__dropdown-selector dropdown-item">Staff</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-label-combo">
+              <label for="edit-gender">Gender</label>
+              <input name="gender" />
+            </div>
+            <div class="input-label-combo">
+              <label for="edit-religion">Religion</label>
+              <input name="religion" />
+            </div>
+            <div class="input-label-combo">
+              <label for="edit__start-date">Start Date</label>
+              <input name="start_date" type="date" />
+            </div>
+          </div>
+
+          <div class="combo-flex">
+            <div class="input-label-combo">
+	      <label for="edit-performance">Performance <span>*</span>
+              </label>
+              <input type="number" min="0" max="100" name="performance" placeholder="e.g., 60" required />
+            </div>
+            <div class="input-label-combo">
+              <label for="edit-phone">Phone Number</label>
+              <input name="number" type="text" maxlength="11" pattern="\d{11}" id="edit-phone" title="Enter 11 digits" />
+            </div>
+
+            <div class="input-label-combo">
+              <label for="edit-address">Address</label>
+              <input name="address" type="text" name="address" id="edit-address" />
+            </div>
+
+            <div class="input-label-combo">
+              <label for="edit-address">State</label>
+              <input name="state" type="text" id="edit-state" />
+            </div>
+          </div>
+
+          <div class="combo-flex">
+            <div class="input-label-combo">
+              <label for="edit-nok-name">NOK Name</label>
+              <input name="nok" id="edit-nok-name" />
+            </div>
+            <div class="input-label-combo">
+              <label for="edit-nok">NOK Number</label>
+              <input name="nok_number" type="text" id="edit__nok-phone" />
+            </div>
+
+            <div class="input-label-combo">
+              <label for="edit-nok">Portfolio <span>*</span>
+              </label>
+              <input name="portfolio" type="text" required  />
+            </div>
+            <div class="input-label-combo">
+              <label for="edit-nok">Date Of Birth</label>
+              <input name="dob" type="date" id="edit-dob" />
+            </div>
+          </div>
+          <div class="combo-flex">
+            <div class="input-label-combo">
+              <label for="edit-title">Title</label>
+              <input name="title">
+            </div>
+            <div class="input-label-combo">
+              <label for="edit-username">Username <span>*</span></label>
+              <input name="username" required />
+            </div>
+            <div class="input-label-combo">
+              <label>Email <span>*</span></label>
+              <input name="email" required />
+            </div>
+            <div class="input-label-combo">
+              <label for="rank_number">Rank Number  <span>*</span></label>
+              <input type="number" min="0" name="rank_number" required placeholder="e.g., 5"/>
+            </div>
+          </div>
+
+          <div class="combo-flex-submit">
+            <button type="submit" class="profile__save-changes"  id="save-changes">Save</button>
+            <button type="reset" id="cancel-changes">Cancel</button>
+          </div>
+
+          <!-- Hidden field to store user field -->
+          <input name="role" type="hidden" required />
+          <input name="id" type="hidden" />
+	  <input id="guest__add-editUpdate" type="hidden"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal for Booking -->
+<div id="order__confirmation-modal">
+</div>
+
+<!-- Popup Modal Loan Details -->
+<div id="loan__popupModal" class="popup-modal">
+  <div class="popup-modal-content loan__popup-modal">
+    <!-- Close Button -->
+    <button class="close-btn closePopupModal">×</button>
+
+    <h1>Loan Details</h1>
+
+    <!-- Will be dynamically loaded -->
+    <div id="loan__details-description"></div>
+    <div id="loan__acount-description"><br />
+    </div><br />
+
+    <div id="loan__status-comment">
+      <div>
+        <h4>Supervisors</h4>
+        <p cl>Manager</p>
+        <p class="">CEO</p>
+      </div>
+      <div>
+        <h4>Approval Status</h4>
+        <p id="loan__manager-status"><!-- Dynamically Loaded Status --></p>
+        <p id="loan__ceo-status"><!-- Dynamically Loaded Status --></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Modal to State Reason for Leave Rejection -->
+<div id="leave__rejection-reason" class="rejection__reason popup-modal">
+  <div class="popup-modal-content rejection__reason-content">
+    <!-- Close Button -->
+    <button class="close-btn closePopupModal">×</button>
+
+    <form id="leave__rejection-form">
+      <h4>State Reason For Leave Rejection (Optional)</h4>
+      <textarea id="leave__rejection-reason--val" placeholder="State your reason" class="rejection__reason-textarea">
+      </textarea><br><br>
+      <div class="rejection__btn--container">
+        <button class="table__header-cell-1 ui heading size-headings highlight-btn rejection__continue-btn">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Popup Modal to State Reason for Loan Rejection -->
+<div id="loan__rejection-reason" class="rejection__reason popup-modal">
+  <div class="popup-modal-content rejection__reason-content">
+    <!-- Close Button -->
+    <button class="close-btn closePopupModal">×</button>
+
+    <form id="loan__rejection-form">
+      <h4>State Reason For Loan Rejection (Optional)</h4>
+      <textarea id="loan__rejection-reason--val" placeholder="State your reason" class="rejection__reason-textarea">
+      </textarea><br><br>
+      <div class="rejection__btn--container">
+        <button class="table__header-cell-1 ui heading size-headings highlight-btn rejection__continue-btn">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Popup Modal for Leave Details -->
+<div id="leave__popupModal" class="popup-modal">
+  <div class="popup-modal-content leave__popup-modal">
+    <!-- Close Button -->
+    <button class="close-btn closePopupModal">×</button>
+
+    <h1>Leave Details</h1>
+    <div id="leave__date-type"></div>
+    <div id="leave__reason"><br />
+      <!-- Reason For Leave Dynamically Loaded Here -->
+    </div><br />
+    <div id="leave__status-comment">
+      <div>
+        <h4>Supervisors</h4>
+        <p class="">Manager</p>
+        <p class="">CEO</p>
+      </div>
+      <div>
+        <h4>Approval Status</h4>
+        <p id="leave__manager-status"><!-- Dynamically Loaded Status --></p>
+        <p id="leave__ceo-status"><!-- Dynamically Loaded Status --></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="popup-modal" id="roster__modal">
+  <div class="popup-modal-content roster__modal-content">
+    <button class="close-btn closePopupModal">×</button>
+    <h3 class="roster__title">Roster for <span id="user__full-name"></span> (<span id="roster__user-portfolio"></span>)</h3>
+    <form id="roster__update-form">
+      <div class="roster__row">
+        <i>Monday: </i>
+        <div class="dropdown">
+          <div class="drop-down">
+            <span class="ui heading size-headings monday">Select </span>
+            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
+          </div>
+          <div class="dropdown-menu">
+            <ul class="main__dropdown--menu-list">
+            </ul>
+          </div>
+        </div>
+        <input name="monday" type="hidden" />                                                                                                                                               </div>
+
+      <div class="roster__row">
+        <i>Tuesday: </i>
+       <div class="dropdown">
+         <div class="drop-down">
+           <span class="ui heading size-headings tuesday">Select </span>
+           <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />                                                                       </div>
+          <div class="dropdown-menu">
+            <ul class="main__dropdown--menu-list">
+            </ul>
+          </div>
+       </div>
+       <input name="tuesday"  type="hidden" />
+      </div>
+
+      <div class="roster__row">                                                                                                                                                 <i>Wednesday: </i>                                                                                                                                                      <div class="dropdown">
+          <div class="drop-down">
+            <span class="ui heading size-headings wednesday">Select </span>
+            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
+          </div>
+          <div class="dropdown-menu">
+            <ul class="main__dropdown--menu-list">
+            </ul>                                                                                                                                                                 </div>
+        </div>
+        <input name="wednesday"  type="hidden" />
+      </div>
+      <div class="roster__row">                                                                                                                                                 <i>Thursday: </i>
+        <div class="dropdown">
+          <div class="drop-down">
+            <span class="ui heading size-headings thursday">Select </span>
+            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />                                                                       </div>
+          <div class="dropdown-menu">
+            <ul class="main__dropdown--menu-list">
+            </ul>                                                                                                                                                                 </div>
+        </div>
+        <input name="thursday"  type="hidden" />
+      </div>
+      <div class="roster__row">                                                                                                                                                 <i>Friday: </i>
+        <div class="dropdown">
+          <div class="drop-down">
+            <span class="ui heading size-headings friday">Select </span>
+            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
+          </div>
+          <div class="dropdown-menu">                                                                                                                                               <ul class="main__dropdown--menu-list">
+            </ul>
+          </div>
+        </div>
+        <input name="friday"  type="hidden" />
+      </div>
+      <div class="roster__row">
+        <i>Saturday: </i>
+        <div class="dropdown">
+          <div class="drop-down">
+            <span class="ui heading size-headings saturday">Select </span>
+            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
+          </div>
+          <div class="dropdown-menu">
+            <ul class="main__dropdown--menu-list">
+            </ul>                                                                                                                                                                 </div>
+        </div>
+        <input name="saturday"  type="hidden" />
+      </div>
+      <div class="roster__row">
+        <i>Sunday: </i>
+        <div class="dropdown">
+          <div class="drop-down">
+            <span class="ui heading size-headings sunday">Select </span>
+            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
+          </div>
+          <div class="dropdown-menu">
+            <ul class="main__dropdown--menu-list">
+            </ul>                                                                                                                                                                 </div>
+        </div>
+        <input name="sunday"  type="hidden" />
+      </div>
+
+      <div class="roster__update-btn-container">
+        <button class="highlight-btn ui heading size-headings roster__update-btn">Update</button>
+      </div>
+
+      <input id="staff__id"  type="hidden" />
+    </form>
+  </div>
+</div>

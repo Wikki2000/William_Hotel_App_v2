@@ -32,14 +32,6 @@ def add_expenditure(user_role: str, user_id: str):
     )
 
     # Add new daily expenditure if exists else increase sum by existing one
-    if not expense_summation:
-        expenditure_sum = DailyExpenditureSum(
-            entry_date=today_date, amount=data.get("amount"), terminal=terminal
-        )
-        storage.new(expenditure_sum)
-    else:
-        expense_summation.amount += float(data.get("amount"))
-
     try:
         data["terminal"] = terminal
         expenditure = Expenditure(**data)
@@ -105,13 +97,9 @@ def get_expenditure_by_date(
         Expenditure, start_date_obj, end_date_obj,
         "created_at", terminal=terminal
     )
-    daily_expenditure_sum = storage.get_by_date(
-        DailyExpenditureSum, start_date_obj, end_date_obj,
-        "entry_date", terminal=terminal
-    )
 
     # Handle case were there is no expenditure
-    if not expenditures or not daily_expenditure_sum:
+    if not expenditures:
         return jsonify([]), 200
 
     sorted_expenditures = sorted(
@@ -120,17 +108,13 @@ def get_expenditure_by_date(
         reverse=True
     )
 
-    expenditure_accumulated_sum = sum(
-        expense_daily_sum.amount
-        for expense_daily_sum in daily_expenditure_sum
-    )
     storage.close()
     return jsonify({
         "daily_expenditures": [
             expenditure.to_dict()
             for expenditure in sorted_expenditures
         ],
-        "daily_expenditure_sum": expenditure_accumulated_sum
+        "daily_expenditure_sum": sum(expense.amount for expense in expenditures)
     }), 200
 
 

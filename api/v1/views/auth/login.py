@@ -8,6 +8,7 @@ import datetime
 from api.v1.views import api_views
 from models.storage import Storage
 from models import storage
+from models.hotel_setting import HotelSetting
 from typing import Optional
 from flasgger.utils import swag_from
 
@@ -60,7 +61,7 @@ def login():
 
         user = login_user(email_or_username)
 
-        if not user or not user.check_password(password):
+        if not user or not user.check_password(password) or user.is_delete:
             return jsonify({"error": "Invalid email or password"}), 401
 
         session["terminal"] = data.get("terminal")
@@ -72,8 +73,14 @@ def login():
             identity=user.id, additional_claims={"role": user.role}
         )
 
+        hotel = storage.get_by(HotelSetting)
+
         # Return response with access token
-        response = jsonify({**user.to_dict()})
+        response = jsonify({
+            "user": user.to_dict(),
+            "hotel": hotel.to_dict()
+        })
+
         set_access_cookies(response, access_token)  # Set JWT in cookie
         return response, 200
 

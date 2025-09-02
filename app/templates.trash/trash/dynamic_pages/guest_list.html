@@ -1,0 +1,114 @@
+<div id="guest__list">
+  <div style="display: flex; justify-content: space-between;">
+    <div class="guest__list-filter-container">                  
+      <h3 id="all__bookings" class="tab__item-2 ui heading size-texts filter highlight-btn">Today Bookings</h3>
+      <h3 id="active__bookings" class="tab__item-2 ui heading size-texts filter">Active Bookings</h3>
+      <h5 id="reserve__bookings" class="tab__item-2 ui heading size-texts filter">Reserved Bookings</h5>
+    </div>  
+    <h5 id="print__joint-receipt" class="tab__item-2 ui heading size-texts filter hide">Print Joint Receipt</h5>
+  </div>
+
+  <!-- room table section -->
+  <div class="guest-table-column">
+
+    <!-- Filter order item at any interval of time -->
+    <div class="guest-tab"> 
+      <div id="guest__list-title" class="tab ui heading size-headingmd">Today's Guests List</div>
+    </div>
+    <div class="inventory__filter">
+      <form id="inventory__filter-form">
+        <div class="inventory__filter-by--date">
+          <div class="inventory__filter-date--input">
+            <p class="inventory__date-title">Date &nbsp;</p>
+            <input id="inventory__filter-start--date" class="inventory__filter-start--date deep__background" type="date" />
+            <span>&nbsp; - &nbsp;</span>
+            <input id="inventory__filter-end--date" class="inventory__filter-end--date deep__background" type="date" />
+          </div>
+          <i id="inventory__searchbar" class="fa fa-search"></i>
+          <div class="inventory__filter-total--amount">
+            <p>Amount</p>
+            <p class="deep__background total__amount-entry">&nbsp;₦<span id="expenditure__total__amount-entry">0</span></p>
+          </div>
+	</div>
+     </form>
+    </div>
+
+    <table cellpadding="0" cellspacing="0" class="guest-tabletype ui table size-xs">
+      <thead>
+        <tr>
+          <th width="348px">
+            <p class="table__header-cell ui heading size-headings">Guest</p>
+          </th>
+          <th width="300px">
+            <p class="table__header-cell-1 ui heading size-headings">Room Types</p>
+          </th>
+          <th width="300px">
+            <p class="table__header-cell-1 ui heading size-headings">Expiration</p>
+          </th>
+          <th width="200px">
+            <p class="table__header-cell-2 ui heading size-headings">Checkin</p>
+          </th>
+          <th width="200px">
+            <p class="table__header-cell-3 ui heading size-headings">Checkout</p>
+          </th>
+	  <th width="200px">
+	    <p class="table__header-cell-1 ui heading size-headings">Payment Method</p> 
+	  </th>
+          <th width="200px">
+            <p class="table__header-cell-1 ui heading size-headings">Amount</p>
+          </th>
+	  <th width="200px">
+	    <p class="table__header-cell ui heading size-headings"></p>
+	  </th>
+          <th width="200px">
+            <p class="table__header-cell ui heading size-headings"></p>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="guest-table-body">
+        <!-- Rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal for Guest Details -->
+  <div class="modal" id="guestModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <h2>Guest Details</h2>
+      <div id="modalDetails">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Popup Modal For Guest details -->
+<div id="guest__popupModal" class="popup-modal">
+  <div class="popup-modal-content guest__popup-modal">
+    <!-- Close Button -->
+    <button class="close-btn closePopupModal">&times;</button>
+
+    <h1>Booking Details</h1>
+    <div id="guest__info" class="guest__info">
+      <!-- Order info will be dynamically loaded here -->
+    </div>
+
+    <div class="room__summary">
+      <div class="room__total-cost">
+        <p>Amount</p>
+        <p id="room__totalAmount"></p>
+      </div>
+      <button id="booking__print-receipt" class="highlight-btn">Print Receipt</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal for Guest List -->       
+<div id="order__confirmation-modal">
+</div>
+
+<!-- Update Payment Method Pop-up Modal -->
+<!-- This modal is style using "room_service.css" module -->
+<div id="order__update-payment-method" class="popup-modal">                                                                                                               <!-- This section is dynamically loaded -->
+</div>

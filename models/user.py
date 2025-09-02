@@ -44,6 +44,7 @@ class User(BaseModel, Base):
     portfolio = Column(String(1500), nullable=False)
     performance = Column(Integer)
     is_active = Column(Boolean, default=False)
+    is_delete = Column(Boolean, default=False)
     last_active = Column(DateTime)
     roster = Column(JSON)  # Holds weekly shift from monday to sunday of staffs.
 

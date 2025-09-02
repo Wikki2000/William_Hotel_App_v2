@@ -1,0 +1,232 @@
+<style>
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .settings-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      transition: 0.2s;
+      border-left: 5px solid orange;
+    }
+
+    .settings-card:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .settings-card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .settings-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .settings-list li {
+      margin-bottom: 10px;
+    }
+
+    .settings-list a {
+      color: #444;
+      text-decoration: none;
+      padding-left: 18px;
+      position: relative;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .settings-list a::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: orange;
+    }
+
+    .settings-list a:hover {
+      color: orange;
+      font-weight: 500;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+    }
+
+    .setting__modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh; /* 👈 sets scrollable area */
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1001;
+
+      overflow-y: auto; /* scroll when needed */
+    }
+
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .modal-close {
+      cursor: pointer;
+      font-size: 20px;
+      color: #888;
+    }
+
+    .setting__modal-content {
+      color: #444;
+    }
+
+    #downloadQrBtn {
+      margin-top: 10px;
+      background: orange;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    /* Style modal input fields */
+    .setting__modal-content form input[type="text"],
+    .setting__modal-content form input[type="password"],
+    .setting__modal-content form input[type="number"],
+    .setting__modal-content form input[type="email"],
+    .setting__modal-content form input[type="url"],
+    .setting__modal-content form input[type="file"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      font-size: 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    .setting__modal-content form input[type="text"]:focus,
+    .setting__modal-content form input[type="password"]:focus,
+    .setting__modal-content form input[type="number"]:focus,
+    .setting__modal-content form input[type="url"]:focus {
+      outline: none;
+      border-color: orange;
+      box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.2);
+    }
+</style>
+<div class="container">
+  <!--<div class="section-title">Settings</div>-->
+
+  <div class="settings-grid">
+
+    <!-- Account Settings -->
+    <div class="settings-card">
+      <h2>🔐 Account Settings</h2>
+      <ul class="settings-list">
+        <li><a href="#" data-title="Change Password">Change Password</a></li>
+	<li><a href="#" data-title="Invite New Staff">Invite New Staff</a></li>
+      </ul>
+    </div>
+
+    <!-- Business Settings -->
+    <div class="settings-card">
+      <h2>🏢 Business Settings</h2>
+      <ul class="settings-list">
+        <li><a href="#" data-title="Price Settings">Price Settings (Short Time, Early Check-in)</a></li>
+        <li><a href="#" data-title="Tax Settings">Tax Configuration (e.g. VAT)</a></li><!--<li><a href="#" data-title="Generate Guest QR Code">Generate QR Code for Guest Portal</a></li>-->
+        <li><a href="#" data-title="Generate Guest QR Code">Generate QR Code for Guest Portal</a></li>
+      </ul>
+    </div>
+
+    <!-- User Management -->
+    <!--<div class="settings-card">
+      <h2>👥 User & Role Management</h2>
+      <ul class="settings-list">
+      <li><a href="#" data-title="Invite Users">Invite Users via Email</a></li>
+      <li><a href="#" data-title="Role Access Control">Limit Access to Specific Modules</a></li>
+      </ul>
+      </div>-->
+
+      <!-- App Preferences -->
+      <!--<div class="settings-card">
+        <h2>⚙️ App Preferences</h2>
+        <ul class="settings-list">
+        <li><a href="#" data-title="Default Landing Page">Default Landing Page or Dashboard</a></li>
+        <li><a href="#" data-title="Theme">Theme (Light / Dark)</a></li>
+        <li><a href="#" data-title="Notification Preferences">Notification Preferences</a></li>
+        </ul>
+        </div>-->
+
+        <!-- Billing -->
+        <!--<div class="settings-card">
+          <h2>🧾 Billing & Subscription</h2>
+          <ul class="settings-list">
+          <li><a href="#" data-title="Current Plan">Current Plan & Features</a></li>
+          <li><a href="#" data-title="Upgrade Plan">Upgrade or Downgrade Plan</a></li>
+          <li><a href="#" data-title="Subscription Email">Email for Subscription Alerts</a></li>
+          <li><a href="#" data-title="Payment Method">Payment Method</a></li>
+          <li><a href="#" data-title="Invoices">Invoices & Receipts</a></li>
+          <li><a href="#" data-title="Renewal Settings">Subscription Renewal Settings</a></li>
+          </ul>
+          </div>-->
+
+          <!-- Notifications -->
+          <!--<div class="settings-card">
+            <h2>🔔 Notification Settings</h2>
+            <ul class="settings-list">
+            <li><a href="#" data-title="Email Notifications">Email Notification Toggles</a></li>
+            <li><a href="#" data-title="In-App Notifications">In-App Notification Preferences</a></li>
+            <li><a href="#" data-title="SMS/Push Settings">SMS or Push Settings</a></li>
+            </ul>
+            </div>-->
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="settings-modal-overlay">
+  <div class="setting__modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Modal Title</div>
+      <div class="modal-close" id="modal-close">&times;</div>
+    </div>
+    <div class="setting__modal-content" id="modal-content">
+      Loading...
+    </div>
+  </div>
+</div>
+

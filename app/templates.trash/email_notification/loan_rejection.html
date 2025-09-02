@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Rejection Notification</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333333;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+      .email-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .content {
+        padding: 20px;
+      }
+      .content p {
+        margin: 10px 0;
+      }
+      .footer {
+        background-color: black;
+        text-align: center;
+        padding: 10px;
+        font-size: 12px;
+        color: #888888;
+      }
+      .footer a {
+        color: #28a745;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <div class="content">
+        <p>Dear <strong>[ staff_name ]</strong>,</p>
+        <p>We regret to inform you that your loan request has been <strong>rejected</strong>.</p>
+        <p>Below are the details of your loan request:</p>
+        <ul>
+          <li><strong>Loan Amount:</strong> [ amount ]</li>
+          <li><strong>Loan Term:</strong> [ due_month ]</li>
+          <li><strong>Repayment Mode:</strong> [ repayment_mode ]</li>
+        </ul>
+        <p><strong>Reason for Rejection:</strong></p>
+        <p>[ rejection_reason ]</p>
+        <p>If you have any questions or need further clarification, please feel free to contact the finance department.</p>
+        <p>Best regards,</p>
+        <p><strong>Williams Court Hotels</strong></p>
+      </div>
+      <div class="footer">
+        <p>&copy; 2025 Williams Court Hotels. All rights reserved.</p>
+        <p><a href="https://williamscourthotel.com">Visit our website</a></p>
+      </div>
+    </div>
+  </body>
+</html>
+

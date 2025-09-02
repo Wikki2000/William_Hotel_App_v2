@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Page</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="/static/images/public/hotel_logo.png" />
+
+    <!-- Link styles for chat page -->
+    <link rel="stylesheet" href="/static/css/members_chats/chat.css" />
+
+    <!-- Link general styles -->
+    <link rel="stylesheet" type="text/css" href="/static/css/public/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/public/components.css" />
+
+    <!-- Jquery Module -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Socket.io Module -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+
+    <!-- Chat Script -->
+    <script type="module" defer src="/static/js/members_chats/set_chat.js"></script>
+    <script type="module" defer src="/static/js/members_chats/chat.js"></script>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Chats</h2>
+      <ul id="friends__groups-list">
+        <!--
+         <li>
+          <div class="profile">
+          <img src="https://via.placeholder.com/50" alt="Friend 1">
+          <span class="status"></span>
+          </div>
+          <div class="info">
+          <span class="name">Moses Okon</span>
+          <span class="last-active">Last active: 10m ago</span>
+          </div>
+          </li>
+          <li>
+          <div class="profile">
+          <img src="https://via.placeholder.com/50" alt="Friend 1">
+          <span class="status active"></span>
+          </div>
+          <div class="info">
+          <span class="name">John Doe</span>
+          <span class="unread">3</span>
+          </div>
+          </li>
+        -->
+      </ul>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window">
+      <div class="chat-header">
+        <a href="javascript:history.back()" style="color: black; width: 30px;">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="profile">
+          <img id="chat__titlePhoto" src="/static/images/public/profile_photo_placeholder.png" alt="Photo">
+        </div>
+        <div class="info">
+          <span id="chat__title" class="name"><!-- Group name dynamically loaded --></span>
+        </div>
+      </div>
+      <div id="chat-messages" class="chat-messages">
+        <!-- Chat will be loaded dynamically here -->
+      </div>
+      <div class="chat-input">
+        <input id="chat__msg-content" type="text" placeholder="Type a message">
+        <button id="send__msg-btn">Send</button>
+      </div>
+      <input id="chat-type" type="hidden" />
+      <input id="chat-id" type="hidden" />
+    </div>
+    <!-- Scroll to bottom arrow -->
+    <div class="scroll-to-bottom" id="scroll-to-bottom">
+      &#8595; <!-- Downwards arrow symbol -->
+    </div>
+  </body>
+</html>

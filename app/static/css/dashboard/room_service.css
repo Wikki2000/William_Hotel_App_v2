@@ -9,7 +9,8 @@ Room Section
   border-radius: 15px;
 }
 .room__table-column {
-  height: 510px;
+  height: 67vh;
+  padding-bottom: 20px;
 }
 .room__section-btn {
   display: flex;
@@ -39,6 +40,7 @@ Room Section
   height: 100px;
   width: 200px;
   margin-top: 10px;
+  border-radius: 5px;
 }
 
 thead, .room-table-body {

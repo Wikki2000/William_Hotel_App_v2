@@ -1,0 +1,51 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+}
+
+.feedback-container {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+}
+
+.feedback-container h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #333;
+  text-align: center;
+}
+
+.feedback-item {
+  border-top: 1px solid #e0e0e0;
+  padding: 15px 0;
+}
+
+.hotel-info {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.hotel-email {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.hotel-message {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.no-feedback {
+  text-align: center;
+  color: #888;
+  font-size: 16px;
+  padding: 40px 0;
+}

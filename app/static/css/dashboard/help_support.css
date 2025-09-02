@@ -1,0 +1,42 @@
+.support-container {
+  #max-width: 1200px;
+  margin-top: 20px;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.support-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 25px;
+  transition: transform 0.3s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-5px);
+}
+
+.support-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  #color: #e67e22;
+}
+
+.support-card p {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+.support-card a {
+  text-decoration: none;
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.support-card a:hover {
+  text-decoration: underline;
+}

@@ -1,144 +1,86 @@
-/*=================================
-Guest List Section
-==================================*/
 .sales-container {
-  
+  padding: 20px;
+}
+
+/* Container scrolls horizontally on small screens */
+#food__drink-salesContainer {
+  margin-top: 20px;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.search-bar-wrapper {
+  position: relative;
   width: 100%;
-  overflow: auto;
-  height: 100vh;
-  background-color: var(--orange_a100_33);
-}
-.sales-table-column {
-  margin: 30px;
+  max-width: 300px;
+  margin-bottom: 15px;
 }
 
+.search-bar-wrapper input {
+  width: 100%;
+  padding: 8px 10px 8px 32px; /* left padding to make space for icon */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-bar-wrapper .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #ff8c00; /* orange */
+  font-size: 14px;
+  pointer-events: none; /* allow clicks through to input */
+}
 
 
 
-.sales-table-column table {
+/* Full-width, clean table */
+.custom-table {
   width: 100%;
   border-collapse: collapse;
-  display: block;
-  overflow: auto;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
 }
 
-.sales-table-column thead {
+/* Table header */
+.custom-table thead {
+  background-color: #f4f4f4;
+}
+
+.custom-table th, .custom-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+/* Hover effect on rows */
+.custom-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Adjust action column */
+.custom-table th:last-child,
+.custom-table td:last-child {
+  text-align: center;
+  width: 200px;
+}
+
+/* Sticky header styling */
+.custom-table thead th {
   position: sticky;
   top: 0;
-}
-
-.sales-table-body {
-  display: block;
-  overflow-y: auto;
-  max-height: 100vh; /* Adjust based on need */
-}
-.sales-table-body tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
-
-
-
-.sales-tabletype {
-  align-self: stretch;
-}
-
-#sales__record-title {
-  margin-bottom: 20px;
-}
-#sales__record-date {
-  margin-bottom: 10px;
-}
-.sales-table-body tr {
-  justify-content: space-between;
-  align-items: center; /* Center align content vertically */
-  border-bottom: 2px solid var(--orange_a100_33); /* Add bottom border to each row */
-  td {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  td:nth-child(3) {
-    padding-left: 12px;
-    width: 22%;
-  }
-  td:nth-child(4) {
-    padding-left: 35px;
-  }
- 
-  td:nth-child(5) {
-    padding-left: 55px;
-  }
-  td:nth-child(6) {
-    padding-left: 60px;
-  }
-  td:nth-child(7) {
-    padding-left: 35px;
-  }
-  
-  td:nth-child(2) {
-    width: 20%;
-  }
-
-  td:nth-child(1) {
-    padding-left: 5px;
-    width: 8.7%;
-  }
-  .manage {
-    right: 130px;
-    top: 80px;
-  }
-}
-
-
-/*==============================================
-Guest details popup modal
-===============================================*/
-.guest__popup-modal {
-  width: 50%;
-  height: auto;
-  margin-left: 20%;
-  h3 {
-    border-bottom: 3px dotted orange;
-    margin-bottom: 10px;
-  }
-  .guest__info {
-    margin-bottom: 10px;
-    min-width: 50%;
-    padding-right: 5%;
-    padding-left: 5%;
-    p {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-  }
-  h1 {
-    margin-top: 20px;
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  .room__summary {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    .room__total-cost {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 2px dotted orange;
-      border-bottom: 2px dotted orange;
-      width: 30%;
-      font-size: 20px;
-      margin-bottom: 20px;
-      padding-top: 20px;
-    }
-    button {
-      height: 40px;
-      border-radius: 10px;
-      width: 30%;
-    }
-  }
+  background-color: #f4f4f4;
+  z-index: 1;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ccc;
+  white-space: nowrap;
 }

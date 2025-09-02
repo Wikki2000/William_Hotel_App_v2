@@ -1,0 +1,73 @@
+:root {
+  --primary-color: #E67E22;
+}
+
+body {
+  background-color: #fdfdfd;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.hotel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.hotel-header img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hotel-name {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+h1.page-title {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  color: #222;
+}
+.menu-card {
+  border: 1px solid #eee;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.menu-name {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.menu-price {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.search-bar input {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.search-bar input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25);
+}

@@ -170,10 +170,8 @@ export function displayFoodDrink(terminal, foodData, drinkData) {
 
   // Display available dishes in the UI
   if (foodData) {
-
     foodData.forEach((data) => {
       const amount = terminalAmount(terminal, data);
-
       $('#restaurant__food--drinks').append(
         foodDrinkTemplate(data.id, data.name, "food", amount, data.image_path)
       );

@@ -39,11 +39,12 @@ body {
     width: 100px;
     height: 100px;
     margin-right: 20px;
+    border-radius: 10px;
 }
 
 .receipt-header .letter-header {
     text-align: center;
-    margin-left: 15%;
+    margin-left: 10%;
     color: black !important;
 }
 

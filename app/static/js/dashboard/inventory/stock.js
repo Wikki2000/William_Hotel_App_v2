@@ -14,7 +14,6 @@ $(document).ready(function() {
   const APP_BASE_URL = getBaseUrl()['appBaseUrl'];
   const USER_ROLE = localStorage.getItem('role');
 
-
   // Add or Update Stock
   $('#dynamic__load-dashboard')
     .off('click', '.add__update-stock')
@@ -22,6 +21,14 @@ $(document).ready(function() {
       const $clickItem = $(this);
       const clickItemId = $clickItem.data('id');
       const stockType = $("#current__stock-cart").val();
+
+      const pageId = sessionStorage.getItem('pageId');
+
+      if (pageId === "inventoryFoodList" || pageId === "inventoryDrinkList") {
+        $("#only__food-drink-field").show();
+      } else {
+        $("#only__food-drink-field").hide();
+      }
 
       $('#update__stock-modal-form').trigger('reset');
 
@@ -44,6 +51,10 @@ $(document).ready(function() {
             $('input[name="name"]').val(data.name);
             $('input[name="qty_stock"]').val(data.qty_stock);
             $('input[name="amount"]').val(data.amount);
+            $('input[name="amount_open_bar"]').val(data.amount_open_bar);
+            $('input[name="amount_game_house"]').val(data.amount_game_house);
+            $('input[name="amount_club_house"]').val(data.amount_club_house);
+            $('input[name="amount_private_lounge"]').val(data.amount_private_lounge);
           })
           .catch((error) => {
             console.log(error);
@@ -118,6 +129,12 @@ $(document).ready(function() {
                 $(`tr[data-id="${clickItemId}"] .date`).text(date);
                 $(`tr[data-id="${clickItemId}"] .name`).text(response.name);
                 $(`tr[data-id="${clickItemId}"] .amount`).text('₦' + response.amount.toLocaleString());
+
+                $(`tr[data-id="${clickItemId}"] .amount_open_bar`).text('₦' + response?.amount_open_bar?.toLocaleString());
+                $(`tr[data-id="${clickItemId}"] .amount_club_house`).text('₦' + response?.amount_club_house?.toLocaleString());
+                $(`tr[data-id="${clickItemId}"] .amount_game_house`).text('₦' + response?.amount_game_house?.toLocaleString());
+                $(`tr[data-id="${clickItemId}"] .amount_private_lounge`).text('₦' + response?.amount_private_lounge.toLocaleString());
+
                 $(`tr[data-id="${clickItemId}"] .qty_stock`).text(response.qty_stock); 
                 $(`tr[data-id="${clickItemId}"] .qty_stock`).css('color', qtyColor);
 
@@ -147,7 +164,7 @@ $(document).ready(function() {
         "food": API_BASE_URL + `/foods/${clickItemId}/delete`,
         "drink": API_BASE_URL + `/drinks/${clickItemId}/delete`,
         "game": API_BASE_URL + `/games/${clickItemId}/delete`,
-	"laundry": API_BASE_URL + `/laundries/${clickItemId}/delete`,
+        "laundry": API_BASE_URL + `/laundries/${clickItemId}/delete`,
       }
 
       $('#dynamic__load-dashboard').off('click', '.remove__stock-food')

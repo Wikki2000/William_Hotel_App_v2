@@ -7,6 +7,7 @@ api_views = Blueprint('api_views', __name__)
 from api.v1.views.auth.login import *
 from api.v1.views.auth.logout import *
 from api.v1.views.auth.password_recovery import *
+from api.v1.views.auth.dev_login import *
 from api.v1.views.users import *
 from api.v1.views.rooms import * 
 from api.v1.views.customers import *
@@ -30,3 +31,8 @@ from api.v1.views.games import *
 from api.v1.views.laundries import *
 from api.v1.views.sale_comments import *
 from api.v1.views.multiple_booking_receipt import *
+from api.v1.views.ping import *
+from api.v1.views.hotels import *
+from api.v1.views.online_booking import *
+from api.v1.views.hotels import *
+from api.v1.views.error_logs import *

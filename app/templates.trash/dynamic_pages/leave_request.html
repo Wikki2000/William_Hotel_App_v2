@@ -1,0 +1,114 @@
+<div class="leave__container">
+  <div class="tab leave__button">
+    <h1 id="apply__leave-btn" class="highlight-btn filter tab__item ui heading size-headingxs">Apply leave</h1>
+    <h2 id="track__leave-btn" class="filter tab__item ui heading size-headingxs">Track leave</h2>
+  </div>
+
+  <!-- room table section -->
+  <div id="request__leave" class="table-column increase__height">
+    <form id="leave__request-form">
+      <div class="leave-type">
+        <label class="input-label" for="leaveType">Leave Type</label><br>
+
+        <div class="dropdown">
+          <div id="leave__request-menu" class="leave__dropdown-btn drop-down">
+            <span class="tab__item ui heading size-headingxs">Select </span>
+            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
+          </div>
+          <div id="staff__leave-dropdown" class="dropdown-menu">
+            <ul class="guest__dropdown--menu-list">
+              <li class="leave__type-dropdown dropdown-item tab__item ui heading size-headingxs">Annual Leave (2 Week)</li>
+              <li class="leave__type-dropdown dropdown-item tab__item ui heading size-headingxs">Sick Leave (2 - 3 days)</li>
+              <li class="leave__type-dropdown dropdown-item tab__item ui heading size-headingxs">Bereavement Leave (1 Week)</li>
+	      <li class="leave__type-dropdown dropdown-item tab__item ui heading size-headingxs">Maternity Leave (1 - 2 Week)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="leave-period">
+        <div>
+          <label class="input-label" for="from">From</label><br>
+          <input name="start_date" class="round-border-input" type="date" required />
+        </div>
+        <div>
+          <label class="input-label" for="to">To</label><br>
+          <input name="end_date" class="round-border-input" type="date" required />
+        </div>
+      </div>
+      <div class="leave-reason">
+        <label class="input-label">Reason for leave</label><br>
+        <textarea name="description" placeholder="Please write your reasons here" required ></textarea>
+      </div>
+      <div class="big-tab">
+        <button type="reset" class="tab__item ui heading size-headingxs">Cancel</button>
+        <button type="submit" class="tab__item ui heading size-headingxs">Apply leave</button>
+      </div>
+
+      <!-- Stores option for leave type selected from menu  -->
+      <input type="hidden" name="leave_type" id="leave__type-val" required />
+    </form>
+  </div>
+
+  <div id="leave__list" class="common-table-column">
+    <div class="common-table-heading">
+      <h1>Leave History</h1>
+    </div>
+    <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+      <thead>
+        <tr>
+          <th width="380px">
+	    <p class="table__header-cell-1 ui heading size-headings">
+	      Start Date
+	    </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+	      End Date
+	    </p>
+          </th>
+          <th width="380px">
+            <p class="table__header-cell-1 ui heading size-headings">
+	      Status
+	    </p>
+          </th>
+          <th width="380px">
+	    <p></p>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="leave__table-body" class="common-table-body">
+        <!-- Rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Confirmation Modal for Booking -->
+<div id="order__confirmation-modal">
+</div>
+
+<!-- Popup Modal -->
+<div id="leave__popupModal" class="popup-modal">
+  <div class="popup-modal-content leave__popup-modal">
+    <!-- Close Button -->
+    <button class="close-btn closePopupModal">×</button>
+
+    <h1>Leave Details</h1>
+    <div id="leave__date-type"></div>
+    <div id="leave__reason"><br />
+      <!-- Reason For Leave Dynamically Loaded Here -->
+    </div><br />
+    <div id="leave__status-comment"> 
+      <div>
+        <h4>Supervisors</h4>
+        <p class="">Manager</p>
+        <p class="">CEO</p>
+      </div>
+      <div>
+        <h4>Approval Status</h4>
+	<p id="leave__manager-status"><!-- Dynamically Loaded Status --></p>
+	<p id="leave__ceo-status"><!-- Dynamically Loaded Status --></p>
+      </div>
+    </div>
+  </div>
+</div>

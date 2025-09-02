@@ -146,7 +146,7 @@ class Storage:
             self.__session.query(cls)
             .filter(cls.terminal == terminal)
             .filter(column.ilike(f"%{prefix}%"))
-        ).first()
+        ).limit(20).all()
         return obj_list
 
     def count_by(self, cls, **kwargs):
@@ -200,6 +200,9 @@ class Storage:
     def save(self):
         """ Commit change to database """
         self.__session.commit()
+
+    def flush(self):
+        self.__session.flush()
 
     def delete(self, obj):
         """ Delete an instance of a class. """

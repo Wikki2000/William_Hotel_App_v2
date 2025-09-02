@@ -5,4 +5,5 @@ python3 -m seed_data.users.add_users;
 python3 -m seed_data.laundry.laundry;
 python3 -m scripts.users.add_admin;
 python3 -m seed_data.vendors.vendors;
+python3 -m scripts.hotel.hotel
 python3 -m seed_data.games.games

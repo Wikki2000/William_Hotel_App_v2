@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Confirmation - Williams Court Hotel</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f6f6f6; margin: 0; padding: 0; }
+    .email-container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .header { background-color: #000000; color: #D4AF37; text-align: center; padding: 20px; }
+    .header img { max-height: 60px; margin-bottom: 10px; }
+    .content { padding: 20px; color: #333333; }
+    .content h2 { color: #000000; }
+    .highlight { color: #FF6B00; font-weight: bold; }
+    .details-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    .details-table th, .details-table td { padding: 10px; border-bottom: 1px solid #dddddd; text-align: left; }
+    .footer { background-color: #000000; color: #D4AF37; text-align: center; padding: 15px; font-size: 12px; }
+    .social-icons img { height: 20px; margin: 0 5px; }
+    .btn { display: inline-block; padding: 12px 20px; background-color: #FF6B00; color: #fff; text-decoration: none; border-radius: 4px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <img src="https://www.wiventory.com/static/images/public/hotel_logo.png" alt="Williams Court Hotel Logo">
+      <h1>Booking Confirmation</h1>
+    </div>
+    <div class="content">
+      <h2>Dear [ guest_name ],</h2>
+      <p>Thank you for booking with <strong class="highlight">Williams Court Hotel & Suites</strong>. Your reservation is confirmed.</p>
+      
+      <table class="details-table">
+        <tr><th>Booking Reference:</th><td>{{ booking_reference }}</td></tr>
+        <tr><th>Room Type:</th><td>[ room_type ]</td></tr>
+        <tr><th>Number of Rooms:</th><td>[ number_of_rooms ]</td></tr>
+        <tr><th>Check-in Date:</th><td>[ checkin_date ]</td></tr>
+        <tr><th>Check-out Date:</th><td>[ checkout_date ]</td></tr>
+        <tr><th>Total Amount Paid:</th><td>₦[ total_amount ]</td></tr>
+      </table>
+
+      <p>
+        If you have any questions or need assistance, email us at 
+        <a href="mailto:support@williamscourthotel.com">support@williamscourthotel.com</a> or call 
+        <strong>+234 916 000 0188</strong>.
+      </p>
+
+      <a href="https://williamscourthotel.com" class="btn">Visit Our Website</a>
+    </div>
+    <div class="footer">
+      <p>Follow us on:</p>
+      <div class="social-icons">
+        <a href="https://facebook.com/williamscourthotel"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+        <a href="https://instagram.com/williamscourthotel"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+        <a href="https://twitter.com/williamscourthotel"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+      </div>
+      <p>&copy; 2025 Williams Court Hotel & Suites. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
+

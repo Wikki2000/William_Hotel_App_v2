@@ -364,7 +364,7 @@ def order_items(user_role: str, user_id: str):
             })
             customer = Customer(**customer_data)
             storage.new(customer)
-            storage.save()
+            storage.flush()
 
         order_data.update({
             "customer_id": customer.id,
@@ -374,15 +374,14 @@ def order_items(user_role: str, user_id: str):
 
         new_order = Order(**order_data)
         storage.new(new_order)
-        storage.save()
+        storage.flush()
 
         # Generate receipt
         receipt = create_receipt("order_id", new_order.id)
         storage.new(receipt)
-        storage.save()
 
         # Get or create sales entry for today
-        item_sold = storage.get_by(Sale, entry_date=TODAY_DATE)
+        item_sold = storage.get_by(Sale, entry_date=TODAY_DATE, terminal=terminal)
         if not item_sold:
             item_sold = Sale(entry_date=TODAY_DATE, terminal=terminal)
             storage.new(item_sold)
@@ -395,22 +394,20 @@ def order_items(user_role: str, user_id: str):
         for item in item_data:
             update_item_stock(item, customer, new_order, item_sold, terminal)
 
+        # Commit only if order has items
+        if not new_order.order_items:
+            return jsonify({"error": "Unable to process your order. Please try again."}), 422
+
         storage.save()
         return jsonify({"order_id": new_order.id}), 200
 
     except ValueError as e:
         storage.rollback()
-        rollback_order_on_error(new_order, item_sold, prev_sales)
-        storage.save()
         return jsonify({"error": str(e)}), 422
 
     except Exception as e:
         print(str(e))
-        rollback_order_on_error(new_order, item_sold, prev_sales)
         storage.rollback()
-        storage.save()
-        error = f"{CURRENT_TIME}\t{TODAY_DATE}\t{api_path}\t{str(e)}\n\n"
-        write_to_file(ERROR_LOG_FILE, error)
         return jsonify({"error": str(e)}), 500
 
     finally:

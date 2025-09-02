@@ -1,0 +1,121 @@
+<div id="staff__loan-container" class="staff__loan-container">
+  <div class="staff_section-btn">
+    <button id="loan-request" class="filter loan__request--switchSection highlight-btn"><em>Request Loan</em></button>
+    <button id="loan__request-history" class="filter loan__request--switchSection"><em>Loan History</em></button>
+  </div>
+
+  <!-- Loan Request Section -->
+  <div id="loan-content" class="loan-content">
+    <div class="staff-loan-heading">
+      <h2>Request Loan</h2>
+    </div>
+    <div class="loan-details">
+
+      <div id="loan-details-section">
+        <h4 id="loan-details-heading"><b>Loan Details</b></h4>
+      </div>
+
+      <div id="staff-loan-description">
+        <p>Staff Loan</p>
+      </div>
+    </div>
+    <form id="staff__loan-requestForm">
+      <div class="loan-details-form">
+        <label for="loan-amount">Loan Amount</label>
+        <input type="number" id="loan-amount" placeholder="15000" required />
+
+        <label for="loan-term">Loan Term</label>
+        <input type="number" name="loan-term" id="loan-term" min="1" max="12" placeholder="1 Month" required />
+
+        <br>
+        <label for="repayment-mode">Repayment Mode</label>
+        <input type="text" name="repayment-mode" id="repayment-mode" placeholder="Salary" required />
+      </div>
+
+      <div class="bank-details">
+        <div class="bank-title">
+          <h4>Bank Details</h4>
+        </div>
+        <label for="bank-name">Bank Name</label>
+        <input type="text" name="bank-name" id="bank-name" placeholder="Jaiz Bank" required />
+
+        <label for="account-holder">Account Holder's Name</label>
+        <input type="text" name="account-holder" id="account-holder" placeholder="James Peter" required />
+        <br>
+        <label for="account-number">Account Number</label>
+        <input type="text" maxlength="10" pattern="\d{10}" id="account-number" placeholder="0102345455" title="Please enter exactly 10 digits" required />
+      </div>
+
+      <div class="loan-action">
+        <button type="reset" id="staff__loan-cancel--btn" type="submit">
+          <em>Cancel</em>
+        </button>
+        <button type="submit" id="staff__loan-proceed--btn" class="highlight-btn">
+          <em>Proceed</em>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Loan History Section -->
+  <div id="loan__list" class="common-table-column">
+    <div class="common-table-heading">
+      <h1>Loan History</h1>
+    </div>
+    <table cellpadding="0" cellspacing="0" class="common-tabletype ui table size-xs">
+      <thead>
+        <tr>
+          <th width="300px">
+            <p class="table__header-cell ui heading size-headings">Amount</p>
+          </th>
+          <th width="300px">
+            <p class="table__header-cell-1 ui heading size-headings">Term</p>
+          </th>
+          <th width="300px">
+            <p class="table__header-cell-1 ui heading size-headings">Payment Mode</p>
+          </th>
+          <th width="300px">
+            <p class="table__header-cell-1 ui heading size-headings">Approval Status</p>
+          </th>
+          <th width="300px">
+          </th>
+        </tr>
+      </thead>
+      <tbody id="loan__table-body" class="common-table-body">
+        <!-- Rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Popup Modal -->
+<div id="loan__popupModal" class="popup-modal">
+  <div class="popup-modal-content loan__popup-modal">
+    <!-- Close Button -->
+    <button class="close-btn closePopupModal">×</button>
+
+    <h1>Loan Details</h1>
+
+    <!-- Will be dynamically loaded -->
+    <div id="loan__details-description"></div>
+    <div id="loan__acount-description"><br />
+    </div><br />
+
+    <div id="loan__status-comment">
+      <div>
+        <h4>Supervisors</h4>
+        <p class="">Manager</p>
+        <p class="">CEO</p>
+      </div>
+      <div>
+        <h4>Approval Status</h4>
+        <p id="loan__manager-status"><!-- Dynamically Loaded Status --></p>
+        <p id="loan__ceo-status"><!-- Dynamically Loaded Status --></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal for Booking -->
+<div id="order__confirmation-modal">
+</div>

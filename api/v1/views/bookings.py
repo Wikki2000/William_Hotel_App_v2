@@ -104,7 +104,9 @@ def bookings(user_id: str, user_role: str):
             elif search_string == "reserve_bookings":
                 books = storage.all_get_by(Booking, is_reserve=True, terminal=terminal)
             else:
-                guests = storage.get_start_with(Customer, "name", search_string)
+                guests = storage.get_start_with(
+                    Customer, "name", search_string, terminal
+                )
                 for guest in guests:
                     booking = storage.get_by(Booking, customer_id=guest.id)
                     if booking: books.append(booking)
@@ -355,6 +357,7 @@ def update_booking_data(user_id: str, user_role: str, booking_id: str):
     finally:
         storage.close()
 
+
 @api_views.route("/book", methods=["POST"])
 @role_required(["staff", "manager", "admin"])
 def book_room(user_id: str, user_role: str):
@@ -403,8 +406,7 @@ def book_room(user_id: str, user_role: str):
         is_use = True if not reserve_status else False
 
         # Ensure that can't book room already in use
-
-        if room.status == "occupied":
+        if room.status == "occupied" and not reserve_status:
             return jsonify({"error": f"Room {room.number} is occupied"}), 409
 
         customer_data["terminal"] = terminal
@@ -412,8 +414,6 @@ def book_room(user_id: str, user_role: str):
         storage.new(customer)
         customer.is_guest = True
         storage.save()
-
-
 
         book_attr = {
             "checkin": checkin_date, "checkout": checkout_date,
@@ -432,22 +432,21 @@ def book_room(user_id: str, user_role: str):
         receipt = sale = book = receipt = None
 
         try:
-            room_status = "occupied" if not reserve_status else "reserved"
+            if not reserve_status:
+                room.status = "occupied"   # Cheange room status once book
             book = Booking(**book_attr)
             storage.new(book)
-            room.status = room_status   # Cheange room status once book
-            storage.save()
+            storage.flush()
             booking_id_list.append(book.id)
 
             # Create receipt for every booking.
             receipt = create_receipt("booking_id", book.id)
             storage.new(receipt)
-
             update_room_sold(terminal, room_data.get("room_amount"))
-
             storage.save()
 
         except Exception as e:
+            """
             storage.delete_many([customer, book, receipt])
 
             if sale:
@@ -457,11 +456,13 @@ def book_room(user_id: str, user_role: str):
             if room:
                 room.status = "available"
 
-            storage.save()
+            #storage.save()
             print(str(e))
             error = f"{CURRENT_TIME}\t{TODAY_DATE}\t{api_path}\t{str(e)}\n\n"
             write_to_file(ERROR_LOG_FILE, error)
             #return jsonify({"error": str(e)}), 500
+            """
+            print(str(e))
 
     return jsonify({
         "booking_id": book.id,

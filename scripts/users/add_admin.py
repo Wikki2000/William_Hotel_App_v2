@@ -1,38 +1,34 @@
-#!/usr/bin/python3
-"""Add Admin user."""
 from models import storage
+from models.dev import Dev
 from models.user import User
-from seed_data.utils import read_image_file, get_file_names
-from models.group import Group
-from models.group_message import GroupMessage
 
-try:
-    attr = {
-                "first_name": "David", "last_name": "Moses",
-                "username": "david", "performance": 100,
-                "password": "12345", "email": "david@gmail.com",
-                "role": "admin", "portfolio": "CEO", "rank_number": 0
-            }
-    gp = Group(name="WCHS Group")
-    storage.new(gp)
-    storage.save()
+"""
+email = input("Enter Admin Email: ")
+username = input("Enter Admin Username (Optional): ")
+password = input("Enter Admin Password: ")
 
-    group = storage.get_by(Group, name="WCHS Group")
-    if not group:
-        print("Error! You must create the WCHS Group")
-        exit()
+dev = Dev(
+    email=email, 
+    username=username,
+    password=password
+)
+dev.hash_password()
+storage.new(dev)
+"""
 
-    user = User(**attr)
-    user.hash_password()
-    storage.new(user)
-    storage.save()
+ceo = User(
+    email="david@gmail.com",
+    username="david",
+    role="admin",
+    first_name="David",
+    last_name="Michael",
+    password="12345",
+    rank_number=100,
+    portfolio="CEO",
+)
+ceo.hash_password()
+storage.new(ceo)
 
-    msg = "Welcome to the team! Excited to achieved great things together."
-    welcome_msg = GroupMessage(group_id=group.id, text=msg, user_id=user.id)
-    storage.new(welcome_msg)
-    storage.save()
-    print("Admin user created successfully!")
-except Exception as e:
-    print(str(e))
-finally:
-    storage.close()
+storage.save()
+storage.close()
+print("Admin Added Successfully!")

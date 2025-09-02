@@ -1,7 +1,7 @@
 import {
   getBaseUrl, closeConfirmationModal, confirmationModal,
   showNotification, fetchData, canadianDateFormat, ajaxRequest,
-  getQueryParam
+  togleTableMenuIcon, updateElementCount, getQueryParam
 } from '../../global/utils.js';
 
 import {
@@ -28,21 +28,25 @@ $(document).ready(function() {
           let description = '', time;
           if (sale.booking.is_short_rest) {
             description ='Short Time';
-	    time = 'Hours';
+            time = 'Hours';
           } else if (sale.booking.is_late_checkout) {
             description ='Late Checkout';
-	     time = 'Hours';
+            time = 'Hours';
           } else if (sale.booking.is_half_booking) {
-	    description ='Half Day';
-	    time = 'Hours';
-	  } else {
+            description ='Half Day';
+            time = 'Hours';
+          } else {
             description ='Full Time';
-	    time = 'Night(s)';
+            time = 'Night(s)';
           }
+
+          const roomName = sale.room ? sale.room.name : "Deleted Room";
+          const roomNumber = sale.room ? sale.room.number : "xxx";
+
           $('.sales-table-body').append(dailyServiceSaleTableTemplate(
             index, sale.booking.id, sale.booking.is_paid, sale.guest.name,
-            `${sale.room.name} (${sale.room.number}) ${description}`,
-	    `${sale.booking.duration} ${time}`, sale.booking.amount, true
+            `${roomName} (${roomNumber}) ${description}`,
+            `${sale.booking.duration} ${time}`, sale.booking.amount, true
           ));
         });
       })
@@ -76,16 +80,19 @@ $(document).ready(function() {
     });
 
   // Show delete icon when hover on a particular row.
-  $("#sales-table-body").on("mouseenter", "tr", function() {
+  /*
+  $("#sales-table-body").on("mouseenter", "tr, .delete__cell", function() {
     if (USER_ROLE !== "staff") {
       $(this).find(".fa-trash.daily__sale-delete").css("visibility", "visible");
     }
-  });
+  });*/
 
   // Hide delete icon when hover on a particular row.
-  $("#sales-table-body").on("mouseleave", "tr", function() {
+  /*
+  $("#sales-table-body").on("mouseleave", "tr, .delete__cell", function() {
     $(this).find(".fa-trash.daily__sale-delete").css("visibility", "hidden");
-  });
+  });*/
+
 
   // Cancel deletion of order.
   $("body").on("click", ".cancel-btn", function() {
@@ -102,6 +109,7 @@ $(document).ready(function() {
       const confirmBtCls = 'order__delete-confirmBtn';
 
       confirmationModal(headingText, descriptionText, confirmBtCls);
+
 
       $('body').off('click', '.order__delete-confirmBtn')
         .on('click', '.order__delete-confirmBtn', function() {
@@ -120,4 +128,5 @@ $(document).ready(function() {
           );
         });
     });
+
 });

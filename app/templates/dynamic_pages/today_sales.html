@@ -16,10 +16,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     <!-- Link Public CSS Files-->
-    <link rel="stylesheet" type="text/css" href="/static/css/public/index.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/styles.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/public/components.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/public/index.css?v={{ cache_id }}" />
+    <link rel="stylesheet" type="text/css" href="/static/css/public/fonts.css?v={{ cache_id }}" />
+    <link rel="stylesheet" type="text/css" href="/static/css/public/styles.css?v={{ cache_id }}" />
+    <link rel="stylesheet" type="text/css" href="/static/css/public/components.css?v={{ cache_id }}" />
 
     <!-- Link Staff_dashboard CSS Files-->
     <link rel="stylesheet" type="text/css" href="/static/css/dashboard/sales_details.css?{{ cache_id }}" />
@@ -27,8 +27,8 @@
     <!-- Link Staff_dashboard JS Files-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-    <script type="module" defer src="/static/js/dashboard/common.js"></script>
-    <script type="module" defer src="/static/js/dashboard/constant.js"></script>
+    <script type="module" defer src="/static/js/dashboard/common.js?v={{ cache_id }}"></script>
+    <script type="module" defer src="/static/js/dashboard/constant.js?v={{ cache_id }}"></script>
 
     <script type="module" defer src="/static/js/dashboard/inventory/today_sales.js?{{ cache_id }}"></script>
   </head>
@@ -41,30 +41,16 @@
 	<p id="sales__record-date"></p>
 
 	<div>
-	  <table cellpadding="0" cellspacing="0" class="ui table size-xs">
+	  <table class="custom-table">
 	    <thead>
 	      <tr>
-		<th>
-		  <p class="table__header-cell ui heading size-headings">S/N</p>
-		</th>
-		<th width="348px">
-		  <p class="table__header-cell ui heading size-headings">Customer Names</p>
-		</th>
-		<th width="348p">
-		  <p class="table__header-cell-1 ui heading size-headings">Purchase Items</p>
-		</th>
-		<th width="348p">
-		  <p class="table__header-cell-1 ui heading size-headings">Quantity</p>
-		</th>
-		<th width="200px">
-		  <p class="table__header-cell-2 ui heading size-headings">Status</p>
-		</th>
-		<th width="200">
-		  <p class="table__header-cell-3 ui heading size-headings">Amount</p>
-		</th>
-		<th width="200px">
-		  <p class="table__header-cell ui heading size-headings"></p>
-		</th>
+		<th>S/N</th>
+		<th>Customer Names</th>
+		<th>Purchase Items</th>
+		<th>Quantity</th>
+		<th>Status</th>
+		<th>Amount</th>
+		<th>Action</th>
 	      </tr>
 	    </thead>
 	    <tbody id="sales-table-body" class="sales-table-body">
@@ -106,6 +92,7 @@
 	</div>
       </div>
     </div>
+
     <!-- confirm order before deleting-->
     <div id="order__confirmation-modal">
     </div>
