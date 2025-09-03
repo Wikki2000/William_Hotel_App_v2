@@ -231,7 +231,7 @@ def get_sales_summary(
         sales_list.append({
             "id": item_id,
             "name": service_obj.name,
-            "unit_price": service_obj.amount,
+            "unit_price": service_obj.amount or 0,
             "opening_stock": stock_value["opening"],
             "additional_stock": stock_value["additional"],
             "remaining_stock": stock_value["remaining"],

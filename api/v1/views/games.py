@@ -67,12 +67,15 @@ def add_game(user_id: str, user_role: str) -> Dict:
     data = request.get_json()
     terminal = session.get("terminal")
 
-    required_fields = ["name", "amount",]
+    required_fields = ["name", "amount"]
     error_400 = bad_request(data, required_fields)
     if error_400:
-        return jsonify(error_404), 400
-    data["terminal"] = terminal
-    game = Game(**data)
+        return jsonify(error_400), 400
+    game = Game(
+        terminal=terminal,
+        name=data.get("name"),
+        amount=data.get("amount"),
+    )
     storage.new(game)
     storage.save()
     game = storage.get_by(Game, id=game.id)

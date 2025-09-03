@@ -157,6 +157,7 @@ def get_bookings_by_date(
     if not bookings:
         return jsonify([]), 200
 
+
     sorted_bookings = sorted(
         bookings,
         key=lambda booking : booking.updated_at,

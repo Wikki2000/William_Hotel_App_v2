@@ -34,9 +34,11 @@ def add_laundry(user_id: str, user_role: str) -> Dict:
 
     required_fields = ["name", "amount",]
     error_400 = bad_request(data, required_fields)
-    if error_400:
-        return jsonify(error_404), 400
-    laundry = Laundry(**data)
+    if error_400: return jsonify(error_404), 400
+    laundry = Laundry(
+        name=data.get("name"),
+        amount=data.get("amount"),
+    )
     storage.new(laundry)
     storage.save()
     laundry = storage.get_by(Laundry, id=laundry.id)

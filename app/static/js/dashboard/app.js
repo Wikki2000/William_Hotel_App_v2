@@ -235,6 +235,7 @@ $(document).ready(function() {
             } else if ($("#private__lounge").hasClass("highlight-btn")) {
               terminal = "private_lounge";
             }
+
             if (searchKey) {
               const searchItems = restaurants.filter(
                 item => item.name.toLowerCase().includes(searchKey)
@@ -254,26 +255,25 @@ $(document).ready(function() {
             highLightOrderBtn(CART); // Highlight btn on chart.
           });
         }
-
         const url = APP_BASE_URL + '/pages/restaurant';
         const template = await cache.get_by("html", { id: "restaurant" });
         const foods = await cache.get_by("data", { id: "foods" })
         const drinks = await cache.get_by("data", { id: "drinks" });
 
-        if (TERMINAL === TERMINAL_ONE) {
-          $(".food-categories").remove();
-        }
+        if (TERMINAL === TERMINAL_ONE) $(".food-categories").remove();
 
         let terminal = TERMINAL === TERMINAL_ONE ? "t1" : "open_bar";
         if (foods && template && clickId === 'sidebar__restaurant') {
-          $('#dynamic__load-dashboard').html(template)
+          $('#dynamic__load-dashboard').html(template);
+	  if (TERMINAL === TERMINAL_ONE) $(".food-categories").remove();
           displayFoodDrink(terminal, foods, null);
           $('input[name="Search Input"]')
             .attr('placeholder', 'Search for Foods');
           highLightOrderBtn(CART); // Highlight btn of items in cart
           localStorage.setItem('restaurant', JSON.stringify(foods));
         } else if (drinks && template && clickId === 'sidebar__bar') {
-          $('#dynamic__load-dashboard').html(template)
+          $('#dynamic__load-dashboard').html(template);
+	  if (TERMINAL === TERMINAL_ONE) $(".food-categories").remove();
           $('input[name="Search Input"]')
             .attr('placeholder', 'Search for Drinks');
           displayFoodDrink(terminal, null, drinks);
@@ -351,7 +351,6 @@ $(document).ready(function() {
             $('.order__empty-cart').show();
             $('.oder__second-col').hide();
           }
-
         }
         const url = APP_BASE_URL + '/pages/order';
 
@@ -424,7 +423,7 @@ $(document).ready(function() {
           );
 
           $('#expenditure__list-table--body').empty();
-          $(`#inventory__terminal-${TERMINAL}`).remove();
+          //$(`#inventory__terminal-${TERMINAL}`).remove();
           $(`.${TERMINAL}`).remove();
 
           fetchData(expendituresUrl)

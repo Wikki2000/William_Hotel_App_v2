@@ -43,7 +43,7 @@ $(document).ready(function() {
 
           const roomName = sale.room ? sale.room.name : "Deleted Room";
           const roomNumber = sale.room ? sale.room.number : "xxx";
-          $('.sales-table-body').append(saleSummaryTemplate(
+          $('#sales-table-body').append(saleSummaryTemplate(
             index, sale.id,
             `${roomName} (${roomNumber}) ${description}`,
             `${sale.booking.duration} ${time}`, sale.booking.amount, true, sale.room.amount
@@ -73,7 +73,6 @@ $(document).ready(function() {
   const url = API_BASE_URL + `/sales/${date}/${date}/${service}/group-summary`;
   fetchData(url)
     .then((data) => {
-      console.log(data);
       data.forEach((sale, index) => {
         if (service === 'game' || service === 'laundry') {
           $('.sales-table-body').append(saleSummaryTemplate(

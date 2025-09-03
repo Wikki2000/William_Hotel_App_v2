@@ -13,6 +13,7 @@ $(document).ready(function() {
   const API_BASE_URL = getBaseUrl()['apiBaseUrl'];
   const APP_BASE_URL = getBaseUrl()['appBaseUrl'];
   const USER_ROLE = localStorage.getItem('role');
+  const TERMINAL = localStorage.getItem('terminal');
 
   // Add or Update Stock
   $('#dynamic__load-dashboard')
@@ -23,17 +24,20 @@ $(document).ready(function() {
       const stockType = $("#current__stock-cart").val();
 
       const pageId = sessionStorage.getItem('pageId');
+	    $('#update__stock-modal').css('display', 'flex');
 
       if (pageId === "inventoryFoodList" || pageId === "inventoryDrinkList") {
-        $("#only__food-drink-field").show();
+        $(".only__food-drink-field").show();
+	      $(`#inventory__terminal-${TERMINAL}`).hide()
       } else {
-        $("#only__food-drink-field").hide();
+	      $(`#inventory__terminal-${TERMINAL}`).show();
+        $(".only__food-drink-field").hide();
       }
 
       $('#update__stock-modal-form').trigger('reset');
 
       togleTableMenuIcon();
-      $('#update__stock-modal').css('display', 'flex');
+      //$('#update__stock-modal').css('display', 'flex');
 
       const getUrl = {
         "food": `/foods/${clickItemId}/get`,

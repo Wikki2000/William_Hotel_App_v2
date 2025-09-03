@@ -9,6 +9,7 @@ from models.laundry import Laundry
 from models import storage
 import traceback
 from models.error_log import ErrorLog
+from flask import request
 
 
 def cache_burst_versioning(version_id="v1"):
