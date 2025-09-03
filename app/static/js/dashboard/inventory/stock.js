@@ -156,7 +156,6 @@ $(document).ready(function() {
   $('#dynamic__load-dashboard').off('click', '.delete-stock')
     .on('click', '.delete-stock', function() {
       const clickItemId = $(this).data('id');
-	    alert(clickItemId);
 
       // Load confirmation modal
       const headingText = 'Confirm Removal of Item';

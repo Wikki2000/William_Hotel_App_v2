@@ -292,7 +292,7 @@ export function gameLaundryTableTemplate(index, data, date) {
             <li data-id="${data.id}" class="manage__item add__update-stock update-stock">
               <i class="fa fa-wine-bottle"></i>Update Stock
             </li>
-            <li data-id="${data.id}" class="manage__item inventory__delete-stock">
+            <li data-id="${data.id}" class="manage__item delete-stock">
               <i class="fa fa-trash"></i>Remove Item
             </li>
           </ul>
@@ -364,7 +364,7 @@ export function drinkTableTemplate(index, data, date) {
             <li data-id="${data.id}" class="manage__item add__update-stock update-stock">
               <i class="fa fa-wine-bottle"></i>Update Stock
             </li>
-            <li data-id="${data.id}" class="manage__item inventory__delete-stock">
+            <li data-id="${data.id}" class="manage__item delete-stock">
               <i class="fa fa-trash"></i>Remove Item
             </li>
           </ul>
