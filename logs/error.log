@@ -124,3 +124,7 @@
 
 03:11 PM	2025-08-31	/api/v1/account/login	name 'console' is not defined
 
+11:03 PM	2025-09-03	/api/v2/account/login	email_or_username must be a valid string
+
+11:03 PM	2025-09-03	/api/v2/account/login	email_or_username must be a valid string
+

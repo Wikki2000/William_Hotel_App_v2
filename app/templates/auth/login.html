@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/auth/login.css?{{ cache_id }}"/>
+    <link rel="stylesheet" href="/static/v2/css/auth/login.css?{{ cache_id }}"/>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="module" src="/static/js/auth/login.js?{{ cache_id }}"></script>
+    <script type="module" src="/static/v2/js/auth/login.js?{{ cache_id }}"></script>
     <link rel="icon" type="image/x-icon" href="/static/images/public/hotel_logo.png" />
 
     <title>LOGIN PAGE</title>
@@ -26,7 +26,7 @@
               <div id="error-box" class="error-box">
                 <p>Unknown User ID</p>
               </div>
-              <input id="email_or_username" placeholder="Username or Email Address">
+              <input id="email_or_username" placeholder="Username or Email Address" required>
               <br>
 	      <select id="terminal" required>
 	        <option selected value="">-- Select Location --</option>
@@ -34,7 +34,7 @@
 		<option value="t2">Lounge - Terminal 2</option>
 	      </select>
               <br>
-              <input type="password" id="password" placeholder="Password">
+              <input type="password" id="password" placeholder="Password" required>
               <br>
 
 	      <a href="{{ url_for('app_views.forgot_pwd') }}">Forget Password?</a>

@@ -421,7 +421,6 @@ def delete_order(user_id: str, user_role: str, order_id: str):
     terminal = session.get("terminal")
     order = storage.get_by(OrderItem, id=order_id, terminal=terminal)
     if not order:
-        print(6)
         abort(404)
 
     sale_date = order.created_at.strftime("%Y-%m-%d")

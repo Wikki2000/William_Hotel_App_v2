@@ -81,6 +81,7 @@ def add_food(user_id: str, user_role: str) -> Dict:
     if error_404:
         return jsonify(error_404), 400
     data["terminal"] = terminal
+    data["amount"] = data.get("amount", 0)
     food = Food(**data)
     storage.new(food)
     storage.save()

@@ -32,7 +32,7 @@ def get_service(category):
     return items
 
 
-def log_exception(e, hotel_id):
+def log_exception(e):
     """ Log error to database. """
     error_log = ErrorLog(
         message="Unhandled Exception",

@@ -505,7 +505,9 @@ def update_room_sold(terminal, new_amount, old_amount=0, date=None):
         sale_date -= timedelta(days=1)
 
     # Update the room sold.
+    #print(sale_date, terminal)
     today_sale = storage.get_by(Sale, entry_date=sale_date, terminal=terminal)
+    #print(today_sale)
     if not today_sale:
         today_sale = Sale(
             entry_date=sale_date, room_sold=new_amount, terminal=terminal
