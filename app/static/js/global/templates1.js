@@ -472,7 +472,7 @@ export function foodTableTemplate(index, data, date) {
             <li data-id="${data.id}" class="manage__item add__update-stock update-stock">
               <i class="fa fa-utensils"></i>Update Stock
             </li>
-            <li data-id="${data.id}" class="manage__item food__delete-stock">
+            <li data-id="${data.id}" class="manage__item delete-stock">
               <i class="fa fa-trash"></i>Remove Item
             </li>
           </ul>

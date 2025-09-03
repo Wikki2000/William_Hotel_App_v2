@@ -132,7 +132,7 @@ $(document).ready(function() {
                 const date = britishDateFormat(response.updated_at);
                 $(`tr[data-id="${clickItemId}"] .date`).text(date);
                 $(`tr[data-id="${clickItemId}"] .name`).text(response.name);
-                $(`tr[data-id="${clickItemId}"] .amount`).text('₦' + response.amount.toLocaleString());
+                $(`tr[data-id="${clickItemId}"] .amount`).text('₦' + (response.amount ?? 0).toLocaleString());
 
                 $(`tr[data-id="${clickItemId}"] .amount_open_bar`).text('₦' + (response?.amount_open_bar ?? 0).toLocaleString());
                 $(`tr[data-id="${clickItemId}"] .amount_club_house`).text('₦' + (response?.amount_club_house ?? 0).toLocaleString());
@@ -156,6 +156,7 @@ $(document).ready(function() {
   $('#dynamic__load-dashboard').off('click', '.delete-stock')
     .on('click', '.delete-stock', function() {
       const clickItemId = $(this).data('id');
+	    alert(clickItemId);
 
       // Load confirmation modal
       const headingText = 'Confirm Removal of Item';
