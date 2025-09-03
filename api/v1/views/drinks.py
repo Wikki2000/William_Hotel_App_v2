@@ -40,7 +40,7 @@ def add_drink(user_id: str, user_role: str) -> Dict:
     if error_404:
         return jsonify(error_404), 400
     data["terminal"] = terminal
-    data["amount"] = data.get("amount", 0)
+    data["amount"] = data.get("amount") or 0
     drink = Drink(**data)
     storage.new(drink)
     storage.save()

@@ -134,10 +134,10 @@ $(document).ready(function() {
                 $(`tr[data-id="${clickItemId}"] .name`).text(response.name);
                 $(`tr[data-id="${clickItemId}"] .amount`).text('₦' + response.amount.toLocaleString());
 
-                $(`tr[data-id="${clickItemId}"] .amount_open_bar`).text('₦' + response?.amount_open_bar?.toLocaleString());
-                $(`tr[data-id="${clickItemId}"] .amount_club_house`).text('₦' + response?.amount_club_house?.toLocaleString());
-                $(`tr[data-id="${clickItemId}"] .amount_game_house`).text('₦' + response?.amount_game_house?.toLocaleString());
-                $(`tr[data-id="${clickItemId}"] .amount_private_lounge`).text('₦' + response?.amount_private_lounge.toLocaleString());
+                $(`tr[data-id="${clickItemId}"] .amount_open_bar`).text('₦' + (response?.amount_open_bar ?? 0).toLocaleString());
+                $(`tr[data-id="${clickItemId}"] .amount_club_house`).text('₦' + (response?.amount_club_house ?? 0).toLocaleString());
+                $(`tr[data-id="${clickItemId}"] .amount_game_house`).text('₦' + (response?.amount_game_house ?? 0).toLocaleString());
+                $(`tr[data-id="${clickItemId}"] .amount_private_lounge`).text('₦' + (response?.amount_private_lounge ?? 0).toLocaleString());
 
                 $(`tr[data-id="${clickItemId}"] .qty_stock`).text(response.qty_stock); 
                 $(`tr[data-id="${clickItemId}"] .qty_stock`).css('color', qtyColor);

@@ -37,7 +37,7 @@ def get_sales(user_role: str, user_id: str):
 
     return jsonify([
         sale.to_dict()
-        for sale in sorted_sales
+        for sale in sorted_sales[:31]
     ]), 200
 
 

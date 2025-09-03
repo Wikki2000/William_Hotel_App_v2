@@ -12,7 +12,7 @@ from models.error_log import ErrorLog
 from flask import request
 
 
-def cache_burst_versioning(version_id="v1"):
+def cache_burst_versioning(version_id="v3"):
     """Version ID for static files cache bursting."""
     return version_id if version_id else str(uuid4())
 

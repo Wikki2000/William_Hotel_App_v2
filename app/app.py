@@ -71,6 +71,7 @@ def handle_all_exceptions(e):
 
     # For all other unhandled exceptions
     log_exception(e)
+    print(str(e))
     return "Something went wrong on the server.", 500
 
 

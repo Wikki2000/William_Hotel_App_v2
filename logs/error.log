@@ -128,3 +128,9 @@
 
 11:03 PM	2025-09-03	/api/v2/account/login	email_or_username must be a valid string
 
+03:34 PM	2025-09-03	/api/v1/bookings/["7b79e671-3987-4a64-8835-6487e48247a2"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+04:59 PM	2025-09-03	/api/v1/bookings/["5f89419a-fc3d-43c2-acc7-ad69c45fcf5d"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+05:21 PM	2025-09-03	/api/v1/bookings/["25c2c075-0946-411a-86ba-281064448ca5"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+

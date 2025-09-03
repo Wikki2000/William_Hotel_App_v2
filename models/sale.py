@@ -28,4 +28,3 @@ class Sale(BaseModel, Base):
             "terminal", "entry_date", name="terminal_per_entry_date"
         ),
     )
-

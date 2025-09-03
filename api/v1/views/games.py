@@ -3,7 +3,7 @@
 from models.game import Game
 from flask import abort, jsonify, request, session
 from api.v1.views import api_views
-from api.v1.views.utils import bad_request, role_required
+from api.v1.views.utils import bad_request, role_required, nigeria_today_date
 from models import storage
 from typing import Dict
 

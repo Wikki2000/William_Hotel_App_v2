@@ -81,6 +81,7 @@ def room_number(user_role: str, user_id: str):
 def update_room(user_role: str, user_id: str, room_id: str):
     """Update Room Data
     """
+    terminal = session.get("terminal")
     rooms = storage.all_get_by(Room, terminal=terminal)
     data = request.get_json()
     try:
@@ -239,8 +240,6 @@ def filter_rooms(user_role: str, user_id: str, room_status):
             abort(404)
 
         rooms = storage.all_get_by(Room, status=room_status, terminal=terminal)
-        if not rooms:
-            return jsonify([]), 200
 
         # Ensure that reserved room are also shown for available rooms
         if room_status == "available":

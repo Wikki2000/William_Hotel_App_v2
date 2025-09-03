@@ -64,13 +64,13 @@ export function displayRoomData(data, isStaff) {
     data.forEach((room) => {
       let statusClass = "";
       let roomStatusText = "";
-      if (room.status === "available") {
+      if (room.status === "available" || room.status === "reserved") {
         statusClass = "room-status-4";
         roomStatusText = "Available";
-      } else if (room.status === "reserved") {
+      } /*else if (room.status === "reserved") {
         statusClass = "room-status-3";
         roomStatusText = "Reserved";
-      } else if (room.status === "occupied") {
+      }*/ else if (room.status === "occupied") {
         roomStatusText = "Occupied";
         statusClass = "room-status";
       }
