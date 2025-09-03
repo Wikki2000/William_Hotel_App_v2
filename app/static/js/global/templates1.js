@@ -705,7 +705,7 @@ export function dailyServiceSaleTableTemplate(
     <td>
     <p class="ui text size-textmd" style="text-align: left; margin-left: 10px;">₦${amount.toLocaleString()}</p>
     </td>
-    <td style="visibility: hidden;"><i data-id="${id}" class="fa fa-trash daily__sale-delete"></i></td>
+    <td><i data-id="${id}" class="fa fa-trash daily__sale-delete"></i></td>
     </tr>;`
   return row;
 }
