@@ -348,10 +348,13 @@ export function drinkTableTemplate(index, data, date) {
         <p class="ui text size-textmd amount_game_house">₦${(data.amount_game_house ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideTerminal2}">
-        <p class="ui text size-textmd amount_club_house">₦${(data.amount_club_house ?? 0).toLocaleString()}</p>
+        <p class="ui text size-textmd amount_vip_lounge">₦${(data.amount_vip_lounge ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount_private_lounge">₦${(data.amount_private_lounge ?? 0).toLocaleString()}</p>
+      </td>
+      <td class="${hideTerminal2}">
+        <p class="ui text size-textmd amount_club_house">₦${(data.amount_club_house ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideClass}">
         <p><i class="fa fa-ellipsis-v"></i></p>
@@ -456,10 +459,13 @@ export function foodTableTemplate(index, data, date) {
         <p class="ui text size-textmd amount_game_house">₦${(data.amount_game_house ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideTerminal2}">
-        <p class="ui text size-textmd amount_club_house">₦${(data.amount_club_house ?? 0).toLocaleString()}</p>
+        <p class="ui text size-textmd amount_vip_lounge">₦${(data.amount_vip_lounge ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount_private_lounge">₦${(data.amount_private_lounge ?? 0).toLocaleString()}</p>
+      </td>
+      <td class="${hideTerminal2}">
+        <p class="ui text size-textmd amount_club_house">₦${(data.amount_club_house ?? 0).toLocaleString()}</p>
       </td>
       <td class="${hideClass}">
         <p><i class="fa fa-ellipsis-v"></i></p>

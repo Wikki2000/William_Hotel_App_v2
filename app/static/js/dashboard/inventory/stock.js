@@ -59,6 +59,7 @@ $(document).ready(function() {
             $('input[name="amount_game_house"]').val(data.amount_game_house);
             $('input[name="amount_club_house"]').val(data.amount_club_house);
             $('input[name="amount_private_lounge"]').val(data.amount_private_lounge);
+	    $('input[name="amount_vip_lounge"]').val(data.amount_vip_lounge);
           })
           .catch((error) => {
             console.log(error);
@@ -138,6 +139,7 @@ $(document).ready(function() {
                 $(`tr[data-id="${clickItemId}"] .amount_club_house`).text('₦' + (response?.amount_club_house ?? 0).toLocaleString());
                 $(`tr[data-id="${clickItemId}"] .amount_game_house`).text('₦' + (response?.amount_game_house ?? 0).toLocaleString());
                 $(`tr[data-id="${clickItemId}"] .amount_private_lounge`).text('₦' + (response?.amount_private_lounge ?? 0).toLocaleString());
+		$(`tr[data-id="${clickItemId}"] .amount_vip_lounge`).text('₦' + (response?.amount_vip_lounge ?? 0).toLocaleString());
 
                 $(`tr[data-id="${clickItemId}"] .qty_stock`).text(response.qty_stock); 
                 $(`tr[data-id="${clickItemId}"] .qty_stock`).css('color', qtyColor);

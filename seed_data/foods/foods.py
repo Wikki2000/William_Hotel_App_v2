@@ -22,6 +22,7 @@ for terminal in terminals:
                 "amount_game_house": choice(price_list),
                 "amount_club_house": choice(price_list),
                 "amount_private_lounge": choice(price_list),
+                "amount_vip_lounge": choice(price_list),
             })
         new_food = Food(**food)
         storage.new(new_food)

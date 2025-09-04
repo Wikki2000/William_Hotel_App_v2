@@ -80,6 +80,16 @@ $(document).ready(function() {
         } else {
           displayFoodDrink("private_lounge", null, restaurantBar);
         }
+	break;
+      }
+      case 'vip__lounge': {
+        const restaurantBar = JSON.parse(localStorage.getItem('restaurant'));
+        if (pageId === "sidebar__restaurant") {
+          displayFoodDrink("vip_lounge", restaurantBar, null);
+        } else {
+          displayFoodDrink("vip_lounge", null, restaurantBar);
+        }
+        break;
       }
     }
   });

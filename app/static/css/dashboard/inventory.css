@@ -242,10 +242,11 @@
 }
 
 .stock__popup-modal-content {
-  width: 35%;
+  width: 500px;
   #margin-left: 20%;
-  height: auto;
+  max-height: 75vh;
   padding: 30px;
+  overflow-y: scroll;
 
   h2 {
     text-align: center;

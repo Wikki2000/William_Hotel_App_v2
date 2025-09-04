@@ -45,7 +45,6 @@ $(document).ready(function() {
         username.length > 7 ? username.slice(0, 7) + '...' : username
       );
 
-
       $('#sidebar__email').attr('title', email);
 
       $('#sidebar__name').text(`${first_name} ${last_name}`);
@@ -234,7 +233,9 @@ $(document).ready(function() {
               terminal = "game_house";
             } else if ($("#private__lounge").hasClass("highlight-btn")) {
               terminal = "private_lounge";
-            }
+            } else if ($("#vip__lounge").hasClass("highlight-btn")) {
+	      terminal = "vip_lounge";
+	    }
 
             if (searchKey) {
               const searchItems = restaurants.filter(
@@ -363,7 +364,6 @@ $(document).ready(function() {
             const loadedHtml = getHtmlTemplate();
             cache.save_one("html", { id: "orders", value: loadedHtml });
             loadOrderPage();
-
           });
         } else {
           $('#dynamic__load-dashboard').html(template);

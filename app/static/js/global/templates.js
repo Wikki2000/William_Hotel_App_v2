@@ -165,6 +165,8 @@ export function displayFoodDrink(terminal, foodData, drinkData) {
       return data.amount_club_house;
     } else if (terminal === "private_lounge") {
       return data.amount_private_lounge;
+    } else if (terminal === "vip_lounge") {
+      return data.amount_vip_lounge;
     }
   }
 

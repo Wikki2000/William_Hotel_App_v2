@@ -19,6 +19,7 @@ class Drink(BaseModel, Base):
     amount_game_house = Column(Float)
     amount_club_house = Column(Float)
     amount_private_lounge = Column(Float)
+    amount_vip_lounge = Column(Float)
     
     order_items = relationship('OrderItem', backref='drink',
                                cascade='all, delete-orphan')
