@@ -37,6 +37,15 @@ div[class="card"] {
   font-size: 24px;
 }
 
+.welcome__cart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .switch__terminal-control:hover {
+    cursor: pointer;
+  }
+}
 .date {
   font-size: 14px;
   color: gray;

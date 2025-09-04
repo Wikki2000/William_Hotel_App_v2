@@ -43,3 +43,17 @@ def update_hotel(user_role: str, user_id: str):
         return jsonify({"error": "An Error Occured"}), 500
     finally:
         storage.close()
+
+
+
+@api_views.route("/hotels/switch", methods=["PUT"])
+@role_required(["admin", "manager", "staff"])
+def switch_hotel(user_role: str, user_id: str):
+    """Switch betwwe hotels
+    """
+    data = request.get_json()
+    error_400 = bad_request(data, ["terminal"])
+    if error_400: return jsonify(error_404), 400
+
+    session["terminal"] = data.get("terminal", "t1")
+    return jsonify({"message": "Hotel switch successfully."})

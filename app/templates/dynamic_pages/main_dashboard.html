@@ -36,40 +36,43 @@
 </div>
 
 <div class="main__container">
-  <div class="card">
-    <div>
-      <p>Dashboard</p>
-      <div class="main__welcom-user">
-        <div>
-          <h1>Hello <span id="main__username"><!-- User name will be loaded here --></span></h1>
-          <span>Welcome back!</span>
+  <div class="welcome__cart-container">
+    <div class="card">
+      <div>
+        <p>Dashboard</p>
+        <div class="main__welcom-user">
+          <div>
+            <h1>Hello <span id="main__username"><!-- User name will be loaded here --></span></h1>
+            <span>Welcome back!</span>
+          </div>
+          <br>
+          <span class="emoji"><img src="/static/images/public/waving_hello_smile_icon.png" /></span>
+          <div class="date"><span id="main__date"><!-- Date loaded here --></span>
+            <span class="calendar-icon">📅</span>
+          </div>
         </div>
-        <br>
-        <span class="emoji"><img src="/static/images/public/waving_hello_smile_icon.png" /></span>
-        <div class="date"><span id="main__date"><!-- Date loaded here --></span>
-          <span class="calendar-icon">📅</span>
+      </div>
+
+      <div class="controls">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" checked id="toggle-switch">
+            <span class="slider"></span>
+          </label>
+          <p style="font-weight: bold;">Status: <span class="status" id="toggle-state">Online</span></p>
+        </div>
+
+        <div class="performance">
+          <p>Performance
+          <span class="percent">
+            <em id="staff_performance-indexing"><!-- Staff performance dynamically loaded here --></em>
+          </span>
+          </p>
+          <button class="track-btn ui heading size-headings" style="color: white;">View Roster</button>
         </div>
       </div>
     </div>
-
-    <div class="controls">
-      <div class="toggle">
-        <label class="switch">
-          <input type="checkbox" checked id="toggle-switch">
-          <span class="slider"></span>
-        </label>
-        <p style="font-weight: bold;">Status: <span class="status" id="toggle-state">Online</span></p>
-      </div>
-
-      <div class="performance">
-        <p>Performance
-        <span class="percent">
-          <em id="staff_performance-indexing"><!-- Staff performance dynamically loaded here --></em>
-        </span>
-        </p>
-        <button class="track-btn ui heading size-headings" style="color: white;">View Roster</button>
-      </div>
-    </div>
+    <p class="switch__terminal-control">Switch Terminal</p>
   </div>
 
   <div class="scroll-wrapper">

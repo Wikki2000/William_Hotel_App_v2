@@ -19,6 +19,7 @@ $(document).ready(function() {
   const API_BASE_URL = getBaseUrl()['apiBaseUrl'];
   const APP_BASE_URL = getBaseUrl()['appBaseUrl'];
   const USER_ROLE = localStorage.getItem('role');
+  const TERMINAL = localStorage.getItem('terminal');
 
   const sideBarClick = sessionStorage.getItem('pageId');
   if (sideBarClick) {                
@@ -205,7 +206,7 @@ $(document).ready(function() {
           .then((rooms) => {
             rooms.unshift("Select Multiple");
             displayMenuList(rooms, $clickItem, 'order__menu');
-	    $(".dropdown-menu").focus();
+            $(".dropdown-menu").focus();
           })
           .catch((error) => {
             console.log(error);
@@ -265,7 +266,7 @@ $(document).ready(function() {
                       CHECK_IN = $('#main__check-in').val();
                       CHECK_OUT = $('#main__checkout-date').val();
 
-			    /*
+                      /*
                       if (new Date(CHECK_IN) >= new Date(CHECK_OUT)) {
                         resetRoomDetails();
                         showNotification(
@@ -275,7 +276,7 @@ $(document).ready(function() {
                       }*/
                       DURATION = bookingDuration(CHECK_OUT, CHECK_IN);
 
-		      DURATION = DURATION === 0 ? 1 : DURATION;
+                      DURATION = DURATION === 0 ? 1 : DURATION;
 
                       // Get total amount of room book base on some criterias..
                       const room_rate = $('#main__room-amount').val();
@@ -608,4 +609,24 @@ $(document).ready(function() {
     .on("click", "#main__orders-view", function() {
       $("#sidebar__ordes").click();
     });
+
+  // Handle switching of terminal.
+  $('#dynamic__load-dashboard').on("click", ".switch__terminal-control", function() {
+
+    const swapTerminal = { t1: "t2", t2: "t1" };
+    const terminal = swapTerminal[TERMINAL];
+    if (!terminal) return;
+
+    const url = API_BASE_URL + "/hotels/switch";
+
+    ajaxRequest(url, 'PUT', JSON.stringify({ terminal }),
+      (response) => {
+        localStorage.setItem('terminal', terminal);
+        window.location.reload();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  });
 });

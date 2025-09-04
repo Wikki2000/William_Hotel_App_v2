@@ -75,8 +75,8 @@ $(document).ready(function() {
     .then((data) => {
       data.forEach((sale, index) => {
         if (service === 'game' || service === 'laundry') {
-          $('.sales-table-body').append(saleSummaryTemplate(
-            index, sale.id, sale.name, sale.quantity + ' pcs', sale.amount, false, sale.unit_price
+          $('#sales-table-body').append(saleSummaryTemplate(
+            index, sale.id, sale.name, sale.sold_stock + ' pcs', sale.amount, false, sale.unit_price
           ));
         } else {
           $('.drink__food-salesTable-body').append(saleSummaryTemplateFoodDrink(index, sale));

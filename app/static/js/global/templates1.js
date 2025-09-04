@@ -54,7 +54,7 @@ export function taskListTemplate(data) {
 }
 
 export function saleSummaryTemplate(
-  index, id,  itemName, qty, amount, is_booking
+  index, id,  itemName, qty, amount, is_booking, unitPrice
 ) {
 
   const row = `
@@ -69,16 +69,19 @@ export function saleSummaryTemplate(
       <p class="ui text size-textmd">${itemName}</p>
     </td>
     <td class="">
+      <p class="ui text size-textmd">₦${unitPrice.toLocaleString()}</p>
+    </td>
+    <td class="">
       <p class="ui text size-textmd">${qty}</p>
     </td>
     <td>
       <p class="ui text size-textmd">₦${amount.toLocaleString()}</p>
     </td>
 
-    <td style="visibility: hidden;" class="order__table-menu">
+    <!--<td style="visibility: hidden;" class="order__table-menu">
       <p><i class="fa fa-ellipsis-v"></i></p>
       <p><i style="display: none;" class="fa fa-times"></i></p>
-    </td>
+    </td>-->
     <!--<td class="manage">
       <nav class="manage__nav">
         <ul class="manage__list">
