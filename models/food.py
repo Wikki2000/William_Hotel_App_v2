@@ -17,7 +17,7 @@ class Food(BaseModel, Base):
     is_available = Column(Boolean, default=True)
     amount = Column(Float)
     terminal = Column(String(10), nullable=False)
-
+    amount_room = Column(Float)
     amount_open_bar = Column(Float)
     amount_game_house = Column(Float)
     amount_club_house = Column(Float)

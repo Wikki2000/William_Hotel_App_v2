@@ -15,6 +15,7 @@ class Drink(BaseModel, Base):
     qty_stock = Column(Integer, nullable=False)
     amount = Column(Float)
     terminal = Column(String(10), nullable=False)
+    amount_room = Column(Float)
     amount_open_bar = Column(Float)
     amount_game_house = Column(Float)
     amount_club_house = Column(Float)

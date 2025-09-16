@@ -153,10 +153,11 @@ export function laundryTableTemplate(data) {
  */
 export function displayFoodDrink(terminal, foodData, drinkData) {
 
-
   function terminalAmount(terminal, data) {
     if (terminal === TERMINAL_ONE) {
-      return data.amount;
+      return data.amount || 0;
+    } else if (terminal === "room") { 
+      return data.amount_room || 0;
     } else if (terminal === "open_bar") {
       return data.amount_open_bar;
     } else if (terminal === "game_house") {

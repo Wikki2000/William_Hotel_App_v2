@@ -55,6 +55,7 @@ $(document).ready(function() {
             $('input[name="name"]').val(data.name);
             $('input[name="qty_stock"]').val(data.qty_stock);
             $('input[name="amount"]').val(data.amount);
+	    $('input[name="amount_room"]').val(data.amount_room || 0);
             $('input[name="amount_open_bar"]').val(data.amount_open_bar);
             $('input[name="amount_game_house"]').val(data.amount_game_house);
             $('input[name="amount_club_house"]').val(data.amount_club_house);

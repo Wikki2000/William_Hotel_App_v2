@@ -45,6 +45,15 @@ $(document).ready(function() {
 
     // Handle filtering of items in restaurant e.g., foods, drinks etc.
     switch(clickId) {
+      case 'room': {
+        const restaurantBar = JSON.parse(localStorage.getItem('restaurant'));
+        if (pageId === "sidebar__restaurant") {
+          displayFoodDrink("room", restaurantBar, null);
+        } else {
+          displayFoodDrink("room", null, restaurantBar);
+        }
+        break;
+      }
       case 'open-bar': {
         const restaurantBar = JSON.parse(localStorage.getItem('restaurant'));
         if (pageId === "sidebar__restaurant") {

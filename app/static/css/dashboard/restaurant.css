@@ -19,7 +19,7 @@
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
-  width: 600px;
+  width: 700px;
   margin-left: 3%;
 }
 
@@ -77,4 +77,3 @@
 .food-item:hover .food-img {
   transform: scale(1.1); /* Zoom in slightly on hover */
 }
-

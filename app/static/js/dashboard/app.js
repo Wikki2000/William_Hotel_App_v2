@@ -225,7 +225,9 @@ $(document).ready(function() {
               .val().trim().toLowerCase();
             $('#restaurant__food--drinks').empty();
 
-            if ($("#open-bar").hasClass("highlight-btn")) {
+            if ($("#room").hasClass("highlight-btn")) { 
+	      terminal = "room";
+	    } else if ($("#open-bar").hasClass("highlight-btn")) {
               terminal = "open_bar";
             } else if ($("#club__house").hasClass("highlight-btn")) {
               terminal = "club_house";
@@ -263,7 +265,7 @@ $(document).ready(function() {
 
         if (TERMINAL === TERMINAL_ONE) $(".food-categories").remove();
 
-        let terminal = TERMINAL === TERMINAL_ONE ? "t1" : "open_bar";
+        let terminal = TERMINAL === TERMINAL_ONE ? "t1" : "room";
         if (foods && template && clickId === 'sidebar__restaurant') {
           $('#dynamic__load-dashboard').html(template);
 	  if (TERMINAL === TERMINAL_ONE) $(".food-categories").remove();
