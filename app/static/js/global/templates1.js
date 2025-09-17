@@ -341,6 +341,9 @@ export function drinkTableTemplate(index, data, date) {
       <td class="">
         <p class="ui text size-textmd qty_stock" style="color: ${qtyColor}">${data.qty_stock}</p>
       </td>
+                  <td class="${hideTerminal2}">
+		                      <p class="ui text size-textmd amount_room">₦${(data.amount_room ?? 0).toLocaleString()}</p>
+				                                </td>
      <td class="${hideTerminal1}">
         <p class="ui text size-textmd amount">₦${(data.amount ?? 0).toLocaleString()}</p>
       </td>
@@ -455,6 +458,9 @@ export function foodTableTemplate(index, data, date) {
      <td class="${hideTerminal1}">
         <p class="ui text size-textmd amount">₦${(data.amount ?? 0).toLocaleString()}</p>
       </td>
+            <td class="${hideTerminal2}">
+	            <p class="ui text size-textmd amount_room">₦${(data.amount_room ?? 0).toLocaleString()}</p>
+		          </td>
       <td class="${hideTerminal2}">
         <p class="ui text size-textmd amount_open_bar">₦${(data.amount_open_bar ?? 0).toLocaleString()}</p>
       </td>
