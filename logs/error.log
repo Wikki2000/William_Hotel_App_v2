@@ -134,3 +134,33 @@
 
 05:21 PM	2025-09-03	/api/v1/bookings/["25c2c075-0946-411a-86ba-281064448ca5"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
 
+03:41 PM	2025-09-04	/api/v1/orders/088c8edb-d9d1-4152-b901-b0625cf2dd5e/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+12:38 PM	2025-09-05	/api/v1/bookings/["78e0b181-3225-4856-9083-490d807adfed"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+03:41 PM	2025-09-05	/api/v1/bookings/["6aeec64a-a2ee-4400-af2a-0b5a363899ad"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+10:02 AM	2025-09-06	/api/v1/orders/704f3394-2842-47eb-b8f0-3bd0148f6543/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+09:11 PM	2025-09-06	/api/v1/bookings/["9b59601b-fcde-4636-b7a2-60a86713bf17"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+02:48 PM	2025-09-07	/api/v1/orders/24d3e608-aadd-4514-94b3-67dc645f4727/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+03:03 PM	2025-09-07	/api/v1/bookings/["a4acf946-1bf8-4eb5-ba93-9e3203bf1c54"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+08:17 AM	2025-09-10	/api/v1/orders/ffde38e1-8c04-4601-b44d-309bbb2d7720/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+01:38 PM	2025-09-11	/api/v1/bookings/["729e9303-6854-400f-a3cd-2d0becfe12dc"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+10:45 AM	2025-09-12	/api/v1/orders/c5bce365-aba8-40ac-bf04-66d91631ff86/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+10:55 AM	2025-09-14	/api/v1/orders/8fcbb251-2d21-4b47-a5cf-a335cfd45857/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+10:28 PM	2025-09-14	/api/v1/orders/c49a6cf7-670a-48dd-8cfa-9a025d9bcd88/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+05:39 PM	2025-09-15	/api/v1/bookings/["e7b25bee-15c8-4639-95c1-ce845f31c96b"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:02 AM	2025-09-16	/api/v1/orders/1b27b974-afb1-430d-8650-382544dc21ee/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:18 AM	2025-09-16	/api/v1/bookings/["e9bd87ea-9ac0-4b6d-ac9c-48019c761ec3"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+

@@ -26,10 +26,12 @@ def add_expenditure(user_role: str, user_id: str):
         return jsonify(error_response), 400
 
     # Add the expenditure to daily expenditure sum.
+    """
     today_date =  nigeria_today_date()
     expense_summation = storage.get_by(
         DailyExpenditureSum, entry_date=today_date, terminal=terminal
     )
+    """
 
     # Add new daily expenditure if exists else increase sum by existing one
     try:
@@ -129,12 +131,14 @@ def delete_expenditure(user_role: str, user_id: str, expenditure_id: str):
             abort(404) 
 
         # Deduct expenses from daily_expenditures_sum table before deleting
+        """
         expenses_sum_date = expenditure.created_at.strftime("%Y-%m-%d")
         expenses_sum_amount = expenditure.amount
         expense_summation = storage.get_by(
             DailyExpenditureSum, entry_date=expenses_sum_date, terminal=terminal
         ) 
         expense_summation.amount -= expenses_sum_amount
+        """
 
         storage.delete(expenditure)
         storage.save()
