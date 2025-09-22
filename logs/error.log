@@ -164,3 +164,16 @@
 
 11:18 AM	2025-09-16	/api/v1/bookings/["e9bd87ea-9ac0-4b6d-ac9c-48019c761ec3"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
 
+11:52 AM	2025-09-17	/api/v1/orders/92e0aa04-db32-4d6e-ba7e-a2923627173e/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+10:40 AM	2025-09-18	/api/v1/orders/60c6491e-6fee-4825-bf33-9b0c76dce500/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+12:04 PM	2025-09-20	/api/v1/bookings/["0c13f465-6519-4f16-9bfd-e085657f8a21"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+02:00 PM	2025-09-20	/api/v1/orders/c866b6cb-d6bf-45fa-b007-ef81ca046ecf/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+10:23 PM	2025-09-21	/api/v1/account/login	This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (MySQLdb.IntegrityError) (1048, "Column 'name' cannot be null")
+[SQL: UPDATE drinks SET name=%s, qty_stock=%s, amount=%s, amount_room=%s, amount_open_bar=%s, amount_game_house=%s, amount_club_house=%s, amount_private_lounge=%s, amount_vip_lounge=%s WHERE drinks.id = %s]
+[parameters: (None, None, '0', None, None, None, None, None, None, '74b9c1da-8144-45d8-bb9f-b6693cf588cd')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+
