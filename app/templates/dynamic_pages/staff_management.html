@@ -1,3 +1,5 @@
+
+
 <div class="staff__management-container">
   <div class="staff__management-section--btn">
     <div>
@@ -387,106 +389,144 @@
   </div>
 </div>
 
-
 <div class="popup-modal" id="roster__modal">
   <div class="popup-modal-content roster__modal-content">
     <button class="close-btn closePopupModal">×</button>
-    <h3 class="roster__title">Roster for <span id="user__full-name"></span> (<span id="roster__user-portfolio"></span>)</h3>
+    <h3 class="roster__title">
+      Roster for <span id="user__full-name"></span> (<span id="roster__user-portfolio"></span>)
+    </h3>
+
     <form id="roster__update-form">
-      <div class="roster__row">
-        <i>Monday: </i>
-        <div class="dropdown">
-          <div class="drop-down">
-            <span class="ui heading size-headings monday">Select </span>
-            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-          </div>
-          <div class="dropdown-menu">
-            <ul class="main__dropdown--menu-list">
-            </ul>
-          </div>
-        </div>
-        <input name="monday" type="hidden" />                                                                                                                                               </div>
+      
+      <!-- Example for each day -->
+      <div class="roster__row" style="display:flex; align-items:center; gap:15px; margin-bottom:12px;">
+        <i style="width:80px; font-style:normal;">Monday:</i>
 
-      <div class="roster__row">
-        <i>Tuesday: </i>
-       <div class="dropdown">
-         <div class="drop-down">
-           <span class="ui heading size-headings tuesday">Select </span>
-           <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />                                                                       </div>
-          <div class="dropdown-menu">
-            <ul class="main__dropdown--menu-list">
-            </ul>
-          </div>
-       </div>
-       <input name="tuesday"  type="hidden" />
+        <!-- Shift -->
+        <select name="monday" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px; background:#fff;">
+          <option value="">Select Shift</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Night">Night</option>
+	  <option value="Off">Off</option>
+        </select>
+
+        <!-- Terminal -->
+        <select name="monday_terminal" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px; background:#fff;">
+          <option value="">Select Terminal</option>
+          <option value="t1">Hotel - Terminal 1</option>
+          <option value="t2">Lounge - Terminal 2</option>
+        </select>
       </div>
 
-      <div class="roster__row">                                                                                                                                                 <i>Wednesday: </i>                                                                                                                                                      <div class="dropdown">
-          <div class="drop-down">
-            <span class="ui heading size-headings wednesday">Select </span>
-            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-          </div>
-          <div class="dropdown-menu">
-            <ul class="main__dropdown--menu-list">
-            </ul>                                                                                                                                                                 </div>
-        </div>
-        <input name="wednesday"  type="hidden" />
-      </div>
-      <div class="roster__row">                                                                                                                                                 <i>Thursday: </i>
-        <div class="dropdown">
-          <div class="drop-down">
-            <span class="ui heading size-headings thursday">Select </span>
-            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />                                                                       </div>
-          <div class="dropdown-menu">
-            <ul class="main__dropdown--menu-list">
-            </ul>                                                                                                                                                                 </div>
-        </div>
-        <input name="thursday"  type="hidden" />
-      </div>
-      <div class="roster__row">                                                                                                                                                 <i>Friday: </i>
-        <div class="dropdown">
-          <div class="drop-down">
-            <span class="ui heading size-headings friday">Select </span>
-            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-          </div>
-          <div class="dropdown-menu">                                                                                                                                               <ul class="main__dropdown--menu-list">
-            </ul>
-          </div>
-        </div>
-        <input name="friday"  type="hidden" />
-      </div>
-      <div class="roster__row">
-        <i>Saturday: </i>
-        <div class="dropdown">
-          <div class="drop-down">
-            <span class="ui heading size-headings saturday">Select </span>
-            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-          </div>
-          <div class="dropdown-menu">
-            <ul class="main__dropdown--menu-list">
-            </ul>                                                                                                                                                                 </div>
-        </div>
-        <input name="saturday"  type="hidden" />
-      </div>
-      <div class="roster__row">
-        <i>Sunday: </i>
-        <div class="dropdown">
-          <div class="drop-down">
-            <span class="ui heading size-headings sunday">Select </span>
-            <img src="/static/images/public/img_arrow_down_black_900_01.svg" width="15px" alt="dropdown" />
-          </div>
-          <div class="dropdown-menu">
-            <ul class="main__dropdown--menu-list">
-            </ul>                                                                                                                                                                 </div>
-        </div>
-        <input name="sunday"  type="hidden" />
+      <!-- Repeat for other days -->
+      <div class="roster__row" style="display:flex; align-items:center; gap:15px; margin-bottom:12px;">
+        <i style="width:80px; font-style:normal;">Tuesday:</i>
+        <select name="tuesday" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Shift</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Night">Night</option>
+	  <option value="Off">Off</option>
+        </select>
+        <select name="tuesday_terminal" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Terminal</option>
+	            <option value="t1">Hotel - Terminal 1</option>
+		              <option value="t2">Lounge - Terminal 2</option>
+        </select>
       </div>
 
-      <div class="roster__update-btn-container">
-        <button class="highlight-btn ui heading size-headings roster__update-btn">Update</button>
+      <!-- WEDNESDAY -->
+      <div class="roster__row" style="display:flex; align-items:center; gap:15px; margin-bottom:12px;">
+        <i style="width:80px; font-style:normal;">Wednesday:</i>
+        <select name="wednesday" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Shift</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Night">Night</option>
+	  <option value="Off">Off</option>
+        </select>
+        <select name="wednesday_terminal" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Terminal</option>
+	            <option value="t1">Hotel - Terminal 1</option>
+		              <option value="t2">Lounge - Terminal 2</option>
+        </select>
       </div>
 
-      <input id="staff__id"  type="hidden" />
+      <!-- THURSDAY -->
+      <div class="roster__row" style="display:flex; align-items:center; gap:15px; margin-bottom:12px;">
+        <i style="width:80px; font-style:normal;">Thursday:</i>
+        <select name="thursday" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Shift</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Night">Night</option>
+	  <option value="Off">Off</option>
+        </select>
+        <select name="thursday_terminal" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Terminal</option>
+	            <option value="t1">Hotel - Terminal 1</option>
+		              <option value="t2">Lounge - Terminal 2</option>
+        </select>
+      </div>
+
+      <!-- FRIDAY -->
+      <div class="roster__row" style="display:flex; align-items:center; gap:15px; margin-bottom:12px;">
+        <i style="width:80px; font-style:normal;">Friday:</i>
+        <select name="friday" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Shift</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Night">Night</option>
+	  <option value="Off">Off</option>
+        </select>
+        <select name="friday_terminal" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Terminal</option>
+	            <option value="t1">Hotel - Terminal 1</option>
+		              <option value="t2">Lounge - Terminal 2</option>
+        </select>
+      </div>
+
+      <!-- SATURDAY -->
+      <div class="roster__row" style="display:flex; align-items:center; gap:15px; margin-bottom:12px;">
+        <i style="width:80px; font-style:normal;">Saturday:</i>
+        <select name="saturday" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Shift</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Night">Night</option>
+	  <option value="Off">Off</option>
+        </select>
+        <select name="saturday_terminal" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Terminal</option>
+	            <option value="t1">Hotel - Terminal 1</option>
+		              <option value="t2">Lounge - Terminal 2</option>
+        </select>
+      </div>
+
+      <!-- SUNDAY -->
+      <div class="roster__row" style="display:flex; align-items:center; gap:15px; margin-bottom:12px;">
+        <i style="width:80px; font-style:normal;">Sunday:</i>
+        <select name="sunday" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Shift</option>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Night">Night</option>
+	  <option value="Off">Off</option>
+        </select>
+        <select name="sunday_terminal" style="flex:1; min-width:150px; padding:6px 10px; border:1px solid #ccc; border-radius:6px;">
+          <option value="">Select Terminal</option>
+	            <option value="t1">Hotel - Terminal 1</option>
+		              <option value="t2">Lounge - Terminal 2</option>
+        </select>
+      </div>
+
+      <!-- UPDATE BUTTON -->
+      <div class="roster__update-btn-container" style="margin-top:20px; text-align:right;">
+        <button class="highlight-btn ui heading size-headings roster__update-btn" style="padding:8px 20px; border-radius:6px;">Update</button>
+      </div>
+
+      <input id="staff__id" type="hidden" />
     </form>
   </div>
 </div>

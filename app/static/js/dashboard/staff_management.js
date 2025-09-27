@@ -39,6 +39,7 @@ $(document).ready(function() {
         $('#roster__table-body').empty();
         response.forEach((data) => {
 
+          /*
           let mondayOption, tuesdayOption, wendesdayOption, thursdayOption, fridayOption, saturdayOption, sundayOption;
           mondayOption = tuesdayOption = wendesdayOption = thursdayOption = fridayOption = saturdayOption = sundayOption = '';
           if (data.roster) {
@@ -49,9 +50,32 @@ $(document).ready(function() {
             fridayOption = data.roster.friday ? data.roster.friday : '';
             saturdayOption = data.roster.saturday ? data.roster.saturday : '';
             sundayOption = data.roster.sunday ? data.roster.sunday : '';
-          }
+          }*/
+          const days = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
 
-          // Only include staff on roster.
+          let rows = "";
+          response.forEach(user => {
+            if (user.roster) {
+              const terminals = {
+                "t1": "Hotel",
+                "t2": "Lounge",
+              };
+              let row = `<tr><td>${user.name} / ${user.portfolio}</td>`;
+              days.forEach(day => {
+                const shift = user.roster[day] || "";
+                const terminal = user.roster[`${day}_terminal`] && shift.toLowerCase() !== "off"
+                  ? `<span class="terminal">(${terminals[user.roster[day + "_terminal"]]})</span>`
+                  : "";
+                row += `<td>${shift} ${terminal}</td>`;
+              });
+              row += "</tr>";
+              rows += row;
+            }
+            });
+          $("#roster__table-body").html(rows);
+
+            // Only include staff on roster.
+            /*
           if (data.role === 'staff') {
             $('#roster__table-body').append(`
               <tr>
@@ -65,8 +89,8 @@ $(document).ready(function() {
                 <td style="color: ${sundayOption === 'DAY' || sundayOption === 'NIGHT' ? 'green': 'red'}">${sundayOption}</td>
             </tr>
           `);
-          }
-        });
+          }*/
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -423,34 +447,41 @@ $(document).ready(function() {
         $("#roster__user-portfolio").css('title', displayPortfolio);
 
         if (data.roster) {
-          const mondayOption = data.roster.monday ? data.roster.monday : 'Select';
+          const mondayOption = data.roster.monday ?? '';
           $('.monday').text(mondayOption);
-          $('input[name="monday"]').val(mondayOption);
+          $('select[name="monday"]').val(mondayOption);
+          $('select[name="monday_terminal"]').val(data.roster.monday_terminal ?? "");
 
 
-          const TuesdayOption = data.roster.tuesday ? data.roster.tuesday : 'Select';
+          const TuesdayOption = data.roster.tuesday ?? "";
           $('.tuesday').text(TuesdayOption);
-          $('input[name="tuesday"]').val(TuesdayOption);
+          $('select[name="tuesday"]').val(TuesdayOption);
+          $('select[name="tuesday_terminal"]').val(data.roster.tuesday_terminal ?? "");
 
-          const wendesdayOption = data.roster.wednesday ? data.roster.wednesday : 'Select';
+          const wendesdayOption = data.roster.wednesday ?? "";
           $('.wednesday').text(wendesdayOption);
-          $('input[name="wednesday"]').val(wendesdayOption);
+          $('select[name="wednesday"]').val(wendesdayOption);
+          $('select[name="wednesday_terminal"]').val(data.roster.wednesday_terminal ?? "");
 
-          const thursdayOption = data.roster.thursday ? data.roster.thursday : 'Select';
+          const thursdayOption = data.roster.thursday ?? "";
           $('.thursday').text(thursdayOption);
-          $('input[name="thursday"]').val(thursdayOption);
+          $('select[name="thursday"]').val(thursdayOption);
+          $('select[name="thursday_terminal"]').val(data.roster.thursday_terminal ?? "");
 
-          const fridayOption = data.roster.friday ? data.roster.friday : 'Select';
+          const fridayOption = data.roster.friday ?? "";
           $('.friday').text(fridayOption); 
-          $('input[name="friday"]').val(fridayOption);
+          $('select[name="friday"]').val(fridayOption);
+          $('select[name="friday_terminal"]').val(data.roster.friday_terminal ?? "");
 
-          const saturdayOption = data.roster.saturday ? data.roster.saturday : 'Select';
+          const saturdayOption = data.roster.saturday ?? "";
           $('.saturday').text(saturdayOption);
-          $('input[name="saturday"]').val(saturdayOption);
+          $('select[name="saturday"]').val(saturdayOption);
+          $('select[name="saturday_terminal"]').val(data.roster.saturday_terminal ?? "");
 
-          const sundayOption = data.roster.sunday ? data.roster.sunday : 'Select';
+          const sundayOption = data.roster.sunday ?? "";
           $('.sunday').text(sundayOption);
-          $('input[name="sunday"]').val(sundayOption);
+          $('select[name="sunday"]').val(sundayOption);
+          $('select[name="monday_terminal"]').val(data.roster.monday_terminal ?? "");
         }
       })
       .catch((error) => {
@@ -461,13 +492,14 @@ $(document).ready(function() {
 
 
   // Display staff shift options list.
+  /*
   $('#dynamic__load-dashboard')
     .off('click', '.roster__row .drop-down')
     .on('click', '.roster__row .drop-down', function() {
       const $clickItem = $(this);
       const shiftOptions = ['DAY', 'NIGHT', 'OFF', 'LEAVE'];
       displayMenuList(shiftOptions, $clickItem, "roster__shift-option");
-    });
+    });*/
 
 
   // Handle selection of shift options
@@ -531,7 +563,7 @@ $(document).ready(function() {
         if (error.status === 409) {
           alert("User already exists. Please try a different email.");
         } else {
-        showNotification('Oops! An Error Ocured, Try Again !', true);
+          showNotification('Oops! An Error Ocured, Try Again !', true);
         }
       }
     );

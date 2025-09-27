@@ -5,8 +5,8 @@
   <title>SHIFT ROSTER</title>
 
   <link rel="icon" type="image/x-icon" href="/static/images/public/hotel_logo.png" />
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="module" defer src="/static/js/dashboard/staff_management.js?v5"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script type="module" defer src="/static/js/dashboard/staff_management.js?v={{ cache_id }}"></script>
 
   <style>
     body {
@@ -17,26 +17,29 @@
       display: flex;
       justify-content: space-between; 
       align-items: center;
-      .print-button {
-        border-radius: 5px;
-	padding: 5px;
-	background-color: orange;
-	border: none;
-	height: 30px;
-	color: white;
-	&:hover {
-	  cursor: pointer;
-	}
-      }
+    }
+    .print-button {
+      border-radius: 5px;
+      padding: 5px 10px;
+      background-color: orange;
+      border: none;
+      height: 30px;
+      color: white;
+    }
+    .print-button:hover {
+      cursor: pointer;
+      opacity: 0.9;
     }
     table {
       border-collapse: collapse;
       width: 100%;
       text-align: center;
+      margin-top: 15px;
     }
     th, td {
       border: 1px solid #333;
       padding: 8px;
+      vertical-align: middle;
     }
     th {
       background-color: #f2f2f2;
@@ -45,20 +48,19 @@
       font-weight: bold;
       background-color: #e9f5ff;
     }
-
+    .terminal {
+      display: block;
+      font-size: 12px;
+      color: gray;
+    }
     @media print {
       .print-button {
         display: none;
       }
-
       @page {
-	padding: 0;
-	margin: 0;
-	padding-left: 10px;
-	padding-right: 10px;
+        margin: 0;
       }
     }
-
   </style>
 </head>
 <body>
@@ -81,16 +83,14 @@
         <th>Sunday</th>
       </tr>
     </thead>
-    <tbody id="roster__table-body">
-   </tbody>
+    <tbody id="roster__table-body"></tbody>
   </table>
 
   <script>
     function showPrintAlert() {
-      alert('🛈 For best results, uncheck “Headers and Footers” in your print settings.'  );
-      window.print(); // Trigger the print dialog after the alert
+      alert('🛈 For best results, uncheck “Headers and Footers” in your print settings.');
+      window.print();
     }
   </script>
 </body>
 </html>
-
