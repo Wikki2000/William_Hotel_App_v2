@@ -139,7 +139,7 @@ def remove_user(user_role: str, user_id: str, member_id: str):
 def create_update_roster(user_role: str, user_id: str, staff_id: str):
     """Update or create staff roster"""
     data = request.get_json()
-    user = storage.get_by(User, id=staff_id)
+    user = storage.get_by(User, id=staff_id, is_delete=false)
     if not user:
         abort(404)
     user.roster = data
