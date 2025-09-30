@@ -28,7 +28,7 @@ def get_user(user_role: str, user_id: str, member_id: str):
 @api_views.route("/user-roster")
 @role_required(["staff", "admin", "manager"])
 def get_rosters(user_role: str, user_id: str):
-    users = storage.all(User).values()
+    users = storage.all_get_by(User, is_delete=False)
     if not users:
         return jsonify([]), 200
 
@@ -139,7 +139,7 @@ def remove_user(user_role: str, user_id: str, member_id: str):
 def create_update_roster(user_role: str, user_id: str, staff_id: str):
     """Update or create staff roster"""
     data = request.get_json()
-    user = storage.get_by(User, id=staff_id, is_delete=false)
+    user = storage.get_by(User, id=staff_id, is_delete=False)
     if not user:
         abort(404)
     user.roster = data

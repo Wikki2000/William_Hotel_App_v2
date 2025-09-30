@@ -177,3 +177,21 @@
 [parameters: (None, None, '0', None, None, None, None, None, None, '74b9c1da-8144-45d8-bb9f-b6693cf588cd')]
 (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
 
+11:29 PM	2025-09-23	/api/v1/orders/467b0b4f-bb7d-424f-90db-3f84c41f14fd/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+05:26 AM	2025-09-23	/api/v1/orders/571d7260-acf7-44d8-8a9a-0d04659b0680/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+12:06 PM	2025-09-25	/api/v1/bookings/["950fc3df-9313-430e-a0e0-047170f1d4b9"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+03:23 PM	2025-09-25	/api/v1/bookings/["67a283f1-e5b5-4a2f-9c3b-942ff18b1faa"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+08:14 PM	2025-09-26	/api/v1/orders/ab8403d8-0496-4217-9bea-aaecc4211c04/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+08:48 PM	2025-09-26	/api/v1/orders/b0b7cba3-2a85-4fa7-ae42-fe8bdaf81904/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+09:11 AM	2025-09-27	/api/v1/bookings/["fbcc8cce-76b4-4a16-9699-4bed96aae194"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+11:45 PM	2025-09-30	/api/v1/orders/2fda5cd8-67fe-4596-a7da-34f6ecbc82af/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+06:18 AM	2025-09-30	/api/v1/orders/undefined/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
