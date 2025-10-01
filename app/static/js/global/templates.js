@@ -444,6 +444,10 @@ export function loanListTableTemplate(data, userRole) {
               <i class="fa fa-eye"></i>Details
             </li>
 
+	    <li data-id="${data.id}" class="manage__item deleteLoan ${hideFromStaff}">
+	      <i class="fa fa-trash"></i>Delete
+	    </li>
+
             <li data-id="${data.id}" class="manage__item approveLoan ${hideFromStaff}">
               <i class="fa fa-thumbs-up"></i>Approve
             </li>

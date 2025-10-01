@@ -440,6 +440,12 @@ def book_room(user_id: str, user_role: str):
             storage.flush()
             booking_id_list.append(book.id)
 
+            nigeria_time = datetime.now(pytz.timezone('Africa/Lagos'))
+            current_hour = nigeria_time.hour
+
+            if 0 <= current_hour <= constant.BOOKING_END_BY:
+                book.created_at -= timedelta(days=1)
+
             # Create receipt for every booking.
             receipt = create_receipt("booking_id", book.id)
             storage.new(receipt)
