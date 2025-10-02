@@ -18,6 +18,7 @@ from sqlalchemy.exc import IntegrityError
 from datetime import datetime, date, timedelta
 from models.receipt import Receipt
 import pytz
+import traceback
 
 
 ERROR_LOG_FILE = "logs/error.log"
@@ -264,7 +265,7 @@ def update_booking_data(user_id: str, user_role: str, booking_id: str):
         data = request.get_json()
         required_fields = ["customer", "booking", "room"]
         error_response = bad_request(data, required_fields)
-        terminal = terminal
+        terminal = session.get("terminal")
         if error_response:
             return jsonify(error_response), 400
 
@@ -336,7 +337,7 @@ def update_booking_data(user_id: str, user_role: str, booking_id: str):
         # Payment method use only.
         if booking_data.get("amount"):
             sale_date = booking.created_at.strftime("%Y-%m-%d")
-            update_room_sold(booking_data.get("amount"), booking.amount, sale_date)
+            update_room_sold(terminal, booking_data.get("amount"), booking.amount, sale_date)
 
         # Update booking data of current selected booking.
         for key, val in booking_data.items():
@@ -354,6 +355,7 @@ def update_booking_data(user_id: str, user_role: str, booking_id: str):
 
     except Exception as e:
         print(str(e))
+        traceback.print_exc() 
         return jsonify({"error": str(e)}), 500
     finally:
         storage.close()
