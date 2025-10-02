@@ -24,7 +24,7 @@
 #staff__loan-list #staff__loan-table--body tr {
   .manage {
     right: 15%;
-    top: 50px;
+    top: 60px;
   }
   td:nth-child(1), td:nth-child(2),
   td:nth-child(4), td:nth-child(5) {
@@ -38,7 +38,7 @@
   }
   .staff__management-leave--menu {
     right: 20%;
-    top: 50px;
+    top: 60px;
   }
 }
 

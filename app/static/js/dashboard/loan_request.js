@@ -117,8 +117,8 @@ $(document).ready(function() {
         .on('click', '.staff__loan-confirmBtn', function() {
           const loanRequestUrl = API_BASE_URL + '/request-loan';
 
-	$('#order__confirmation-modal').empty();
-	showNotification('Loan Request Processing.........');
+          $('#order__confirmation-modal').empty();
+          showNotification('Loan Request Processing.........');
 
           ajaxRequest(loanRequestUrl, 'POST', JSON.stringify(data),
             (response) => {
@@ -210,6 +210,39 @@ $(document).ready(function() {
             },
             (error) => {
               showNotification('Oops! An error occured, Try Again !', true);
+            }
+          );
+        });
+    });
+
+  $('#dynamic__load-dashboard')
+    .off('click', '#staff__loan-table--body .deleteLoan')
+    .on('click', '#staff__loan-table--body .deleteLoan', function() {
+
+      const loanId = $(this).data('id');
+      togleTableMenuIcon();
+
+
+      const headingText = "Confirm Deletion";
+      const descriptionText = "Are you sure you want to delete this loan? This action cannot be undone.";
+      const confirmBtCls = "loan__delete-confirmBtn";
+
+      confirmationModal(headingText, descriptionText, confirmBtCls);
+
+      $('#dynamic__load-dashboard')
+        .off('click', `.${confirmBtCls}`)
+        .on('click', `.${confirmBtCls}`, function() {
+
+          const url = API_BASE_URL + `/loans/${loanId}`;
+          ajaxRequest(url, 'DELETE', null,
+            (response) => {
+              $('#order__confirmation-modal').empty();
+              $(`#staff__loan-table--body tr[data-id="${loanId}"]`).remove();
+              showNotification(`Loan Remove successfully !`);
+            },
+            (error) => {
+              $('#order__confirmation-modal').empty();
+              console.log(error);
             }
           );
         });

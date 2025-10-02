@@ -287,6 +287,9 @@ export function leaveListTableTemplate(data, date) {
           <li data-id="${data.id}" class="manage__item rejectLeave ${hideFromStaff}">
             <i class="fa fa-thumbs-down"></i>Reject
           </li>
+                                  <li data-id="${data.id}" style="color: red;"class="manage__item deleteLeave ${hideFromStaff}">
+                                                                        <i class="fa fa-trash"></i>Delete
+                                                                                                                          </li>
         </ul>
       </nav>
     </td>
@@ -369,18 +372,18 @@ export function guestListTableTemplate(guest, booking, room, date) {
             <input class="bookingReserveOption" value="${bookingReserve}" type="hidden" \>
             <i class="${bookingIcon}"></i><span>${bookingText}</span>
           </li>
-	  <li data-id="${booking.id}"  data-payment-type="{order.payment_type}" class="manage__item  guest__listMenu guest__listPaymethod">
-	    <i class="fa fa-sync-alt"></i>Payment Method
-	  </li>
+          <li data-id="${booking.id}"  data-payment-type="{order.payment_type}" class="manage__item  guest__listMenu guest__listPaymethod">
+            <i class="fa fa-sync-alt"></i>Payment Method
+          </li>
           <li data-id="${booking.id}" class="manage__item guest__listEdit  guest__listMenu">
             <i class="fa fa-edit"></i>Edit Data
           </li>
-	  <li data-id="${booking.id}" class="manage__item guest__listRemove guest__listMenu ${showToAdminOnly}">
-	    <i class="fa fa-trash"></i>Delete Booking
-	  </li>
-	  <li style="display: ${hideClass};"data-id="${booking.id}" class="manage__item guest__listDelete  guest__listMenu">
-	    <i class="fas fa-ban"></i>Cancel
-	   </li>
+          <li data-id="${booking.id}" class="manage__item guest__listRemove guest__listMenu ${showToAdminOnly}">
+            <i class="fa fa-trash"></i>Delete Booking
+          </li>
+          <li style="display: ${hideClass};"data-id="${booking.id}" class="manage__item guest__listDelete  guest__listMenu">
+            <i class="fas fa-ban"></i>Cancel
+           </li>
           <li data-id="${booking.id}" class="manage__item guest__listPrint  guest__listMenu">
             <i class="fa fa-print"></i>Print Receipt
           </li>
@@ -415,7 +418,7 @@ export function loanListTableTemplate(data, userRole) {
     text = 'Pending';
   }
 
-  const row = `<tr>
+  const row = `<tr data-id=${data.id}>
       <td class="${hideFromStaff} name">
         <p class="ui text size-textmd left-margin">${data.first_name}</p>
         <p class="ui text size-textmd left-margin">${data.last_name}</p>
@@ -444,16 +447,16 @@ export function loanListTableTemplate(data, userRole) {
               <i class="fa fa-eye"></i>Details
             </li>
 
-	    <li data-id="${data.id}" class="manage__item deleteLoan ${hideFromStaff}">
-	      <i class="fa fa-trash"></i>Delete
-	    </li>
-
             <li data-id="${data.id}" class="manage__item approveLoan ${hideFromStaff}">
               <i class="fa fa-thumbs-up"></i>Approve
             </li>
 
             <li data-id="${data.id}" class="manage__item rejectLoan ${hideFromStaff}">
               <i class="fa fa-thumbs-down"></i>Reject
+            </li>
+
+            <li data-id="${data.id}" style="color: red;" class="manage__item deleteLoan ${hideFromStaff}">
+              <i class="fa fa-trash"></i>Delete
             </li>
 
           </ul>
@@ -561,12 +564,12 @@ export function staffListTemplate(data) {
           <li data-id="${data.id}" class="manage__item ui text size-textmd staff__management-table--menu staff__management-view--profile">
             <i class="fa fa-edit"></i>Edit
           </li>
-	  <li class="${hideFromManager} manage__item ui text size-textmd staff__management-table--menu staff__management-remove--user" data-id="${data.id}">
-	    <i class="fa fa-trash"></i>Delete
-	  </li>
-	  <li class="manage__item ui text size-textmd staff__management-roster" data-id="${data.id}">
-	    <i class="fas fa-user-edit"></i>Update Roster
-	  </li>
+          <li class="${hideFromManager} manage__item ui text size-textmd staff__management-table--menu staff__management-remove--user" data-id="${data.id}">
+            <i class="fa fa-trash"></i>Delete
+          </li>
+          <li class="manage__item ui text size-textmd staff__management-roster" data-id="${data.id}">
+            <i class="fas fa-user-edit"></i>Update Roster
+          </li>
         </ul>
       </nav>
     </td>
