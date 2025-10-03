@@ -158,8 +158,8 @@ $(document).ready(function() {
         .on('click', '.staff__leave-confirmBtn', function() {
           const $clickItem = $(this);
           $clickItem.prop('disable', true);
-	  $('#order__confirmation-modal').empty();
-	  showNotification('Leave request Pocessing......');
+          $('#order__confirmation-modal').empty();
+          showNotification('Leave request Pocessing......');
           ajaxRequest(leaveUrl, 'POST', JSON.stringify(data),
             (response) => {
               $('#order__confirmation-modal').empty();
@@ -252,4 +252,37 @@ $(document).ready(function() {
           );
         });
     });
+
+  $('#dynamic__load-dashboard')
+    .off('click', '#staff__leave-table--body .deleteLeave')
+    .on('click', '#staff__leave-table--body .deleteLeave', function() {
+
+      const leaveId = $(this).data('id');
+      togleTableMenuIcon();
+
+      const headingText = "Confirm Deletion";
+      const descriptionText = "Are you sure you want to delete this leave request? This action cannot be undone.";
+      const confirmBtCls = "leave__delete-confirmBtn";
+
+      confirmationModal(headingText, descriptionText, confirmBtCls);
+
+      $('#dynamic__load-dashboard')
+        .off('click', `.${confirmBtCls}`)
+        .on('click', `.${confirmBtCls}`, function() {
+
+          const url = API_BASE_URL + `/leaves/${leaveId}`;
+          ajaxRequest(url, 'DELETE', null,
+            (response) => {
+              $('#order__confirmation-modal').empty();
+              $(`#staff__leave-table--body tr[data-id="${leaveId}"]`).remove();
+              showNotification(`Leave request removed successfully!`);
+            },
+            (error) => {
+              $('#order__confirmation-modal').empty();
+              console.log(error);
+            }
+          );
+        });
+    });
+
 });

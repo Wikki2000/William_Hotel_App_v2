@@ -254,7 +254,7 @@ export function leaveListTableTemplate(data, date) {
   }
   const userRole = localStorage.getItem('role');
   const hideFromStaff = userRole === 'staff' ? 'hide': '';
-  const row = `<tr>
+  const row = `<tr data-id=${data.id}>
     <td class="${hideFromStaff} name">
       <p class="ui text size-textmd">${data.first_name}</p>
       <p class="ui text size-textmd">${data.last_name}</p>
@@ -287,9 +287,9 @@ export function leaveListTableTemplate(data, date) {
           <li data-id="${data.id}" class="manage__item rejectLeave ${hideFromStaff}">
             <i class="fa fa-thumbs-down"></i>Reject
           </li>
-                                  <li data-id="${data.id}" style="color: red;"class="manage__item deleteLeave ${hideFromStaff}">
-                                                                        <i class="fa fa-trash"></i>Delete
-                                                                                                                          </li>
+          <li data-id="${data.id}" style="color: red;"class="manage__item deleteLeave ${hideFromStaff}">
+	    <i class="fa fa-trash"></i>Delete
+	  </li>
         </ul>
       </nav>
     </td>
