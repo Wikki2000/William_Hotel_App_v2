@@ -35,7 +35,7 @@ def loan_request(user_role: str, user_id: str):
 
         manager_name = manager.last_name + " " + manager.first_name
         manager_email = manager.email
-        
+
         admin_name = admin.last_name + " " + admin.first_name
         admin_mail = admin.email
 
@@ -218,3 +218,25 @@ def approve_loan(user_role: str, user_id: str, loan_id: str):
         abort(500)
     finally:
         storage.close()
+
+
+@api_views.route("/loans/<string:loan_id>", methods=["DELETE"])
+@role_required(["manager", "admin"])
+def delete_loan(user_role: str, user_id: str, loan_id: str):
+    """Delete a loan request (permanent)."""
+    try:
+        loan = storage.get_by(LoanRequest, id=loan_id)
+        if not loan:
+            abort(404, description="Loan request not found")
+
+        # Delete loan
+        storage.delete(loan)
+        storage.save()
+
+        return jsonify({"message": "Loan Request Deleted Successfully"}), 200
+    except Exception as e:
+        print(str(e))
+        abort(500, description="An error occurred while deleting loan request")
+    finally:
+        storage.close()
+

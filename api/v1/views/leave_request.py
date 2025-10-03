@@ -201,3 +201,25 @@ def reject_leave(user_role: str, user_id: str, leave_id: str):
         abort(500)
     finally:
         storage.close()
+
+
+@api_views.route("/leaves/<string:leave_id>", methods=["DELETE"])
+@role_required(["manager", "admin"])
+def delete_leave(user_role: str, user_id: str, leave_id: str):
+    """Delete a leave request (permanent)."""
+    try:
+        leave = storage.get_by(LeaveRequest, id=leave_id)
+        if not leave:
+            abort(404, description="Leave request not found")
+
+        # Delete leave
+        storage.delete(leave)
+        storage.save()
+
+        return jsonify({"message": "Leave Request Deleted Successfully"}), 200
+    except Exception as e:
+        print(str(e))
+        abort(500, description="An error occurred while deleting leave request")
+    finally:
+        storage.close()
+
