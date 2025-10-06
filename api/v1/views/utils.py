@@ -293,7 +293,6 @@ def record_additional_stock(stock_type, stock_id, stock_new_qty, stock_old_qty):
     if not stock:
         param["opening"] = stock_old_qty
         param["additional"] = max(0, stock_difference)
-        rders.py
         param["spoilage"] = abs(stock_difference) if stock_difference < 0 else 0
         stock = stocks[stock_type](**param)
         storage.new(stock)

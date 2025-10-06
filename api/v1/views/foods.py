@@ -75,6 +75,7 @@ def add_food(user_id: str, user_role: str) -> Dict:
     """Add new food in stock."""
     data = request.get_json()
     terminal = session.get("terminal")
+    print(data)
 
     required_fields = ["name", "qty_stock"]
     error_404 = bad_request(data, required_fields)
