@@ -493,7 +493,7 @@ def check_reservation(obj_list, checkout_date, checkin_date, room_no):
 #                          VAT/CAT Helper Function                        #
 # ===================================================================== #
 
-def update_room_sold(terminal, new_amount, old_amount=0, date=None):
+def update_room_sold(terminal, new_amount, old_amount=0, date=None, isEdit = False):
     sale_date = date if date else nigeria_today_date()
     #current_hour = datetime.now().hour
     #terminal = session.get("terminal")
@@ -501,8 +501,11 @@ def update_room_sold(terminal, new_amount, old_amount=0, date=None):
     nigeria_time = datetime.now(pytz.timezone('Africa/Lagos'))
     current_hour = nigeria_time.hour
 
-    if 0 <= current_hour <= constant.BOOKING_END_BY:
+    if (type(sale_date) == str):
         sale_date = datetime.strptime(sale_date, "%Y-%m-%d").date()
+
+    #days_diff = (nigeria_time.date() - sale_date).days
+    if 0 <= current_hour <= constant.BOOKING_END_BY and not isEdit:
         sale_date -= timedelta(days=1)
 
     # Update the room sold.

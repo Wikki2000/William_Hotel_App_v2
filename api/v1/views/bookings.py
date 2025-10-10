@@ -337,7 +337,7 @@ def update_booking_data(user_id: str, user_role: str, booking_id: str):
         # Payment method use only.
         if booking_data.get("amount"):
             sale_date = booking.created_at.strftime("%Y-%m-%d")
-            update_room_sold(terminal, booking_data.get("amount"), booking.amount, sale_date)
+            update_room_sold(terminal, booking_data.get("amount"), booking.amount, sale_date, True)
 
         # Update booking data of current selected booking.
         for key, val in booking_data.items():
@@ -471,7 +471,7 @@ def book_room(user_id: str, user_role: str):
             write_to_file(ERROR_LOG_FILE, error)
             #return jsonify({"error": str(e)}), 500
             """
-            print(str(e))
+            print(traceback.format_exc())
 
     return jsonify({
         "booking_id": book.id,
@@ -491,7 +491,7 @@ def cancel_reservation(user_id: str, user_role: str, booking_id: str):
         abort(404)
 
     sale_date = booking.created_at.strftime("%Y-%m-%d")
-    update_room_sold(terminal, new_amount=0, old_amount=booking.amount, date=sale_date)
+    update_room_sold(terminal, new_amount=0, old_amount=booking.amount, date=sale_date, isEdit=True)
 
     booking.room.status = "available"
 
