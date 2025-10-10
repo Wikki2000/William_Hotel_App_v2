@@ -502,6 +502,7 @@ def update_room_sold(terminal, new_amount, old_amount=0, date=None):
     current_hour = nigeria_time.hour
 
     if 0 <= current_hour <= constant.BOOKING_END_BY:
+        sale_date = datetime.strptime(sale_date, "%Y-%m-%d").date()
         sale_date -= timedelta(days=1)
 
     # Update the room sold.

@@ -73,6 +73,7 @@ $(document).ready(function() {
   const url = API_BASE_URL + `/sales/${date}/${date}/${service}/group-summary`;
   fetchData(url)
     .then((data) => {
+	    console.log(data);
       data.forEach((sale, index) => {
         if (service === 'game' || service === 'laundry') {
           $('#sales-table-body').append(saleSummaryTemplate(

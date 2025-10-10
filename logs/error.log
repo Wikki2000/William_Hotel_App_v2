@@ -203,3 +203,23 @@
 
 05:38 PM	2025-10-02	/api/v1/orders/5d40a7cd-2de4-4ecf-9c06-2efebee25c26/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 
+03:58 AM	2025-10-04	/api/v1/bookings/["a71ee2a0-b64f-4da0-9c97-f8a046cea2c6"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:10 AM	2025-10-04	/api/v1/orders/492de55c-0698-438c-b1b1-d505456f7f23/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+08:49 AM	2025-10-05	/api/v1/account/login	This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (MySQLdb.OperationalError) (1054, "Unknown column 'terminal' in 'field list'")
+[SQL: INSERT INTO sale_comments (comment, user_id, sale_id, terminal, id, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s)]
+[parameters: ('yesterday sales was added to it sir 5,500', '7de1b20a-2d74-45be-a8e2-922506c56df1', '3a832d1e-7587-4684-b0d9-0f6aa4e293e0', 't1', '1a2b7189-f404-4073-b77d-5065544a8fe7', datetime.datetime(2025, 10, 5, 10, 7, 31, 25178, tzinfo=<DstTzInfo 'Africa/Lagos' WAT+1:00:00 STD>), datetime.datetime(2025, 10, 5, 10, 7, 31, 25207, tzinfo=<DstTzInfo 'Africa/Lagos' WAT+1:00:00 STD>))]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+
+06:43 AM	2025-10-07	/api/v1/orders/90e95a95-e028-4f61-a9b9-06bd5284cdf1/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+07:12 AM	2025-10-07	/api/v1/account/login	This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (MySQLdb.OperationalError) (1054, "Unknown column 'terminal' in 'field list'")
+[SQL: INSERT INTO sale_comments (comment, user_id, sale_id, terminal, id, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s)]
+[parameters: ('The room as been extend before we moving him to room 301 and the moving of the guest is due to working in the toilet sir.', '7de1b20a-2d74-45be-a8e2-922506c56df1', '1a22b7a4-d076-442f-86c2-7258cfe3bddb', 't2', 'b2019bb2-2b1f-46ee-a321-2a4456bc8064', datetime.datetime(2025, 10, 7, 9, 54, 53, 212142, tzinfo=<DstTzInfo 'Africa/Lagos' WAT+1:00:00 STD>), datetime.datetime(2025, 10, 7, 9, 54, 53, 212184, tzinfo=<DstTzInfo 'Africa/Lagos' WAT+1:00:00 STD>))]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+
+02:10 PM	2025-10-08	/api/v1/bookings/["a3d4cbc8-eb12-4751-8757-aee1e56776a9"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+07:40 AM	2025-10-09	/api/v1/orders/a3018071-8557-4f8d-b372-9e65f9d9e994/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
