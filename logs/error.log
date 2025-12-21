@@ -377,3 +377,53 @@ WHERE users.username = %s
 [parameters: (None, None, 'Wikki', '22', '0', 't1', None, None, None, None, None, None, '4996bfa2-838b-42d4-a156-f656d489428c', datetime.datetime(2025, 12, 5, 0, 2, 10, 228272, tzinfo=<DstTzInfo 'Africa/Lagos' WAT+1:00:00 STD>), datetime.datetime(2025, 12, 5, 0, 2, 10, 228298, tzinfo=<DstTzInfo 'Africa/Lagos' WAT+1:00:00 STD>))]
 (Background on this error at: https://sqlalche.me/e/20/gkpj) (Background on this error at: https://sqlalche.me/e/20/7s2a)
 
+06:16 PM	2025-12-06	/api/v1/orders/4d3123a4-ec46-4a97-bed0-19ca0153103c/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+08:22 PM	2025-12-06	/api/v1/orders/3f796dfb-c5ec-4b19-9137-11ff15d89037/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+10:38 PM	2025-12-06	/api/v1/orders/8dfd5551-72a1-4276-bf7e-c7c621967669/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+06:29 AM	2025-12-07	/api/v1/orders/34b88b1b-697a-4110-b11c-dc98ec927f71/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+06:31 AM	2025-12-07	/api/v1/orders/be10642c-e9cb-4e07-8b25-89f38ce34d2d/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+10:41 AM	2025-12-07	/api/v1/orders/191ef31e-4829-4821-a677-9ac6d234365f/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+07:30 PM	2025-12-07	/api/v1/orders/c9daca46-723f-4f6e-be30-87a160394591/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:03 AM	2025-12-08	/api/v1/bookings/10111a20-f73d-4342-aceb-5b4258804d65/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+12:47 PM	2025-12-08	/api/v1/bookings/["06e77163-3f6a-4564-a6ac-a92e40c01081"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+10:30 AM	2025-12-09	/api/v1/orders/c4324cf5-3847-484f-9a14-87e8338218d1/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+08:38 PM	2025-12-09	/api/v1/bookings/["d3ea23a4-4617-4d21-8262-22ae5b8fbf83"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+05:26 AM	2025-12-10	/api/v1/orders/ff35a3a9-c5fc-43d5-99f3-39dbfd64651c/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+01:49 PM	2025-12-11	/api/v1/orders/b9b2ceb3-0491-4b47-bbbe-aacedcd17e74/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+01:38 PM	2025-12-12	/api/v1/bookings/["66c57bba-e7b7-4340-ad05-6d5a1e443b69"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+03:09 PM	2025-12-12	/api/v1/bookings/["0a639094-8f0d-4e58-b294-c05df04adae3"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+06:02 PM	2025-12-13	/api/v1/bookings/["3f9b55ef-142a-4c48-ab98-a258bea35906"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+08:06 PM	2025-12-13	/api/v1/orders/758f26e1-6c65-4c7a-b303-27a143b43bd1/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+06:47 AM	2025-12-14	/api/v1/orders/e8aa339d-f50d-4482-a2aa-c4d0f999fef4/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+12:28 PM	2025-12-14	/api/v1/orders/7c3c99f8-1fdb-4889-916d-c912bd3e305e/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+05:32 PM	2025-12-15	/api/v1/bookings/["f6a8039e-a29a-4d4a-865b-e996067bcb88"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+08:37 PM	2025-12-15	/api/v1/orders/d28c19a3-e6ee-4a21-b8f0-92041927565f/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:02 AM	2025-12-16	/api/v1/bookings/6a2e7269-3d16-4121-8d9a-01ccc225c987/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+10:31 AM	2025-12-17	/api/v1/bookings/a8b81da3-58b8-4532-9409-3bc08fd58d06/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+04:07 PM	2025-12-17	/api/v1/orders/0690cef1-d5e4-43c1-9bb1-11b83fc8fa3f/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+01:44 PM	2025-12-18	/api/v1/orders/8298cfb3-656b-431f-94d6-c62c65d38f1f/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
