@@ -1,0 +1,121 @@
+[
+    {
+        "id": "220b6004-a945-4fcc-8e20-e090af750872",
+        "number": "205",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 26000.0
+    },
+    {
+        "id": "24e9fd35-3034-4752-a5d6-3f8991245583",
+        "number": "206",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 26000.0
+    },
+    {
+        "id": "2acf0235-52d9-4c02-8d19-c65f30dd49d7",
+        "number": "304",
+        "terminal": "t2",
+        "isOccupied": false,
+        "cashPrice": 27500.0
+    },
+    {
+        "id": "2b452756-fc65-4d0b-9fbd-e5d81dd811dc",
+        "number": "301",
+        "terminal": "t2",
+        "isOccupied": false,
+        "cashPrice": 35000.0
+    },
+    {
+        "id": "3748507d-a0d4-48f5-96c8-1900f6e4f18c",
+        "number": "305",
+        "terminal": "t2",
+        "isOccupied": false,
+        "cashPrice": 27500.0
+    },
+    {
+        "id": "4e70e0e6-4482-4cc4-9b5d-841b98e27fe8",
+        "number": "105",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 23000.0
+    },
+    {
+        "id": "4f4dfc9b-a410-41d2-af2b-f6a37e55cc0a",
+        "number": "203",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 26000.0
+    },
+    {
+        "id": "6a02476d-17c5-4df7-a1fe-c65c14736650",
+        "number": "302",
+        "terminal": "t2",
+        "isOccupied": false,
+        "cashPrice": 32500.0
+    },
+    {
+        "id": "8aa307c5-2590-48a1-a3a3-cd261edf5cb7",
+        "number": "103",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 23000.0
+    },
+    {
+        "id": "8ff67bbf-403f-4472-a19a-8850457c7b05",
+        "number": "207",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 26000.0
+    },
+    {
+        "id": "b3d7028b-d5dc-4a95-a8f7-bc9e2197986b",
+        "number": "201",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 26000.0
+    },
+    {
+        "id": "bba2ae3b-b559-44f2-b69b-90d52b2bb04f",
+        "number": "303",
+        "terminal": "t2",
+        "isOccupied": false,
+        "cashPrice": 27500.0
+    },
+    {
+        "id": "c3b6d9c7-d4e1-4e80-bb39-242005f0e781",
+        "number": "101",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 23000.0
+    },
+    {
+        "id": "c5c1acb2-04c1-42e7-bfe8-32745676a253",
+        "number": "102",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 23000.0
+    },
+    {
+        "id": "d07910c7-1f81-4899-9d54-df97805202ac",
+        "number": "204",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 26000.0
+    },
+    {
+        "id": "e6e51edc-3eed-441c-9d1b-ea6a26b34243",
+        "number": "104",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 23000.0
+    },
+    {
+        "id": "ff7fb98f-851b-46e8-b715-15021134c8fd",
+        "number": "202",
+        "terminal": "t1",
+        "isOccupied": false,
+        "cashPrice": 26000.0
+    }
+]

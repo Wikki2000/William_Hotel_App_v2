@@ -427,3 +427,5 @@ WHERE users.username = %s
 
 01:44 PM	2025-12-18	/api/v1/orders/8298cfb3-656b-431f-94d6-c62c65d38f1f/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 
+11:07 AM	2025-12-21	/api/v1/bookings/9291c298-8278-4aca-bedd-0d29e1eefbe2/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
