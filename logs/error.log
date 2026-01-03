@@ -429,3 +429,37 @@ WHERE users.username = %s
 
 11:07 AM	2025-12-21	/api/v1/bookings/9291c298-8278-4aca-bedd-0d29e1eefbe2/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 
+11:03 AM	2025-12-24	/api/v1/bookings/48335751-bb14-4626-9b74-2aaed2cbcbb1/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+06:42 PM	2025-12-24	/api/v1/bookings/["4f00c30b-e476-40a0-807e-70be0011d41d"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+06:42 PM	2025-12-24	/api/v1/orders/1c82fe41-1eb8-4671-a99f-f9cb22a03a10/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+06:49 PM	2025-12-24	/api/v1/orders/b5ea680e-b80d-471c-9e3e-a1cb597d5a9f/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+08:19 PM	2025-12-25	/api/v1/orders/574b3e29-e3d4-47e7-a067-c81f82fc5727/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+08:58 PM	2025-12-25	/api/v1/bookings/["5269cd43-383d-4a76-9fea-60051b1b74f0"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+09:56 PM	2025-12-25	/api/v1/bookings/["19895a2e-0f6f-43bb-b12c-fcb09991cbdd"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+03:35 PM	2025-12-26	/api/v1/bookings/["a649d74c-0524-4f0e-a30b-c18b9c5b8551"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
+04:29 PM	2025-12-26	/api/v1/orders/aa0afb7c-bc86-4d3f-90a1-ee8b14b7e3de/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+09:09 AM	2025-12-27	/api/v1/bookings/9a7d79cd-a36b-4cb5-b694-144a92962e3d/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+06:54 AM	2025-12-28	/api/v1/orders/98a9beff-f36f-41b6-9612-50f4403fbf25/order-items	This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: Can't reconnect until invalid transaction is rolled back.  Please rollback() fully before proceeding (Background on this error at: https://sqlalche.me/e/20/8s2b) (Background on this error at: https://sqlalche.me/e/20/7s2a)
+
+12:40 PM	2025-12-28	/api/v1/orders/f5754744-c002-4bed-80c6-ad3d5f84f479/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+11:12 AM	2025-12-29	/api/v1/bookings/39b713d6-f5ec-43e2-9ef3-db555ffd2ed1/booking-details	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+03:00 PM	2025-12-29	/api/v1/orders/415e9ee4-978a-438d-90c4-6f3df7cf7043/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+01:45 PM	2025-12-30	/api/v1/orders/961523cc-2a56-4ea9-9e46-6ddce346c801/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+04:14 PM	2025-12-31	/api/v1/orders/6ed4a03c-5eba-47e5-8c57-064e92196305/order-items	404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+07:47 PM	2026-01-02	/api/v1/bookings/["c0069cd2-fce3-4731-b905-d51003eb4836"]/multiple-bookings-details	'NoneType' object has no attribute 'room'
+
